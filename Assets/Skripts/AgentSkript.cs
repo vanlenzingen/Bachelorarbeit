@@ -21,6 +21,12 @@ public class AgentSkript : Agent
                 Debug.Log("Get the sensor Filled' for'Colordice'");
             }
         }
+
+        foreach (Transform child in GameField.transform) {
+            if (child.CompareTag("Square")) {
+                Debug.Log("Get the sensor Filled' for Square "+  child.transform.position);
+            }
+        }
     }
 
 
