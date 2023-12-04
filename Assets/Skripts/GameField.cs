@@ -15,12 +15,20 @@ public class GameField : MonoBehaviour
     private int greenCount = 21;
     private int orangeCount = 21;
     private int yellowCount = 21;
+    public GameObject Agent;
     
 
     public void Start() {
+        InstantiateAgent();
         this.name = "GameField " + PlayerIndex;
         pushSquaresintoArray(); // delte this later
     }
+
+    private void InstantiateAgent(){
+        GameObject agent = Instantiate(Agent, transform.position + new Vector3(0, -2, 0), Quaternion.identity);
+        agent.transform.parent = this.transform;
+    }
+
 
     public void setNeighborsAvailable(GameObject square) {
         FieldSquare squareScript = square.GetComponent<FieldSquare>();
@@ -34,7 +42,7 @@ public class GameField : MonoBehaviour
         coordinateList.Add(new Vector2(x, y+1));
 
         //remove Coords out of Bonds
-        coordinateList.RemoveAll(coord => coord.x < 0 || coord.x >= 14 || coord.y < 0 || coord.y >= 7);
+        coordinateList.RemoveAll(coord => coord.x < 0 || coord.x >= 15 || coord.y < 0 || coord.y >= 7);
 
 
         foreach (var coord in coordinateList) {

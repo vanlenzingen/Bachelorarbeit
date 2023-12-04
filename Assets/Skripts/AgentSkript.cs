@@ -2,21 +2,31 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 
-public class DiceGameAgent : Agent
+public class AgentSkript : Agent
 {
-    public override void OnEpisodeBegin()
-    {
+    GameObject GameField;
+    GameObject Controller;
+
+
+    public override void OnEpisodeBegin()    {
         // Reset the environment for a new episode
+        GameField = this.transform.parent.gameObject;
+        Controller = GameObject.FindWithTag("Controller");
+
+        foreach (Transform child in Controller.transform) {
+            if (child.CompareTag("NumberDice")) {
+                Debug.Log("Get the sensor Filled' for Numberdice");
+            }
+            if (child.CompareTag("ColorDice")) {
+                Debug.Log("Get the sensor Filled' for'Colordice'");
+            }
+        }
     }
 
-    public override void CollectObservations(VectorSensor sensor)
-    {
-        Debug.Log("Getting Stuff");
 
-     // Collect observations from the environment (e.g., current state of the dice)
+    public override void CollectObservations(VectorSensor sensor)    {
      //getField
-     //getDice
-
+    sensor.AddObservation(gameObject.transform.rotation.z);
     }
     /*
     public override void OnActionReceived(float[] vectorAction)

@@ -54,6 +54,7 @@ public class ColorDice : MonoBehaviour
         SetColor(color);
     }
 
+
     public void Reroll() {
         Destroy(this.transform.GetChild(0).gameObject);
         Roll();
