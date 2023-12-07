@@ -3,13 +3,10 @@ using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 
-public class AgentSkript : Agent
-{
+public class AgentSkript : Agent {
+
     GameObject GameField;
     GameObject Controller;
-
-//GRIDSENSOR?
-
 
     public override void OnEpisodeBegin()    {
         // Reset the environment for a new episode
@@ -20,12 +17,13 @@ public class AgentSkript : Agent
 
     public override void CollectObservations(VectorSensor sensor)    {
 
-        //get Observation of NumberDices - number
+        // get Observation for amount of jokers
+        sensor.AddObservation(GetOneHotFromInt(GameField.GetComponent<GameField>().joker,11));
 
+        //get Observation of NumberDices - number
         foreach (Transform child in Controller.transform) {
             if (child.CompareTag("NumberDice")) {
-                sensor.AddObservation(GetNumberOneHotFromNumber(child.GetComponent<NumberDice>().number));
-                //Debug.Log(child.GetComponent<NumberDice>().number);        //this should be every time the number of dice which is getting
+                sensor.AddObservation(GetOneHotFromInt(child.GetComponent<NumberDice>().number,6));
             }
         }
 
@@ -33,15 +31,12 @@ public class AgentSkript : Agent
          foreach (Transform child in Controller.transform) {
          if (child.CompareTag("ColorDice")) {
                 sensor.AddObservation(GetColorIndexOneHotFromColor(child.GetComponent<ColorDice>().color));
-                //Debug.Log(child.GetComponent<ColorDice>().color);
             }
          }
 
         //getObservation of Fields colorindex, available, star, crossed
-        //this gamefields should maybe get sorted into a gridsensor
         foreach (Transform child in GameField.transform) {
             if (child.CompareTag("Square")) {
-                //Debug.Log(child.GetComponent<FieldSquare>());
                 sensor.AddObservation(GetColorIndexOneHotFromColor(child.GetComponent<FieldSquare>().color));
                 sensor.AddObservation(child.GetComponent<FieldSquare>().available);
                 sensor.AddObservation(child.GetComponent<FieldSquare>().starField);
@@ -50,61 +45,7 @@ public class AgentSkript : Agent
         }
     }
 
-    private float[] GetColorIndexOneHotFromColor(string color){
-         float[] colorOneHot = new float[5]; //change for joker
-        switch (color)    {
-            case "blue":
-                 colorOneHot[0] = 1;
-                break;
-            case "green":
-                 colorOneHot[1] = 1;
-                break;
-            case "yellow":
-                 colorOneHot[2] = 1;
-                break;
-            case "orange":
-                 colorOneHot[3] = 1;
-                break;
-            case "red":
-                 colorOneHot[4] = 1;
-                break;
-            /*case "joker":
-                 colorOneHot[5] = 1;
-                break;
-                */
-        }
-        return colorOneHot;
-    }
-
-    private float[] GetNumberOneHotFromNumber(int number){
-        float[] numberOneHot = new float[5]; //change for joker
-        switch (number)    {
-            case 1:
-                 numberOneHot[0] = 1;
-                break;
-            case 2:
-                 numberOneHot[1] = 1;
-                break;
-            case 3:
-                 numberOneHot[2] = 1;
-                break;
-            case 4:
-                 numberOneHot[3] = 1;
-                break;
-            case 5:
-                 numberOneHot[4] = 1;
-                break;
-            /*case 6:
-                 numberOneHot[5] = 1;
-                break;
-                */
-        }
-        return numberOneHot;
-    }
-
-
-
-//actionbuffers should be liek [diceindex, numberindex, field, field, field, field, field]
+    //actionbuffers should be like [diceindex, numberindex, field, field, field, field, field]
     public override void OnActionReceived(ActionBuffers actionBuffers) {
         float reward = 0.0f;
         int colorDiceAction = actionBuffers.DiscreteActions[0];
@@ -117,8 +58,8 @@ public class AgentSkript : Agent
         choosenNumber = GetNumberOfChoosenDice(numberDiceAction);
 
 
-        reward += chooseColorDice(colorDiceAction);
-        reward += chooseNumberDice(numberDiceAction);
+        reward += GetColorDiceReward(colorDiceAction);
+        reward += GetNumberDiceReward(numberDiceAction);
 
 
         int[] squareIndices = new int[3];
@@ -126,55 +67,61 @@ public class AgentSkript : Agent
             int squareIndex = actionBuffers.DiscreteActions[i];
             squareIndices[i-2]=i;
             if (squareIndex == 0) {
-                // Skip index 0 (assuming it means no action for square)
                 continue;
             } else {
-                int x = squareIndex % 15;
-                int y = squareIndex / 15;
-
-                reward += CrossSquareField(x, y, GetColorOfChoosenDice(colorDiceAction)); //crossField (x, y) -> should be implemented in gameField
+                reward += CrossSquareField(
+                    squareIndex % 15,
+                    squareIndex / 15,
+                    GetColorOfChoosenDice(colorDiceAction)
+                ); //crossField (x, y) -> should be implemented in gameField
             }
         }
         reward += CheckNumberReward(choosenNumber, squareIndices);
-
-
-
-
     }
 
-    private float  chooseColorDice(int colorDiceIndex){
-     return 0.0f;
-    }
 
-    private float  chooseNumberDice(int numberDiceIndex){
+    private float  GetColorDiceReward(int colorDiceIndex){
+        if (GetColorOfChoosenDice(colorDiceIndex)== "joker" && GameField.GetComponent<GameField>().joker == 0){
+            return -1.0f;
+        }
     return 0.0f;
-
     }
+
+
+    private float  GetNumberDiceReward(int numberDiceIndex){
+        if (GetNumberOfChoosenDice(numberDiceIndex)==6 && GameField.GetComponent<GameField>().joker == 0){
+            return -1.0f;
+        }
+    return 0.0f;
+    }
+
 
     private float  CrossSquareField(int x, int y, string chosenColor){
         float reward = 0.0f;
         GameObject squareFieldGameObject = GameField.GetComponent<GameField>().GetSquareField(x,y);
         FieldSquare squareField = squareFieldGameObject.GetComponent<FieldSquare>();
-        string fieldColor = squareField.color;
 
-        reward += CheckForColorReward(fieldColor , chosenColor);
+        reward += CheckForColorReward(squareField.color , chosenColor);
+        reward += CheckForAvailableReward(squareField.available);
+        reward += CheckForCrossedReward(squareField.crossed);
 
-        /*
-         * if available ++ crossfield
-         * else --
-         *
-
-         * if not available --
-         * else ++
-
-        if color full ++
+      /*  if color full ++
 
         if column full ++
             */
-        return 0.0f;
+
+        return reward;
     }
 
-    /// Check For Rewards
+    /// Rewards
+
+    private float CheckForCrossedReward(bool crossed){
+        if (crossed){
+            return -1.0f;
+        }
+        return 1.0f;
+    }
+
     private float CheckForColorReward(string fieldColor, string chosenColor){
         if (fieldColor == chosenColor) {
             return 1.0f;
@@ -183,6 +130,12 @@ public class AgentSkript : Agent
         }
     }
 
+    private float CheckForAvailableReward(bool available) {
+        if (available){
+            return 1.0f;
+        }
+        return -1.0f;
+    }
 
 
     private float CheckNumberReward(int number, int[] squareIndex){
@@ -199,25 +152,63 @@ public class AgentSkript : Agent
     /// helper
 
 
-        private int GetNumberOfChoosenDice(int index){
+    private int GetNumberOfChoosenDice(int index){
         int[] diceArray = new int[3];
         foreach (Transform child in Controller.transform) {
             if (child.CompareTag("NumberDice")) {
                 diceArray[diceArray.Length] = child.GetComponent<NumberDice>().number;
             }
         }
+        if (diceArray[index] == 6) {
+            GameField.GetComponent<GameField>().ReduceJoker();
+        }
         return diceArray[index];
     }
 
-        private string GetColorOfChoosenDice(int index){
+    private string GetColorOfChoosenDice(int index){
         string[] diceArray = new string[3];
         foreach (Transform child in Controller.transform) {
             if (child.CompareTag("ColorDice")) {
                 diceArray[diceArray.Length] = child.GetComponent<ColorDice>().color;
             }
         }
+        if (diceArray[index] == "joker") {
+            GameField.GetComponent<GameField>().ReduceJoker();
+            }
         return diceArray[index];
     }
 
+
+    private float[] GetColorIndexOneHotFromColor(string color){
+        float[] colorOneHot = new float[6];
+        switch (color)    {
+            case "blue":
+                 colorOneHot[0] = 1;
+                break;
+            case "green":
+                 colorOneHot[1] = 1;
+                break;
+            case "yellow":
+                 colorOneHot[2] = 1;
+                break;
+            case "orange":
+                 colorOneHot[3] = 1;
+                break;
+            case "red":
+                 colorOneHot[4] = 1;
+                break;
+            case "joker":
+                 colorOneHot[5] = 1;
+                break;
+            }
+        return colorOneHot;
+    }
+
+
+    private float[] GetOneHotFromInt(int number, int numberOfCases){
+        float[] oneHotArray = new float[numberOfCases];
+        oneHotArray[number] = 1;
+        return oneHotArray;
+    }
 }
 

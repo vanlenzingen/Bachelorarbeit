@@ -9,6 +9,7 @@ public class GameField : MonoBehaviour
     private int Rows = 7;
     private int Columns = 15;
     public GameObject[,] squares = new GameObject[15, 7];
+    public int joker = 10;
 
     private int blueCount = 21;
     private int redCount = 21;
@@ -181,5 +182,11 @@ public class GameField : MonoBehaviour
 
     public GameObject GetSquareField(int x, int y){
         return squares[x,y];
+    }
+
+    public void ReduceJoker(){
+        if (joker>=1){
+            this.joker --;
+        }
     }
 }
