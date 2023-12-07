@@ -178,4 +178,8 @@ public class GameField : MonoBehaviour
         }
         return squaresOfColumn;
     }
+
+    public GameObject GetSquareField(int x, int y){
+        return squares[x,y];
+    }
 }
