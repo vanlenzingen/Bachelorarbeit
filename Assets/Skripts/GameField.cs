@@ -163,6 +163,11 @@ public class GameField : MonoBehaviour
         Debug.Log("Shuffle Up Stars");
     }
 
+    public void CrossField(int x, int y){
+        //get SqureField[x,y]
+        //squarefield.CrossField();
+    }
+
 
     public List<GameObject> getSquaresColumn(int column)
     {
