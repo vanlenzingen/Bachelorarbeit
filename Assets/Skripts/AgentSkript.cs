@@ -66,11 +66,11 @@ public class AgentSkript : Agent {
         reward += GetNumberDiceReward(numberDiceAction);
 
 
-        int[] squareIndices = new int[3];
+        int[] squareIndices = new int[3]; // shouldnt this be 5?
         for (int i = 2; i < actionBuffers.DiscreteActions.Length; i++) {
             int squareIndex = actionBuffers.DiscreteActions[i];
             squareIndices[i-2]=i;
-            if (squareIndex == 0) {
+            if (squareIndex == -1) {
                 continue;
             } else {
                 reward += CrossSquareField(
