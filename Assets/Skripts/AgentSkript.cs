@@ -52,6 +52,19 @@ public class AgentSkript : Agent {
     //actionbuffers should be like [diceindex, numberindex, field, field, field, field, field]
     public override void OnActionReceived(ActionBuffers actionBuffers) {
         float reward = 0.0f;
+        //validateRewards
+        /*
+        if (actionBuffers.DiscreteActions[0] < 0 && actionBuffers.DiscreteActions[0] > 2){
+        rewards += -1.0f;
+        }
+        if (actionBuffers.DiscreteActions[1] < 0 && actionBuffers.DiscreteActions[1] > 2){
+            rewards += -1.0f;
+        }
+        
+        
+        
+        */
+        
         int colorDiceAction = actionBuffers.DiscreteActions[0];
         int numberDiceAction = actionBuffers.DiscreteActions[1];
 
@@ -66,7 +79,7 @@ public class AgentSkript : Agent {
         reward += GetNumberDiceReward(numberDiceAction);
 
 
-        int[] squareIndices = new int[3]; // shouldnt this be 5?
+        int[] squareIndices = new int[5]; // shouldnt this be 5?
         for (int i = 2; i < actionBuffers.DiscreteActions.Length; i++) {
             int squareIndex = actionBuffers.DiscreteActions[i];
             squareIndices[i-2]=i;
