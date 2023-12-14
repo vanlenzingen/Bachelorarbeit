@@ -92,7 +92,9 @@ public class AgentSkript : Agent {
                     squareIndex % 15,
                     squareIndex / 15,
                     GetColorOfChoosenDice(colorDiceAction)
-                ); //GameField.GetComponent<GameField>().CrossField (x, y); -> should be implemented in gameField
+                ); 
+                //GameField.GetComponent<GameField>().CrossField (x, y); -> should be implemented in gameField
+                // Check For Neighbor Reward
             }
         }
         reward += CheckNumberReward(choosenNumber, squareIndices);
@@ -134,7 +136,12 @@ public class AgentSkript : Agent {
     /// Rewards
     /*
     private float CheckForNeighborReward(int[] FieldIndicies){
-        //
+        // translate FieldIndicies into field tuple
+
+        // for tuple in koords
+        // if x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2
+        // continue
+        // else böse penalty
     } 
     
     */
