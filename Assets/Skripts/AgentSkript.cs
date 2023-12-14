@@ -55,14 +55,14 @@ public class AgentSkript : Agent {
         //validateRewards
         /*
         if (actionBuffers.DiscreteActions[0] < 0 && actionBuffers.DiscreteActions[0] > 2){
-        rewards += -2.0f;
+        reward += -2.0f;
         }
         if (actionBuffers.DiscreteActions[1] < 0 && actionBuffers.DiscreteActions[1] > 2){
-            rewards += -2.0f;
+            reward += -2.0f;
         }
         for (int i=2; i<6;i++) {
            if  (actionBuffers.DiscreteActions[i] < 0 || actionBuffers.DiscreteActions[i] > 104) {
-               return -2.0f;
+               reward += -2.0f;
            }
         }        
         */
