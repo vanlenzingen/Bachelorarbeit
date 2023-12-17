@@ -127,6 +127,7 @@ public class AgentSkript : Agent {
         reward += CheckForColorReward(squareField.color , chosenColor);
         reward += CheckForAvailableReward(squareField.available);
         reward += CheckForCrossedReward(squareField.crossed);
+        reward += CheckForStarFieldReward(squareField.starField);
 
       /*  if color full ++
 
@@ -157,6 +158,13 @@ public class AgentSkript : Agent {
     
     
     */
+    private float CheckForStarFieldReward(bool starField){
+        if (starField){
+            return 1.0f;
+        } 
+        return 0.0f;
+    }
+    
     
     private float CheckForCrossedReward(bool crossed){
         if (crossed){
