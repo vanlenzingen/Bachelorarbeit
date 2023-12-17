@@ -132,27 +132,23 @@ public class AgentSkript : Agent {
         return reward;
     }
     /// Rewards
+    
     /*
-    private float CheckForNeighborReward(List<Vector2D> FieldIndicies){
-        // translate FieldIndicies into Vektor2D[] koords 
-        koordinates = new List<Vector2D>;
-        for (field in FieldIndicies){
-            koordinates.push(new Vektor2D(field.GetComponent<FieldSquare>().x,field.GetComponent<FieldSquare>().y)
-        }
+    private float CheckForNeighborReward(List<Vector2D> koordinates){
 
         for (koord in koordinates){
-        int x1 = koord.GetComponent<FieldSquare>().x;
-        int y1 = koord.GetComponent<FieldSquare>().y;
-            for (int i= 0 ; i<koordinates.Length; i++){
-            GameObject field = koordinates[i];
-            int x2 = field.GetComponent<FieldSquare>().x;
-            int y2 = field.GetComponent<FieldSquare>().y;
-            if (x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2){
-            continue;
-        } else {
-        return -1.0f;
-    }
-    return 1.0f;
+        int x1 = koord.x;
+        int y1 = koord.y;
+            for (int i= 0 ; i < koordinates.Length ; i++){
+            Vector2D field2 = koordinates[i];
+            int x2 = field2.x;
+            int y2 = field2.y;
+            if (x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2 || x1==x2 && y1==y2){
+                continue;
+                } else {
+                return -1.0f;
+            }
+        return 1.0f;
     } 
     
     
