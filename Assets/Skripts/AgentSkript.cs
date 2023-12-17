@@ -16,25 +16,23 @@ public class AgentSkript : Agent {
 
 
     public override void CollectObservations(VectorSensor sensor)    {
-
         // get Observation for amount of jokers
         sensor.AddObservation(GetOneHotFromInt(GameField.GetComponent<GameField>().joker,11));
 
-        //get Observation of NumberDices - number
+        // get Observation for NumberDice
         foreach (Transform child in Controller.transform) {
             if (child.CompareTag("NumberDice")) {
                 sensor.AddObservation(GetOneHotFromInt(child.GetComponent<NumberDice>().number,6));
             }
         }
-
-        //get Observation for ColorDice - colorindex
-         foreach (Transform child in Controller.transform) {
-         if (child.CompareTag("ColorDice")) {
+        // get Observation for ColorDice
+        foreach (Transform child in Controller.transform) {
+            if (child.CompareTag("ColorDice")) {
                 sensor.AddObservation(GetColorIndexOneHotFromColor(child.GetComponent<ColorDice>().color));
             }
-         }
+        }
 
-        //getObservation of Fields colorindex, available, star, crossed
+        // get Observation for fields
         foreach (Transform child in GameField.transform) {
             if (child.CompareTag("Square")) {
                 sensor.AddObservation(GetColorIndexOneHotFromColor(child.GetComponent<FieldSquare>().color));
@@ -44,7 +42,6 @@ public class AgentSkript : Agent {
             }
         }
     }
-
 
     //actionbuffers should be like [diceindex, numberindex, field, field, field, field, field]
     public override void OnActionReceived(ActionBuffers actionBuffers) {
@@ -118,13 +115,11 @@ public class AgentSkript : Agent {
     return 0.0f;
     }
 
-
     private float  CrossSquareField(int x, int y, string chosenColor){
         float reward = 0.0f;
         GameObject squareFieldGameObject = GameField.GetComponent<GameField>().GetSquareField(x,y);
         FieldSquare squareField = squareFieldGameObject.GetComponent<FieldSquare>();
 
-        
         reward += CheckForColorReward(squareField.color , chosenColor);
         reward += CheckForAvailableReward(squareField.available);
         reward += CheckForCrossedReward(squareField.crossed);
@@ -135,18 +130,9 @@ public class AgentSkript : Agent {
         int remainingFields = GameField.CheckNumberOfRemainingFields(squareField.x);
         if (remainingFields == 0) {
             reward += Controller.CalculateColumnReward(squareField.x) // implement in Controller
-        } 
-        
-
-        
+        }         
         */
         // reward += CheckForColorCompletionReward();
-
-      /*  if color full ++
-
-        if column full ++
-            */
-
         return reward;
     }
     /// Rewards
@@ -154,10 +140,10 @@ public class AgentSkript : Agent {
     /*
     private float CheckForNeighborReward(List<Vector2D> koordinates){
 
-        for (koord in koordinates){
+    for (koord in koordinates){
         int x1 = koord.x;
         int y1 = koord.y;
-            for (int i= 0 ; i < koordinates.Length ; i++){
+        for (int i= 0 ; i < koordinates.Length ; i++){
             Vector2D field2 = koordinates[i];
             int x2 = field2.x;
             int y2 = field2.y;
@@ -212,9 +198,7 @@ public class AgentSkript : Agent {
         }
     }
 
-
-    /// helper
-
+/// helper
 
     private int GetNumberOfChoosenDice(int index){
         int[] diceArray = new int[3];
