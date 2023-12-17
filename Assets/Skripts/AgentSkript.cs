@@ -133,7 +133,7 @@ public class AgentSkript : Agent {
     }
     /// Rewards
     /*
-    private float CheckForNeighborReward(int[] FieldIndicies){
+    private float CheckForNeighborReward(List<Vector2D> FieldIndicies){
         // translate FieldIndicies into Vektor2D[] koords 
         koordinates = new List<Vector2D>;
         for (field in FieldIndicies){
