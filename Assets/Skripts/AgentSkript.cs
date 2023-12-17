@@ -188,7 +188,7 @@ public class AgentSkript : Agent {
     }
 
     private float CheckForColorReward(string fieldColor, string chosenColor){
-        if (fieldColor == chosenColor) {
+        if (fieldColor == chosenColor || chosenColor == "joker") {
             return 1.0f;
         } else {
             return -1.0f;
