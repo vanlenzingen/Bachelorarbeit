@@ -45,9 +45,6 @@ public class AgentSkript : Agent {
         }
     }
 
-    //TODO Validation of ints e.g. dont pick a field above 120 and not und 0 etc etc etc
-    //TODO dont pick a dice > 6
-
 
     //actionbuffers should be like [diceindex, numberindex, field, field, field, field, field]
     public override void OnActionReceived(ActionBuffers actionBuffers) {
@@ -93,8 +90,8 @@ public class AgentSkript : Agent {
                     squareIndex / 15,
                     GetColorOfChoosenDice(colorDiceAction)
                 ); 
-                //GameField.GetComponent<GameField>().CrossField (x, y); -> should be implemented in gameField
-                // Check For Neighbor Reward
+                //GameField.GetComponent<GameField>().CrossField(x, y); -> should be implemented in gameField
+                //CheckForNeighborReward(Fields)
             }
         }
         reward += CheckNumberReward(choosenNumber, squareIndices);
