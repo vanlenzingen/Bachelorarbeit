@@ -125,13 +125,22 @@ public class AgentSkript : Agent {
         GameObject squareFieldGameObject = GameField.GetComponent<GameField>().GetSquareField(x,y);
         FieldSquare squareField = squareFieldGameObject.GetComponent<FieldSquare>();
 
+        
         reward += CheckForColorReward(squareField.color , chosenColor);
         reward += CheckForAvailableReward(squareField.available);
         reward += CheckForCrossedReward(squareField.crossed);
         reward += CheckForStarFieldReward(squareField.starField);
-        // reward += CheckForColumnReward();
+
+        /*
+        squareField.crossField();
+        int remainingFields = GameField.CheckNumberOfRemainingFields(squareField.x);
+        if (remainingFields == 0) {
+            reward += Controller.CalculateColumnReward() // implement in Controller
+        } 
+
+        
+        */
         // reward += CheckForColorCompletionReward();
-        // reward += CheckForGameEndingReward();
 
       /*  if color full ++
 
