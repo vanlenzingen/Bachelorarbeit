@@ -119,6 +119,7 @@ public class AgentSkript : Agent {
         float reward = 0.0f;
         GameObject squareFieldGameObject = GameField.GetComponent<GameField>().GetSquareField(x,y);
         FieldSquare squareField = squareFieldGameObject.GetComponent<FieldSquare>();
+        // squareField.Cross();
 
         reward += CheckForColorReward(squareField.color , chosenColor);
         reward += CheckForAvailableReward(squareField.available);
