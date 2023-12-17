@@ -146,8 +146,9 @@ public class AgentSkript : Agent {
         int x1 = koord.GetComponent<FieldSquare>().x;
         int y1 = koord.GetComponent<FieldSquare>().y;
             for (int i= 0 ; i<koordinates.Length; i++){
-            int x2 =
-            int y2 =  
+            GameObject field = koordinates[i];
+            int x2 = field.GetComponent<FieldSquare>().x;
+            int y2 = field.GetComponent<FieldSquare>().y;
             if (x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2){
             continue;
         } else {
