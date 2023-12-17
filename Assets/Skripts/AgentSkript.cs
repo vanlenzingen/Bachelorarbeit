@@ -50,7 +50,6 @@ public class AgentSkript : Agent {
     public override void OnActionReceived(ActionBuffers actionBuffers) {
         float reward = 0.0f;
         //validateRewards
-        
         if (actionBuffers.DiscreteActions[0] < 0 && actionBuffers.DiscreteActions[0] > 2){
         reward += -2.0f;
         }
