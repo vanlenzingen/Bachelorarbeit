@@ -75,8 +75,8 @@ public class FieldSquare : MonoBehaviour
                 starRenderer.color = Color.black;
             }
             this.crossed = true;
-            this.transform.parent.GetComponent<GameField>().CheckNumberOfRemainingFields(xPos);
-            this.transform.parent.GetComponent<GameField>().decreaseColorCount(color);
+            //this.transform.parent.GetComponent<GameField>().CheckNumberOfRemainingFields(xPos);
+            //this.transform.parent.GetComponent<GameField>().decreaseColorCount(color);
             this.transform.parent.GetComponent<GameField>().setNeighborsAvailable(this.gameObject);
         }
     }
