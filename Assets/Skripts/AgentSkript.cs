@@ -57,10 +57,14 @@ public class AgentSkript : Agent {
         if (actionBuffers.DiscreteActions[1] < 0 && actionBuffers.DiscreteActions[1] > 2){
             reward += -2.0f;
         }
-        for (int i=2; i<6;i++) {
-           if  (actionBuffers.DiscreteActions[i] < -1 || actionBuffers.DiscreteActions[i] > 104) {
+        for (int i=2; i<=6;i++) {
+            for (int j = 2; j<=6;j++){
+                if (actionBuffers.DiscreteActions[i] == actionBuffers.DiscreteActions[j] && i != j)
+                    reward += -2.0f;
+                }
+            if  (actionBuffers.DiscreteActions[i] < -1 || actionBuffers.DiscreteActions[i] > 104) {
                reward += -2.0f;
-           }
+            }
         }        
         
         int colorDiceAction = actionBuffers.DiscreteActions[0];
@@ -77,7 +81,7 @@ public class AgentSkript : Agent {
         reward += GetNumberDiceReward(numberDiceAction);
 
 
-        int[] squareIndices = new int[5]; // shouldnt this be 5?
+        int[] squareIndices = new int[5]; 
         List<Vector2D> fieldKoordinates;
         for (int i = 2; i < actionBuffers.DiscreteActions.Length; i++) {
             int squareIndex = actionBuffers.DiscreteActions[i];
@@ -85,14 +89,14 @@ public class AgentSkript : Agent {
             if (squareIndex == -1) {
                 continue;
             } else {
-                fieldKoordinates.append(squareIndex % 15, squareIndex / 15)
+                fieldKoordinates.Add(new Vector2D(squareIndex % 15, squareIndex / 15));
                 reward += CrossSquareField(
                     squareIndex % 15,
                     squareIndex / 15,
                     GetColorOfChoosenDice(colorDiceAction)
                 ); 
-                //GameField.GetComponent<GameField>().CrossField(x, y); -> should be implemented in gameField
-                //CheckForNeighborReward(fieldKoordinates);
+                GameField.GetComponent<GameField>().CrossField(x, y);
+                CheckForNeighborReward(fieldKoordinates);
             }
         }
         reward += CheckNumberReward(choosenNumber, squareIndices);
