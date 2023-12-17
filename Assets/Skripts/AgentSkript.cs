@@ -100,6 +100,7 @@ public class AgentSkript : Agent {
             }
         }
         reward += CheckNumberReward(choosenNumber, squareIndices);
+        
     }
 
 
@@ -128,6 +129,9 @@ public class AgentSkript : Agent {
         reward += CheckForAvailableReward(squareField.available);
         reward += CheckForCrossedReward(squareField.crossed);
         reward += CheckForStarFieldReward(squareField.starField);
+        // reward += CheckForColumnReward();
+        // reward += CheckForColorCompletionReward();
+        // reward += CheckForGameEndingReward();
 
       /*  if color full ++
 
