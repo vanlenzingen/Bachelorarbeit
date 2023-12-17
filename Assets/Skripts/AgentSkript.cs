@@ -136,13 +136,26 @@ public class AgentSkript : Agent {
     /// Rewards
     /*
     private float CheckForNeighborReward(int[] FieldIndicies){
-        // translate FieldIndicies into field tuple
+        // translate FieldIndicies into Vektor2D[] koords 
+        koordinates = new List<Vector2D>;
+        for (field in FieldIndicies){
+            koordinates.push(new Vektor2D(field.GetComponent<FieldSquare>().x,field.GetComponent<FieldSquare>().y)
+        }
 
-        // for tuple in koords
-        // if x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2
-        // continue
-        // else böse penalty
+        for (koord in koordinates){
+        int x1 = koord.GetComponent<FieldSquare>().x;
+        int y1 = koord.GetComponent<FieldSquare>().y;
+            for (int i= 0 ; i<koordinates.Length; i++){
+            int x2 =
+            int y2 =  
+            if (x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2){
+            continue;
+        } else {
+        return -1.0f;
+    }
+    return 1.0f;
     } 
+    
     
     */
     
