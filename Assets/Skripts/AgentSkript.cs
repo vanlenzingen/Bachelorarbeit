@@ -135,8 +135,9 @@ public class AgentSkript : Agent {
         squareField.crossField();
         int remainingFields = GameField.CheckNumberOfRemainingFields(squareField.x);
         if (remainingFields == 0) {
-            reward += Controller.CalculateColumnReward() // implement in Controller
+            reward += Controller.CalculateColumnReward(squareField.x) // implement in Controller
         } 
+        
 
         
         */
