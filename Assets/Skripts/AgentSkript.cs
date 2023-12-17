@@ -58,7 +58,7 @@ public class AgentSkript : Agent {
             reward += -2.0f;
         }
         for (int i=2; i<6;i++) {
-           if  (actionBuffers.DiscreteActions[i] < 0 || actionBuffers.DiscreteActions[i] > 104) {
+           if  (actionBuffers.DiscreteActions[i] < -1 || actionBuffers.DiscreteActions[i] > 104) {
                reward += -2.0f;
            }
         }        
@@ -78,19 +78,21 @@ public class AgentSkript : Agent {
 
 
         int[] squareIndices = new int[5]; // shouldnt this be 5?
+        List<Vector2D> fieldKoordinates;
         for (int i = 2; i < actionBuffers.DiscreteActions.Length; i++) {
             int squareIndex = actionBuffers.DiscreteActions[i];
             squareIndices[i-2]=i;
             if (squareIndex == -1) {
                 continue;
             } else {
+                fieldKoordinates.append(squareIndex % 15, squareIndex / 15)
                 reward += CrossSquareField(
                     squareIndex % 15,
                     squareIndex / 15,
                     GetColorOfChoosenDice(colorDiceAction)
                 ); 
                 //GameField.GetComponent<GameField>().CrossField(x, y); -> should be implemented in gameField
-                //CheckForNeighborReward(Fields)
+                //CheckForNeighborReward(fieldKoordinates);
             }
         }
         reward += CheckNumberReward(choosenNumber, squareIndices);
