@@ -55,44 +55,13 @@ public class GameField : MonoBehaviour
 
 
     public void decreaseColorCount(string color) {
-        switch (color)
-        {
-            case "red":
-                redCount--;
-                if (redCount == 0) {
-                    GetBonusPoints(color);
-                }
-                break;
-            case "blue":
-                blueCount-=1;
-                if (blueCount == 0) {
-                    GetBonusPoints(color);
-                }
-                break;
-            case "green":
-                greenCount -= 1;
-                if (greenCount == 0) {
-                    GetBonusPoints(color);
-                }
-                break;
-            case "yellow":
-                yellowCount -= 1;
-                if (yellowCount == 0) {
-                    GetBonusPoints(color);
-                }
-                break;
-            case "orange":
-                orangeCount -= 1;
-                if (orangeCount == 0) {
-                    GetBonusPoints(color);
-                }
-                break;
+        switch (color) {
+            case "red":         redCount --;      break;
+            case "blue":        blueCount --;     break;
+            case "green":       greenCount --;    break;
+            case "yellow":      yellowCount --;   break;
+            case "orange":      orangeCount --;   break;
         }
-
-    }
-
-    private void GetBonusPoints(string color) {
-        Debug.Log("Get Points for: " + color);
     }
 
 
@@ -164,8 +133,8 @@ public class GameField : MonoBehaviour
     }
 
     public void CrossField(int x, int y){
-        //get SqureField[x,y]
-        //squarefield.CrossField();
+        GameObject field = GetSquareField(x,y);
+        field.GetComponent<FieldSquare>().CrossField();
     }
 
 
@@ -175,15 +144,14 @@ public class GameField : MonoBehaviour
 
         if (column >= 0 && column < this.Columns)
         {
-            for (int j = 0; j < Rows; j++)
-            {
-
+            for (int j = 0; j < Rows; j++){
                 GameObject square = this.squares[column, j];
                 squaresOfColumn.Add(square);
             }
         }
         return squaresOfColumn;
     }
+
 
     public GameObject GetSquareField(int x, int y){
         return squares[x,y];
@@ -194,4 +162,17 @@ public class GameField : MonoBehaviour
             this.joker --;
         }
     }
+
+
+    public int GetColorCount(string color){
+    switch (color)    {
+        case "blue":    return blueCount;
+        case "green":   return greenCount;
+        case "yellow":  return yellowCount;
+        case "orange":  return orangeCount;
+        case "red":     return redCount;
+        }
+    return -1;
+    }
+
 }

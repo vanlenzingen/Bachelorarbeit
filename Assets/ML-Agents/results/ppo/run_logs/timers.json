@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1702913173",
+        "python_version": "3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]",
+        "command_line_arguments": "/home/tony/git/Bachelorarbeit/venv/bin/mlagents-learn --force",
+        "mlagents_version": "1.0.0",
+        "mlagents_envs_version": "1.0.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.13.1+rocm5.2",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1702913240"
+    },
+    "total": 67.02077051899869,
+    "count": 1,
+    "self": 0.008060365997152985,
+    "children": {
+        "run_training.setup": {
+            "total": 0.015108258001419017,
+            "count": 1,
+            "self": 0.015108258001419017
+        },
+        "TrainerController.start_learning": {
+            "total": 66.99760189500012,
+            "count": 1,
+            "self": 0.00011785099923145026,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 66.99743375000071,
+                    "count": 1,
+                    "self": 66.99743375000071
+                },
+                "TrainerController._save_models": {
+                    "total": 5.029400017519947e-05,
+                    "count": 1,
+                    "self": 5.029400017519947e-05
+                }
+            }
+        }
+    }
+}

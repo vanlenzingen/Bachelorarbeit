@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
+using System.Collections.Generic;
 
 public class AgentSkript : Agent {
 
@@ -10,29 +11,32 @@ public class AgentSkript : Agent {
 
     public override void OnEpisodeBegin()    {
         // Reset the environment for a new episode
+
         GameField = this.transform.parent.gameObject;
         Controller = GameObject.FindWithTag("Controller");
+        Controller.GetComponent<Controller>().RerollDices();
+        Debug.Log("Agents new episode");
     }
 
-
     public override void CollectObservations(VectorSensor sensor)    {
-        // get Observation for amount of jokers
+        // get Observation for amount of jokers 1x11
         sensor.AddObservation(GetOneHotFromInt(GameField.GetComponent<GameField>().joker,11));
 
-        // get Observation for NumberDice
+        // get Observation for NumberDice 3x6
         foreach (Transform child in Controller.transform) {
             if (child.CompareTag("NumberDice")) {
-                sensor.AddObservation(GetOneHotFromInt(child.GetComponent<NumberDice>().number,6));
+                sensor.AddObservation(GetOneHotFromInt(child.GetComponent<NumberDice>().number-1,6));
             }
         }
-        // get Observation for ColorDice
+
+        // get Observation for ColorDice 3x6
         foreach (Transform child in Controller.transform) {
             if (child.CompareTag("ColorDice")) {
                 sensor.AddObservation(GetColorIndexOneHotFromColor(child.GetComponent<ColorDice>().color));
             }
         }
 
-        // get Observation for fields
+        // get Observation for fields 105* (6+3)
         foreach (Transform child in GameField.transform) {
             if (child.CompareTag("Square")) {
                 sensor.AddObservation(GetColorIndexOneHotFromColor(child.GetComponent<FieldSquare>().color));
@@ -41,12 +45,14 @@ public class AgentSkript : Agent {
                 sensor.AddObservation(child.GetComponent<FieldSquare>().crossed);
             }
         }
+        Debug.Log("Observations Collected");
     }
 
     //actionbuffers should be like [diceindex, numberindex, field, field, field, field, field]
     public override void OnActionReceived(ActionBuffers actionBuffers) {
         float reward = 0.0f;
         //validateRewards
+        /*
         if (actionBuffers.DiscreteActions[0] < 0 && actionBuffers.DiscreteActions[0] > 2){
         reward += -2.0f;
         }
@@ -61,47 +67,56 @@ public class AgentSkript : Agent {
             if  (actionBuffers.DiscreteActions[i] < -1 || actionBuffers.DiscreteActions[i] > 104) {
                reward += -2.0f;
             }
-        }        
-        
+        }
+        */
         int colorDiceAction = actionBuffers.DiscreteActions[0];
         int numberDiceAction = actionBuffers.DiscreteActions[1];
 
         string choosenColor;
         choosenColor = GetColorOfChoosenDice(numberDiceAction);
+        // TODO
+
+
 
         int choosenNumber;
         choosenNumber = GetNumberOfChoosenDice(numberDiceAction);
 
-
         reward += GetColorDiceReward(colorDiceAction);
         reward += GetNumberDiceReward(numberDiceAction);
 
-
         int[] squareIndices = new int[5]; 
-        List<Vector2D> fieldKoordinates;
+        List<Vector2> fieldKoordinates = new List<Vector2>();
         for (int i = 2; i < actionBuffers.DiscreteActions.Length; i++) {
             int squareIndex = actionBuffers.DiscreteActions[i];
+            Debug.Log(squareIndex);
+            Debug.Log(squareIndex % 15);
+            Debug.Log(squareIndex / 15);
             squareIndices[i-2]=i;
             if (squareIndex == -1) {
                 continue;
             } else {
-                fieldKoordinates.Add(new Vector2D(squareIndex % 15, squareIndex / 15));
+                fieldKoordinates.Add(new Vector2(squareIndex % 15, squareIndex / 15));
+                //TODO 105 Fields impliziert 106 möglichkeiten -> 0 feld 0,0 -> 105 should be the skip? cause restklassenringmagie geht nicht auf dies das
+                // but why he did not learn
+                // when i should start for the next round @fail? || @ fertig???
                 reward += CrossSquareField(
                     squareIndex % 15,
                     squareIndex / 15,
                     GetColorOfChoosenDice(colorDiceAction)
                 ); 
-                GameField.GetComponent<GameField>().CrossField(x, y);
+                GameField.GetComponent<GameField>().CrossField(squareIndex % 15, squareIndex / 15);
                 CheckForNeighborReward(fieldKoordinates);
             }
         }
         reward += CheckNumberReward(choosenNumber, squareIndices);
-        
+        AddReward(reward);
+        Debug.Log("Reward: " + reward);
+        EndEpisode();
     }
 
 
     private float  GetColorDiceReward(int colorDiceIndex){
-        if (GetColorOfChoosenDice(colorDiceIndex)== "joker" && GameField.GetComponent<GameField>().joker == 0){
+        if (GetColorOfChoosenDice(colorDiceIndex) == "joker" && GameField.GetComponent<GameField>().joker == 0){
             return -1.0f;
         }
     return 0.0f;
@@ -119,45 +134,53 @@ public class AgentSkript : Agent {
         float reward = 0.0f;
         GameObject squareFieldGameObject = GameField.GetComponent<GameField>().GetSquareField(x,y);
         FieldSquare squareField = squareFieldGameObject.GetComponent<FieldSquare>();
-        // squareField.Cross();
+        squareField.CrossField();
 
         reward += CheckForColorReward(squareField.color , chosenColor);
         reward += CheckForAvailableReward(squareField.available);
         reward += CheckForCrossedReward(squareField.crossed);
         reward += CheckForStarFieldReward(squareField.starField);
 
-        /*
         squareField.crossField();
-        int remainingFields = GameField.CheckNumberOfRemainingFields(squareField.x);
+        int remainingFields = GameField.GetComponent<GameField>().CheckNumberOfRemainingFields(squareField.xPos);
         if (remainingFields == 0) {
-            reward += Controller.CalculateColumnReward(squareField.x) // implement in Controller
+            reward += 3.0f; //reward += Controller.CalculateColumnReward(squareField.x) // TODO implement in Controller
         }         
-        */
-        // reward += CheckForColorCompletionReward();
+        reward += CheckForColorCompletionReward(squareField.color);
         return reward;
     }
-    /// Rewards
-    
-    /*
-    private float CheckForNeighborReward(List<Vector2D> koordinates){
 
-    for (koord in koordinates){
-        int x1 = koord.x;
-        int y1 = koord.y;
-        for (int i= 0 ; i < koordinates.Length ; i++){
-            Vector2D field2 = koordinates[i];
-            int x2 = field2.x;
-            int y2 = field2.y;
-            if (x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2 || x1==x2 && y1==y2){
-                continue;
-                } else {
-                return -1.0f;
+
+    /// Rewards
+    private float CheckForColorCompletionReward(string color){
+        int colorCount;
+        colorCount = GameField.GetComponent<GameField>().GetColorCount(color);
+        if (colorCount == 0){
+            return 3.0f; // check reward depending on First or second //TODO Controller.CalculateColorReward()
+        }
+        return 0.0f;
+    }
+
+    
+    private float CheckForNeighborReward(List<Vector2> koordinates){
+        foreach (Vector2 koord in koordinates){
+            int x1 = (int)koord.x;
+            int y1 = (int)koord.y;
+            foreach (Vector2 field2 in koordinates){
+                int x2 = (int)field2.x;
+                int y2 = (int)field2.y;
+                if (x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2 || x1==x2 && y1==y2){
+                    continue;
+                    } else {
+                    return -1.0f;
+                }
             }
-        return 1.0f;
-    } 
+        }
+    return 1.0f;
+    }
     
+
     
-    */
     private float CheckForStarFieldReward(bool starField){
         if (starField){
             return 1.0f;
@@ -199,13 +222,13 @@ public class AgentSkript : Agent {
         }
     }
 
-/// helper
+    /// helper
 
     private int GetNumberOfChoosenDice(int index){
         int[] diceArray = new int[3];
         foreach (Transform child in Controller.transform) {
             if (child.CompareTag("NumberDice")) {
-                diceArray[diceArray.Length] = child.GetComponent<NumberDice>().number;
+                diceArray[diceArray.Length-1] = child.GetComponent<NumberDice>().number;
             }
         }
         if (diceArray[index] == 6) {
@@ -218,7 +241,7 @@ public class AgentSkript : Agent {
         string[] diceArray = new string[3];
         foreach (Transform child in Controller.transform) {
             if (child.CompareTag("ColorDice")) {
-                diceArray[diceArray.Length] = child.GetComponent<ColorDice>().color;
+                diceArray[diceArray.Length-1] = child.GetComponent<ColorDice>().color;
             }
         }
         if (diceArray[index] == "joker") {
