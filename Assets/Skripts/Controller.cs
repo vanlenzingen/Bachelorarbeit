@@ -47,6 +47,13 @@ public class Controller : MonoBehaviour
         }
     }
 
+
+    public void NewGame(){
+        GameObject gameField = GameObject.FindWithTag("GameField");
+        Destroy(gameField);
+        CreateFields();
+    }
+
     public void RerollDices() {
          foreach (Transform child in transform) {
             if (child.CompareTag("NumberDice")) {

@@ -74,9 +74,6 @@ public class AgentSkript : Agent {
 
         string choosenColor;
         choosenColor = GetColorOfChoosenDice(numberDiceAction);
-        // TODO
-
-
 
         int choosenNumber;
         choosenNumber = GetNumberOfChoosenDice(numberDiceAction);
@@ -92,11 +89,10 @@ public class AgentSkript : Agent {
             Debug.Log(squareIndex % 15);
             Debug.Log(squareIndex / 15);
             squareIndices[i-2]=i;
-            if (squareIndex == -1) {
+            if (squareIndex == 105) {
                 continue;
             } else {
                 fieldKoordinates.Add(new Vector2(squareIndex % 15, squareIndex / 15));
-                //TODO 105 Fields impliziert 106 möglichkeiten -> 0 feld 0,0 -> 105 should be the skip? cause restklassenringmagie geht nicht auf dies das
                 // but why he did not learn
                 // when i should start for the next round @fail? || @ fertig???
                 reward += CrossSquareField(
@@ -156,6 +152,7 @@ public class AgentSkript : Agent {
         int colorCount;
         colorCount = GameField.GetComponent<GameField>().GetColorCount(color);
         if (colorCount == 0){
+            Controller.GetComponent<Controller>().NewGame();
             return 3.0f; // check reward depending on First or second //TODO Controller.CalculateColorReward()
         }
         return 0.0f;
@@ -172,7 +169,7 @@ public class AgentSkript : Agent {
                 if (x1 == x2+1 && y1 == y2 || x1 == x2-1 && y1 == y2 ||  y1 == y2-1 && x1 == x2||y1 == y2-1 && x1 == x2 || x1==x2 && y1==y2){
                     continue;
                     } else {
-                    return -1.0f;
+                    return -50.0f;
                 }
             }
         }
@@ -183,7 +180,7 @@ public class AgentSkript : Agent {
     
     private float CheckForStarFieldReward(bool starField){
         if (starField){
-            return 1.0f;
+            return 2.0f;
         } 
         return 0.0f;
     }
@@ -191,7 +188,7 @@ public class AgentSkript : Agent {
     
     private float CheckForCrossedReward(bool crossed){
         if (crossed){
-            return -1.0f;
+            return -10.0f;
         }
         return 1.0f;
     }
@@ -200,7 +197,7 @@ public class AgentSkript : Agent {
         if (fieldColor == chosenColor || chosenColor == "joker") {
             return 1.0f;
         } else {
-            return -1.0f;
+            return -10.0f;
         }
     }
 
@@ -208,18 +205,15 @@ public class AgentSkript : Agent {
         if (available){
             return 1.0f;
         }
-        return -1.0f;
+        return -10.0f;
     }
 
 
     private float CheckNumberReward(int number, int[] squareIndex){
-        if (squareIndex.Length > number){ //numberPicked should be taken
-            return -0.3f;
-        } else if (squareIndex.Length < number) {
-            return -0.1f;
-        } else {
-            return 1.0f;
+        if (squareIndex.Length == number ){
+            return 5.0f;
         }
+        return -10.0f;
     }
 
     /// helper

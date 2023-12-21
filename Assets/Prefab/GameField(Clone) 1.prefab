@@ -3204,7 +3204,7 @@ GameObject:
   - component: {fileID: 2797890496131905353}
   m_Layer: 0
   m_Name: GameField(Clone) 1
-  m_TagString: Untagged
+  m_TagString: GameField
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3343,6 +3343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerIndex: 0
   Square: {fileID: 813587247284163749, guid: cf249b1208a25c049b7a6cca0a0b043f, type: 3}
+  joker: 10
   Agent: {fileID: 8917323269675721845, guid: 001519bfb779c67fc9310065d1e348ae, type: 3}
 --- !u!1 &1847756620268640486
 GameObject:
