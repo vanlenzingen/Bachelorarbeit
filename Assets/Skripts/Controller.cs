@@ -10,13 +10,19 @@ public class Controller : MonoBehaviour
     public GameObject field;
     public int playerNumber = 1;
     public float timeout = 1.0f;
+    public GameObject Agent;
 
     void Start() {
         CreateFields();
         InstantiateDices();
-        //Invoke("RerollDices",1f);
+        InstantiateAgent();
     }
 
+
+       private void InstantiateAgent(){
+        GameObject agent = Instantiate(Agent, transform.position + new Vector3(0, -2, 0), Quaternion.identity);
+        agent.transform.parent = this.transform;
+    }
 
     private void InstantiateDices() {
         for (int i = 0; i<3; i++){
@@ -45,13 +51,6 @@ public class Controller : MonoBehaviour
             duplicatedField.transform.position = new Vector3(0, (i + 1) * 15, 0);
             duplicatedField.GetComponent<GameField>().setPlayer(i + 1);
         }
-    }
-
-
-    public void NewGame(){
-        GameObject gameField = GameObject.FindWithTag("GameField");
-        Destroy(gameField);
-        CreateFields();
     }
 
     public void RerollDices() {

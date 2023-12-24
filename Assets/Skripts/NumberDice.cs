@@ -15,12 +15,15 @@ public class NumberDice : MonoBehaviour
     }
 
     void ShowNumber() {
-        if (number >= 1 && number <= 6)
-        {
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            GameObject square = Instantiate(numberSprites[this.number-1], transform.position, Quaternion.identity);
-            square.transform.parent = this.transform;
-        }
+
+        foreach (Transform child in transform)
+    {
+        Destroy(child.gameObject);
+    }
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        GameObject square = Instantiate(numberSprites[this.number-1], transform.position, Quaternion.identity);
+        square.transform.parent = this.transform;
     }
 
     public int GetNumber() {
@@ -29,7 +32,6 @@ public class NumberDice : MonoBehaviour
 
     public void Roll() {
         int numberResult = Random.Range(1, 7);
-        //Debug.Log("Number Dice Result: " + numberResult);
         this.number = numberResult;
         ShowNumber();
     }

@@ -50,7 +50,6 @@ public class ColorDice : MonoBehaviour
         int randomIndex = Random.Range(0, colors.Length);
         string colorResult = colors[randomIndex];
         this.color = colorResult;
-        //Debug.Log("Color Dice Result: " + colorResult);
         SetColor(color);
     }
 

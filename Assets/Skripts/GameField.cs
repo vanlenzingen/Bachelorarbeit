@@ -10,25 +10,23 @@ public class GameField : MonoBehaviour
     private int Columns = 15;
     public GameObject[,] squares = new GameObject[15, 7];
     public int joker = 10;
+    public int roundCount = 0;
 
     private int blueCount = 21;
     private int redCount = 21;
     private int greenCount = 21;
     private int orangeCount = 21;
     private int yellowCount = 21;
-    public GameObject Agent;
+
     
 
     public void Start() {
-        InstantiateAgent();
+
         this.name = "GameField " + PlayerIndex;
         pushSquaresintoArray(); // delte this later
     }
 
-    private void InstantiateAgent(){
-        GameObject agent = Instantiate(Agent, transform.position + new Vector3(0, -2, 0), Quaternion.identity);
-        agent.transform.parent = this.transform;
-    }
+
 
 
     public void setNeighborsAvailable(GameObject square) {
@@ -75,7 +73,7 @@ public class GameField : MonoBehaviour
             }
         }
         if (remainingFields == 0) {
-            Debug.Log("Give some Points column " + column + " is full");
+           //TODO Debug.Log("Give some Points column " + column + " is full");
         }
         return remainingFields;
     }
@@ -173,6 +171,33 @@ public class GameField : MonoBehaviour
         case "red":     return redCount;
         }
     return -1;
+    }
+
+    public void NewGame(){
+        Debug.Log("Game Finished in Round:" + roundCount);
+        joker = 10;
+        roundCount = 0;
+        ResetSquares();
+        ResetColorCount();
+    }
+
+    private void ResetSquares(){
+         foreach(GameObject square in squares){
+            square.GetComponent<FieldSquare>().ResetField();
+        }
+    }
+
+    public void nextRound(){
+        roundCount += 1;
+    }
+
+    private void ResetColorCount(){
+        Debug.Log("ResetColorCount");
+        blueCount = 21;
+        redCount = 21;
+        greenCount = 21;
+        orangeCount = 21;
+        yellowCount = 21;
     }
 
 }

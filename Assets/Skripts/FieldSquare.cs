@@ -20,12 +20,6 @@ public class FieldSquare : MonoBehaviour
         SetStarfield();
     }
 
-    public void OnMouseDown() {
-        if (available) {
-            CrossField();
-        }
-        
-    }
 
     private void SetColor(string color)
     {
@@ -53,6 +47,20 @@ public class FieldSquare : MonoBehaviour
         }
     }
 
+    public void ResetField(){
+        this.crossed = false;
+        SetColor(this.color);
+        if (xPos != 7){
+            this.available = false;
+        }
+        if (starField)            {
+                Transform star = transform.GetChild(0);
+                SpriteRenderer starRenderer = star.GetComponent<SpriteRenderer>();
+                starRenderer.color = Color.white;
+            }
+
+    }
+
 
 
     public void SetStarfield() {
@@ -75,7 +83,6 @@ public class FieldSquare : MonoBehaviour
                 starRenderer.color = Color.black;
             }
             this.crossed = true;
-            //this.transform.parent.GetComponent<GameField>().CheckNumberOfRemainingFields(xPos);
             this.transform.parent.GetComponent<GameField>().decreaseColorCount(color);
             this.transform.parent.GetComponent<GameField>().setNeighborsAvailable(this.gameObject);
         }
@@ -113,6 +120,10 @@ public class FieldSquare : MonoBehaviour
 
     public int getY() {
         return this.yPos;
+    }
+
+    public bool getAvailable(){
+        return this.available;
     }
 
     public void setAvailable() {

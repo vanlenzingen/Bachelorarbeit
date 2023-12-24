@@ -51,3 +51,4 @@ MonoBehaviour:
   field: {fileID: 1723668205108455379, guid: de00c42cefaf6d243bd9a2597444daf6, type: 3}
   playerNumber: 2
   timeout: 1
+  Agent: {fileID: 8917323269675721845, guid: 001519bfb779c67fc9310065d1e348ae, type: 3}
