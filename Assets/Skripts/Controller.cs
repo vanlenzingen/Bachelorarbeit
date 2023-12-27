@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Controller : MonoBehaviour
 {
@@ -11,15 +12,31 @@ public class Controller : MonoBehaviour
     public int playerNumber = 1;
     public float timeout = 1.0f;
     public GameObject Agent;
+    private List<bool> finishedColumns = new List<bool>(new bool[15]);
+    private Dictionary<string, bool> finishedColors = new Dictionary<string, bool>();
+
 
     void Start() {
+        SetColorsUncompleted();
+        SetColumnsUncompleted();
         CreateFields();
         InstantiateDices();
         InstantiateAgent();
     }
 
+    private void SetColumnsUncompleted(){
+        for (int i = 0; i<15; i++){
+            finishedColumns.Add(false);
+        }
+    }
 
-       private void InstantiateAgent(){
+    private void SetColorsUncompleted(){
+         foreach (string color in new string[] { "yellow", "green", "blue", "red", "orange" }) {
+            finishedColors.Add(color, false);
+        }
+    }
+
+    private void InstantiateAgent(){
         GameObject agent = Instantiate(Agent, transform.position + new Vector3(0, -2, 0), Quaternion.identity);
         agent.transform.parent = this.transform;
     }
@@ -62,5 +79,34 @@ public class Controller : MonoBehaviour
                 child.GetComponent<ColorDice>().Reroll();
             }
         }
+    }
+
+    public int GetColumnPoints(int column){
+        int points;
+        //TODO
+        if (finishedColumns[column] == false) {
+            finishedColumns[column] = true;
+            //points = GetMaximumColorPoints -> switchcase shit
+            return 5;
+        } else {
+            return 3;
+            //points = GetMinimumColorPointsget not so maximum points
+        }
+
+    }
+
+    public int GetColorPoints(string color){
+        if (finishedColors[color] == false){
+            finishedColors[color] = true;
+            return 5;
+            } else {
+            return 3;
+        }
+    }
+
+
+    public void Reset(){
+        SetColumnsUncompleted();
+        SetColorsUncompleted();
     }
 }

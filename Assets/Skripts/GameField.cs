@@ -17,16 +17,14 @@ public class GameField : MonoBehaviour
     private int greenCount = 21;
     private int orangeCount = 21;
     private int yellowCount = 21;
-
+    public int points = 0;
+    public int colorsFinished = 0;
     
 
     public void Start() {
-
         this.name = "GameField " + PlayerIndex;
         pushSquaresintoArray(); // delte this later
     }
-
-
 
 
     public void setNeighborsAvailable(GameObject square) {
@@ -73,7 +71,7 @@ public class GameField : MonoBehaviour
             }
         }
         if (remainingFields == 0) {
-           //TODO Debug.Log("Give some Points column " + column + " is full");
+           //TODO Controller.GetColumnPoints();
         }
         return remainingFields;
     }
@@ -101,16 +99,8 @@ public class GameField : MonoBehaviour
 
     private void instantiateSquares() {
         this.squares = new GameObject[Columns, Rows];
-        for (int i = 0; i < Rows; i++) {
-            for (int j = 0; j < Columns; j++) {
-                GameObject squareField = Instantiate(Square, new Vector2(i, j), Quaternion.identity);
-                squareField.transform.parent = this.transform;
-                squareField.GetComponent<FieldSquare>().setX(i);
-                squareField.GetComponent<FieldSquare>().setY(j);
-                this.squares[i, j] = squareField;
-            }
-        }
     }
+
 
     private void colorizeAndGroupSquares() {
         string[] colors = { "red", "blue", "green", "yellow", "orange"}; ;
@@ -124,10 +114,6 @@ public class GameField : MonoBehaviour
         
   
         Debug.Log(color);
-    }
-
-    private void setStars() {
-        Debug.Log("Shuffle Up Stars");
     }
 
     public void CrossField(int x, int y){
@@ -174,11 +160,22 @@ public class GameField : MonoBehaviour
     }
 
     public void NewGame(){
+
+        AddRemainingStarFieldPoints();
+        AddJokerPoints();
         Debug.Log("Game Finished in Round:" + roundCount);
         joker = 10;
         roundCount = 0;
+        colorsFinished = 0;
         ResetSquares();
         ResetColorCount();
+        ResetController();
+    }
+
+    private void ResetController(){
+        GameObject Controller = GameObject.FindWithTag("Controller");
+        Controller.GetComponent<Controller>().Reset();
+        Debug.Log("Resetting Controller");
     }
 
     private void ResetSquares(){
@@ -187,7 +184,7 @@ public class GameField : MonoBehaviour
         }
     }
 
-    public void nextRound(){
+    public void NextRound(){
         roundCount += 1;
     }
 
@@ -200,4 +197,34 @@ public class GameField : MonoBehaviour
         yellowCount = 21;
     }
 
+    public void AddToPoints(int number){
+        points += number;
+    }
+
+    private void AddJokerPoints(){
+        AddToPoints(joker);
+    }
+
+
+    private void AddRemainingStarFieldPoints(){
+        int stars = 0;
+        foreach (GameObject field in squares){
+            if (!field.GetComponent<FieldSquare>().crossed && field.GetComponent<FieldSquare>().starField){
+                stars ++;
+            }
+        }
+        AddToPoints(stars*-2);
+    }
+
+    public void GetColumnReward(int column){
+        int columnPoints = 0;
+
+        GameObject Controller = GameObject.FindWithTag("Controller");
+        columnPoints = Controller.GetComponent<Controller>().GetColumnPoints(column);
+        AddToPoints(columnPoints);
+    }
+
+    public void ColorFinished(){
+        colorsFinished ++;
+    }
 }

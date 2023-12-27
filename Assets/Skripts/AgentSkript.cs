@@ -3,6 +3,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using System.Collections.Generic;
+using System.Collections;
 
 public class AgentSkript : Agent {
 
@@ -13,7 +14,7 @@ public class AgentSkript : Agent {
         // Reset the environment for a new episode
 
         GameField = GameObject.FindWithTag("GameField");
-        GameField.GetComponent<GameField>().nextRound();
+        GameField.GetComponent<GameField>().NextRound();
         Controller = GameObject.FindWithTag("Controller");
         Controller.GetComponent<Controller>().RerollDices();
        // Debug.Log("Agents new episode");
@@ -46,39 +47,13 @@ public class AgentSkript : Agent {
                 sensor.AddObservation(child.GetComponent<FieldSquare>().crossed);
             }
         }
-       // Debug.Log("Observations Collected");
     }
+
 
     //actionbuffers should be like [diceindex, numberindex, field, field, field, field, field]
     public override void OnActionReceived(ActionBuffers actionBuffers) {
-        Debug.Log(
-            actionBuffers.DiscreteActions[0] + "," +
-            actionBuffers.DiscreteActions[1] + ","+
-            actionBuffers.DiscreteActions[2] + ","+
-            actionBuffers.DiscreteActions[3] + ","+
-            actionBuffers.DiscreteActions[4]+ ","+
-            actionBuffers.DiscreteActions[5]+ ","+
-            actionBuffers.DiscreteActions[6]+ ","
-        );
         float reward = 0.0f;
-        //validateRewards
-        /*
-        if (actionBuffers.DiscreteActions[0] < 0 && actionBuffers.DiscreteActions[0] > 2){
-        reward += -2.0f;
-        }
-        if (actionBuffers.DiscreteActions[1] < 0 && actionBuffers.DiscreteActions[1] > 2){
-            reward += -2.0f;
-        }
-        for (int i=2; i<=6;i++) {
-            for (int j = 2; j<=6;j++){
-                if (actionBuffers.DiscreteActions[i] == actionBuffers.DiscreteActions[j] && i != j)
-                    reward += -2.0f;
-                }
-            if  (actionBuffers.DiscreteActions[i] < -1 || actionBuffers.DiscreteActions[i] > 104) {
-               reward += -2.0f;
-            }
-        }
-        */
+
         int colorDiceAction = actionBuffers.DiscreteActions[0];
         int numberDiceAction = actionBuffers.DiscreteActions[1];
 
@@ -110,10 +85,10 @@ public class AgentSkript : Agent {
                 CheckForNeighborReward(fieldKoordinates);
             }
         }
-         Debug.Log("number of Picked Fields: " + squareIndices.Count);
+         //Debug.Log("number of Picked Fields: " + squareIndices.Count);
         reward += CheckNumberReward(choosenNumber, squareIndices);
         AddReward(reward);
-        Debug.Log("Reward: " + reward);
+        //Debug.Log("Reward: " + reward);
         EndEpisode();
     }
 
@@ -147,16 +122,16 @@ public class AgentSkript : Agent {
             reward += CheckForAvailableReward(squareField.available);
             reward += CheckForCrossedReward(squareField.crossed);
             reward += CheckForStarFieldReward(squareField.starField);
+            reward += CheckForColorAvailableReward(squareField.color);
             squareField.CrossField();
             int remainingFields = GameField.GetComponent<GameField>().CheckNumberOfRemainingFields(squareField.xPos);
             if (remainingFields == 0) {
+                GameField.GetComponent<GameField>().GetColumnReward(squareField.xPos);
                 reward += 3.0f; //reward += Controller.CalculateColumnReward(squareField.x) // TODO implement in Controller
             } else {
                 reward -= 1000.0f;
             }
         }
-
-
         reward += CheckForColorCompletionReward(squareField.color);
         return reward;
     }
@@ -167,11 +142,18 @@ public class AgentSkript : Agent {
         int colorCount;
         colorCount = GameField.GetComponent<GameField>().GetColorCount(color);
         if (colorCount == 0){
-
-            GameField.GetComponent<GameField>().NewGame();
-            return 3.0f; // check reward depending on First or second //TODO Controller.CalculateColorReward()
+            GameField.GetComponent<GameField>().ColorFinished();
+            Debug.Log("Colors Finished:" + GameField.GetComponent<GameField>().colorsFinished);
+            if (GameField.GetComponent<GameField>().colorsFinished == 2){
+                GameField.GetComponent<GameField>().NewGame();
+                //Controller.CalculateColorPoints(color);
+                return 3.0f;
+            } else {
+                //Controller.CalculateColorPoints(color);
+            return 1.0f;
+            }
         }
-        return 0.0f;
+    return 0.0f;
     }
 
     
@@ -205,7 +187,7 @@ public class AgentSkript : Agent {
     
     private float CheckForCrossedReward(bool crossed){
         if (crossed){
-            Debug.Log("Tried to cross out crossed Field");
+            //Debug.Log("Tried to cross out crossed Field");
             return -10.0f;
         }
         return 1.0f;
@@ -215,7 +197,7 @@ public class AgentSkript : Agent {
         if (fieldColor == chosenColor || chosenColor == "joker") {
             return 1.0f;
         } else {
-            Debug.Log("Not the Same Color Penalty");
+          //  Debug.Log("Not the Same Color Penalty");
             return -10.0f;
         }
     }
@@ -224,7 +206,7 @@ public class AgentSkript : Agent {
         if (available){
             return 100.0f;
         }
-        Debug.Log("Penalty aplied -not available Field");
+        //Debug.Log("Penalty aplied -not available Field");
         return -1000.0f;
     }
 
@@ -233,8 +215,18 @@ public class AgentSkript : Agent {
         if (squareIndex.Count == number || number == 6 ){
             return 100.0f;
         }
-        Debug.Log("Number Of Fields("+squareIndex.Count + ") not matching picked number("+number+")");
+        //Debug.Log("Number Of Fields("+squareIndex.Count + ") not matching picked number("+number+")");
         return -1000.0f;
+    }
+
+
+    private float CheckForColorAvailableReward(string color){
+        //TODO
+        // getColorCountOfGameField
+        // if colorCOunt = 0
+        //penalty
+        // sonst gut
+        return 0.0f;
     }
 
     /// helper
