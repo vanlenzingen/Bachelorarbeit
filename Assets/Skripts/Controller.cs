@@ -59,8 +59,6 @@ public class Controller : MonoBehaviour
 
     private void CreateFields() {
         GameObject GameFieldPrefab = Instantiate(field, transform.position, Quaternion.identity);
-        
-        GameFieldPrefab.GetComponent<GameField>().createField();
         GameFieldPrefab.GetComponent<GameField>().setPlayer(0);
        
         for (int i = 0; i < playerNumber-1; i++) {
@@ -82,18 +80,17 @@ public class Controller : MonoBehaviour
     }
 
     public int GetColumnPoints(int column){
-        int points;
-        //TODO
         if (finishedColumns[column] == false) {
             finishedColumns[column] = true;
-            //points = GetMaximumColorPoints -> switchcase shit
-            return 5;
+            return GetMaximumColorPoints(column);
         } else {
-            return 3;
-            //points = GetMinimumColorPointsget not so maximum points
+            return GetMinimumColorPoints(column);
+            }
         }
 
-    }
+
+
+
 
     public int GetColorPoints(string color){
         if (finishedColors[color] == false){
@@ -109,4 +106,57 @@ public class Controller : MonoBehaviour
         SetColumnsUncompleted();
         SetColorsUncompleted();
     }
+
+    private int GetMaximumColorPoints(int column) {
+    switch (column) {
+        case 0:
+        case 14:
+            return 5;
+        case 1:
+        case 2:
+        case 3:
+        case 11:
+        case 12:
+        case 13:
+            return 3;
+        case 4:
+        case 5:
+        case 6:
+        case 8:
+        case 9:
+        case 10:
+            return 2;
+        case 7:
+            return 1;
+        default:
+            return 0;
+        }
+    }
+
+    private int GetMinimumColorPoints(int column) {
+        switch (column) {
+            case 0:
+            case 14:
+                return 3;
+            case 1:
+            case 2:
+            case 3:
+            case 11:
+            case 12:
+            case 13:
+                return 2;
+            case 4:
+            case 5:
+            case 6:
+            case 8:
+            case 9:
+            case 10:
+                return 1;
+            case 7:
+                return 0;
+            default:
+                return 0;
+        }
+    }
+
 }

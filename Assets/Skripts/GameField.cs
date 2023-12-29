@@ -70,12 +70,17 @@ public class GameField : MonoBehaviour
                 remainingFields++;
             }
         }
-        if (remainingFields == 0) {
-           //TODO Controller.GetColumnPoints();
-        }
         return remainingFields;
     }
 
+
+    public void GetColumnPoints(int column) {
+        //TODO only one time per row
+            int columnPoints;
+            GameObject Controller = GameObject.FindWithTag("Controller");
+            columnPoints = Controller.GetComponent<Controller>().GetColumnPoints(column);
+            AddToPoints(columnPoints);
+    }
 
     public void pushSquaresintoArray() {
         FieldSquare[] childSquares = GetComponentsInChildren<FieldSquare>();
@@ -91,33 +96,14 @@ public class GameField : MonoBehaviour
         this.PlayerIndex = playerIndex;
     }
 
-    public void createField() {
-        //instantiateSquares();
-        //colorizeAndGroupSquares();
-        //setStars();
-    }
 
     private void instantiateSquares() {
         this.squares = new GameObject[Columns, Rows];
     }
 
 
-    private void colorizeAndGroupSquares() {
-        string[] colors = { "red", "blue", "green", "yellow", "orange"}; ;
-        for (int i = 0; i<colors.Length;i++){
-            colorizeFields(colors[i]);
-        }
-    }
-
-    private void colorizeFields(string color) {
-        // 6, 5, 4, 3, 2, 1, splitting not neccessary to be like that, import is to have 21 fields
-        
-  
-        Debug.Log(color);
-    }
-
-    public void CrossField(int x, int y){
-        GameObject field = GetSquareField(x,y);
+    public void CrossField(Vector2 coordinates){
+        GameObject field = GetSquareField(coordinates);
         field.GetComponent<FieldSquare>().CrossField();
     }
 
@@ -137,8 +123,8 @@ public class GameField : MonoBehaviour
     }
 
 
-    public GameObject GetSquareField(int x, int y){
-        return squares[x,y];
+    public GameObject GetSquareField(Vector2 coordinates){
+        return squares[(int)coordinates.x,(int)coordinates.y];
     }
 
     public void ReduceJoker(){
@@ -163,8 +149,11 @@ public class GameField : MonoBehaviour
 
         AddRemainingStarFieldPoints();
         AddJokerPoints();
-        Debug.Log("Game Finished in Round:" + roundCount);
+        Debug.Log(points);
+        Debug.Log(roundCount);
+        Debug.Log("Game Finished points("+ points+") per Turn("+roundCount+"):" + points / roundCount);
         joker = 10;
+        points = 0;
         roundCount = 0;
         colorsFinished = 0;
         ResetSquares();
@@ -216,15 +205,10 @@ public class GameField : MonoBehaviour
         AddToPoints(stars*-2);
     }
 
-    public void GetColumnReward(int column){
-        int columnPoints = 0;
-
+    public void ColorFinished(string color){
         GameObject Controller = GameObject.FindWithTag("Controller");
-        columnPoints = Controller.GetComponent<Controller>().GetColumnPoints(column);
-        AddToPoints(columnPoints);
-    }
-
-    public void ColorFinished(){
+        int points = Controller.GetComponent<Controller>().GetColorPoints(color);
+        AddToPoints(points);
         colorsFinished ++;
     }
 }
