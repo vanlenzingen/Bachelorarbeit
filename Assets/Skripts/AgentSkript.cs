@@ -17,7 +17,6 @@ public class AgentSkript : Agent {
         GameField = GameObject.FindWithTag("GameField");
         GameField.GetComponent<GameField>().NextRound();
         Controller = GameObject.FindWithTag("Controller");
-        Controller.GetComponent<Controller>().RerollDices();
        // Debug.Log("Agents new episode");
     }
 
@@ -69,6 +68,7 @@ public class AgentSkript : Agent {
         if (MoveLegal(squareIndices, choosenColor, choosenNumber)){
             //TODO remove jokers etc;
             CrossSquareFields(squareIndices);
+            Controller.GetComponent<Controller>().RerollDices();
             reward += GetCompletionRewards(squareIndices, choosenColor);
 
             reward += 1000.0f;
@@ -113,7 +113,7 @@ public class AgentSkript : Agent {
 
 
 
-
+//TODO if joker = 0 dont pick a joker or a joker
     private bool MoveLegal(List<int> squareIndices, string choosenColor, int choosenNumber){
         if (AvailableCheck(squareIndices) && NotTheSameFieldsCheck(squareIndices)  && NumberCheck(squareIndices, choosenNumber) && ColorCheckFields(squareIndices, choosenColor)  && NeighborCheck(squareIndices)  && NotCrossedCheck(squareIndices)) {
             Debug.Log("Yes! This is fine!");
@@ -166,18 +166,22 @@ public class AgentSkript : Agent {
 
 
     private bool ColorCheckFields(List<int>squareIndices, string choosenColor){
-        if (choosenColor == "joker"){
-            AddBonusReward(5.0f);
-            return true;
-        }
+        string oldColor = choosenColor;
         foreach(int index in squareIndices){
             Vector2 coordinate = IndexToCoordinate(index);
             GameObject squareField = GameField.GetComponent<GameField>().GetSquareField(coordinate);
-            if (choosenColor != squareField.GetComponent<FieldSquare>().color){
+            if (choosenColor == "joker"){
+                if (oldColor != squareField.GetComponent<FieldSquare>().color){
                 AddBonusReward(-1000.0f);
                 return false;
             }
-
+            oldColor = squareField.GetComponent<FieldSquare>().color;
+            } else {
+            if (choosenColor!= squareField.GetComponent<FieldSquare>().color){
+                AddBonusReward(-1000.0f);
+                return false;
+                }
+            }
         }
         AddBonusReward(10000.0f);
         return true;
