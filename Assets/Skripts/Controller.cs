@@ -88,10 +88,6 @@ public class Controller : MonoBehaviour
             }
         }
 
-
-
-
-
     public int GetColorPoints(string color){
         if (finishedColors[color] == false){
             finishedColors[color] = true;
