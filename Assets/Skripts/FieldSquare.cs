@@ -13,16 +13,21 @@ public class FieldSquare : MonoBehaviour
     public int groupsize;
     public int xPos;
     public int yPos;
+    private int initialGroup;
 
     // Start is called before the first frame update
     void Start() {
+        SetInitialGroup();
         SetColor(this.color);
         SetStarfield();
     }
 
+    private void SetInitialGroup(){
+        initialGroup = group;
+    }
 
-    private void SetColor(string color)
-    {
+//TODO SomeTimes None Inside???
+    private void SetColor(string color)    {
         SpriteRenderer squareRenderer = this.GetComponent<SpriteRenderer>();
         switch (color)
         {
@@ -48,7 +53,8 @@ public class FieldSquare : MonoBehaviour
     }
 
     public void ResetField(){
-        this.crossed = false;
+        crossed = false;
+        group = initialGroup;
         SetColor(this.color);
         if (xPos != 7){
             this.available = false;
@@ -83,7 +89,6 @@ public class FieldSquare : MonoBehaviour
                 starRenderer.color = Color.black;
             }
             this.crossed = true;
-            this.transform.parent.GetComponent<GameField>().decreaseColorCount(color);
             this.transform.parent.GetComponent<GameField>().setNeighborsAvailable(this.gameObject);
         }
     }
@@ -128,5 +133,13 @@ public class FieldSquare : MonoBehaviour
 
     public void setAvailable() {
         this.available = true;
+    }
+
+    public Vector2 GetCoords(){
+        return new Vector2(xPos,yPos);
+    }
+
+    public void SetGroup(int number){
+        this.group = number;
     }
 }

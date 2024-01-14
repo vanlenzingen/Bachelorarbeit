@@ -19,7 +19,7 @@ public class Controller : MonoBehaviour
     void Start() {
         SetColorsUncompleted();
         SetColumnsUncompleted();
-        CreateFields();
+        InstantiateField();
         InstantiateDices();
         InstantiateAgent();
     }
@@ -32,7 +32,7 @@ public class Controller : MonoBehaviour
 
     private void SetColorsUncompleted(){
          foreach (string color in new string[] { "yellow", "green", "blue", "red", "orange" }) {
-            finishedColors.Add(color, false);
+            finishedColors[color] = false;
         }
     }
 
@@ -42,7 +42,7 @@ public class Controller : MonoBehaviour
     }
 
     private void InstantiateDices() {
-        for (int i = 0; i<3; i++){
+        for (int i = 0; i<2; i++){
             GameObject ColorDice = Instantiate(ColorDicePrefab, transform.position + new Vector3(-4, i*2, 0), Quaternion.identity);
             ColorDice.transform.parent = this.transform;
             GameObject NumberDice = Instantiate(NumberDicePrefab, transform.position + new Vector3(-2, i*2, 0), Quaternion.identity);
@@ -57,14 +57,16 @@ public class Controller : MonoBehaviour
         }
     }
 
-    private void CreateFields() {
+    private void InstantiateField() {
         GameObject GameFieldPrefab = Instantiate(field, transform.position, Quaternion.identity);
         GameFieldPrefab.GetComponent<GameField>().setPlayer(0);
-       
+        GameFieldPrefab.transform.parent = this.transform;
+
         for (int i = 0; i < playerNumber-1; i++) {
             GameObject duplicatedField = Instantiate(GameFieldPrefab, transform.position, Quaternion.identity);
             duplicatedField.transform.position = new Vector3(0, (i + 1) * 15, 0);
             duplicatedField.GetComponent<GameField>().setPlayer(i + 1);
+
         }
     }
 
@@ -79,21 +81,21 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public int GetColumnPoints(int column){
+    public float GetColumnPoints(int column){
         if (finishedColumns[column] == false) {
             finishedColumns[column] = true;
-            return GetMaximumColorPoints(column);
+            return GetMaximumColumnPoints(column);
         } else {
-            return GetMinimumColorPoints(column);
+            return GetMinimumColumnPoints(column);
             }
         }
 
-    public int GetColorPoints(string color){
+    public float GetColorPoints(string color){
         if (finishedColors[color] == false){
             finishedColors[color] = true;
-            return 5;
+            return 5.0f;
             } else {
-            return 3;
+            return 3.0f;
         }
     }
 
@@ -103,55 +105,55 @@ public class Controller : MonoBehaviour
         SetColorsUncompleted();
     }
 
-    private int GetMaximumColorPoints(int column) {
+    private float GetMaximumColumnPoints(int column) {
     switch (column) {
         case 0:
         case 14:
-            return 5;
+            return 5.0f;
         case 1:
         case 2:
         case 3:
         case 11:
         case 12:
         case 13:
-            return 3;
+            return 3.0f;
         case 4:
         case 5:
         case 6:
         case 8:
         case 9:
         case 10:
-            return 2;
+            return 2.0f;
         case 7:
-            return 1;
+            return 1.0f;
         default:
-            return 0;
+            return 0.0f;
         }
     }
 
-    private int GetMinimumColorPoints(int column) {
+    private float GetMinimumColumnPoints(int column) {
         switch (column) {
             case 0:
             case 14:
-                return 3;
+                return 3.0f;
             case 1:
             case 2:
             case 3:
             case 11:
             case 12:
             case 13:
-                return 2;
+                return 2.0f;
             case 4:
             case 5:
             case 6:
             case 8:
             case 9:
             case 10:
-                return 1;
+                return 1.0f;
             case 7:
-                return 0;
+                return 0.0f;
             default:
-                return 0;
+                return 0.0f;
         }
     }
 

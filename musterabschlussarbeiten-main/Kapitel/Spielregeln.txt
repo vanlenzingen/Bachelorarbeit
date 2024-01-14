@@ -1,0 +1,40 @@
+ habe mich dazu entschlossen die Einspieler Variante des Spiels "Noch Mal!" zu implementieren.
+Dabei versucht der Spieler in 30 Runden die maximalen Punkte zu erreichen. Punkte werden vergeben durch erreichen von gewissen Zielen.
+
+Spielfeld:
+15 Spalten (A-O) wobei pro Spalte 7 Reihen vorhandnen sind.
+Auf dem Spielfeld befinden sich verschiedenfarbige Felder der Farben: rot, geld, grün, orange, blau
+Diese sind in Clustern der Größe 1-6 angebracht.
+Weiterhin besitzt jeder Spieler zu Beginn 8 Joker.
+Zu Beginn sind nur Felder in Spalte "H" erreichbar.
+
+Würfel:
+Im Spiel werden 4 Würfel benutzt wobei sich diese in 2 Farbwürfel und 2 Farbwürfel unterscheiden.
+Die Zahlenwürfel sind 6 seitige Würfel, welche die Zahlen 1-5 und Zahlenjoker zeigen.
+Farbwürfel besitzten je Seite eine der 5 Farben und einen Farbjoker.
+
+
+Spielablauf:
+Der Spieler wirft zu beginn seines Zuges die 4 Würfel.
+Aus den Ergebnissen wählt der Spieler einen Zahlenwert und einen Farbwert aus.
+Anschließend, kann der Spieler erreichbare Felder wegstreichen, wobei genau so viele zusammenliegende der gewählten Felder abgestrichen werden müssen, wie das gewählte Zahlenwürfel Ergebnis lautet.
+Gewählte Felder müssen sich neben bereits Abgekreuzten Feldern oderfSpalte "H" befinden.
+
+Ein Joker fungiert hierbei als ein beliebiges Element. Zahlenjoker können nach belieben als eine Zahl von 1-5 fungieren. Mit einem Farbjoker darf jede beliebige Farbe verwendet werden.
+Falls ein Joker gewählt wird. Wird anschließend die verbleibende Zahl an Jokern um eins reduziert.
+
+Der Zug endet, nachdem Felder gefüllt wurden oder wenn kein Zug möglich ist.
+
+Erreichen von Punkten:
+- Abkreuzen der Sternfelder (2 Punkte)
+- vollständiges Abkreuzen von Farben (5 Punkte)
+- vollständiges Abkreuzen von der Spalten (1-5 Punkte je nach Spalte)
+- Verwendung minimaler Joker (1 Punkt pro verbleibendem Joker)
+
+
+
+Foto Spielfeld?
+mit indikation Sternfelder
+Cluster
+Joker
+Punkte für Reihen

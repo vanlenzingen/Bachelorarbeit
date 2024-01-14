@@ -17,13 +17,16 @@ public class GameField : MonoBehaviour
     private int greenCount = 21;
     private int orangeCount = 21;
     private int yellowCount = 21;
-    public int points = 0;
+    public int points = -30;
     public int colorsFinished = 0;
-    
+    private Controller ControllerScript;
+    private GameObject Controller;
 
     public void Start() {
         this.name = "GameField " + PlayerIndex;
         pushSquaresintoArray(); // delte this later
+        Controller = transform.parent.gameObject;
+        ControllerScript = Controller.GetComponent<Controller>();
     }
 
 
@@ -74,14 +77,6 @@ public class GameField : MonoBehaviour
     }
 
 
-    public void GetColumnPoints(int column) {
-        //TODO only one time per row
-            int columnPoints;
-            GameObject Controller = GameObject.FindWithTag("Controller");
-            columnPoints = Controller.GetComponent<Controller>().GetColumnPoints(column);
-            AddToPoints(columnPoints);
-    }
-
     public void pushSquaresintoArray() {
         FieldSquare[] childSquares = GetComponentsInChildren<FieldSquare>();
 
@@ -101,10 +96,139 @@ public class GameField : MonoBehaviour
         this.squares = new GameObject[Columns, Rows];
     }
 
+    public void CrossFields(List<GameObject> fields){
+        if (fields.Count==0){
+            return;
+        }
+        foreach(GameObject field in fields){
+            if (!field.GetComponent<FieldSquare>().crossed){
+                field.GetComponent<FieldSquare>().CrossField();
+                decreaseColorCount(field.GetComponent<FieldSquare>().color);
+            }
+        }
+    }
 
-    public void CrossField(Vector2 coordinates){
-        GameObject field = GetSquareField(coordinates);
-        field.GetComponent<FieldSquare>().CrossField();
+    public void UpdateGroups(List<GameObject> fieldsToInspect){ //TODO Not working correctly -> proof it again
+        List<GameObject> groupUpdateList = GetGroupUpdateList(fieldsToInspect);
+        foreach( GameObject field in groupUpdateList){
+            List<GameObject> group = new List<GameObject>();
+            group.Add(field);
+            group = GetGroup(group);
+            UpdateGroupCountOfEachElementInList(group);
+        }
+    }
+
+
+private List<GameObject> GetGroup(List<GameObject> group){
+    int refSize;
+    do
+    {
+        refSize = group.Count;
+        List<GameObject> newNeighbors = new List<GameObject>();
+
+        foreach (GameObject field in group)
+        {
+            List<GameObject> neighbors = GetNeighborsOfTheSameColor(field);
+            foreach (GameObject neighbor in neighbors)
+            {
+                if (!group.Contains(neighbor) && !newNeighbors.Contains(neighbor))
+                {
+                    newNeighbors.Add(neighbor);
+                }
+            }
+        }
+
+        group.AddRange(newNeighbors);
+    }
+    while (group.Count != refSize);
+
+    return group;
+}
+
+
+    private void UpdateGroupCountOfEachElementInList(List<GameObject> group){
+
+        foreach (GameObject field in group){
+            field.GetComponent<FieldSquare>().SetGroup(group.Count);
+            }
+        }
+
+
+    public List<GameObject> GetGroupUpdateList(List<GameObject> fieldsToInspect){
+        List<GameObject> fieldsToUpdate = new List<GameObject>();
+        if (fieldsToInspect.Count > 0){
+            foreach (GameObject field in fieldsToInspect){
+                List<GameObject> neighborsToUpdate = GetNeighborsOfTheSameColor(field);
+                foreach (GameObject neighbor in neighborsToUpdate){
+                    if (!fieldsToInspect.Contains(neighbor)){
+                        fieldsToUpdate.Add(neighbor);
+                    }
+                }
+            }
+        }
+        return fieldsToUpdate;
+    }
+
+
+    private List<GameObject> GetNeighborsOfTheSameColor(GameObject field){ //TODO  nochmal überprüfen -> proof again
+       List<GameObject> neighbors = new List<GameObject>();
+        if (!field){
+            return neighbors;
+        }
+        string refColor = field.GetComponent<FieldSquare>().color;
+        Vector2 coords = field.GetComponent<FieldSquare>().GetCoords();
+
+        int[] dx = { 0, 1, 0, -1 };
+        int[] dy = { 1, 0, -1, 0 };
+
+        for (int i=0;i<4;i++){
+            int newX = (int)coords.x + dx[i];
+            int newY = (int)coords.y + dy[i];
+
+            if (newX >= 0 && newX < 15 && newY >= 0 && newY < 7){
+                GameObject neighbor = squares[newX, newY];
+                if (neighbor.GetComponent<FieldSquare>().color == refColor && !neighbor.GetComponent<FieldSquare>().crossed){
+                    neighbors.Add(neighbor);
+                }
+            }
+        }
+        return neighbors;
+    }
+
+
+    public List<GameObject> GetAvailableFieldsForGroupAndColor(string color, int number){
+        List<GameObject> availableFields = new List<GameObject>();
+        foreach(GameObject square in squares){
+            string squareColor = square.GetComponent<FieldSquare>().color;
+            bool available = square.GetComponent<FieldSquare>().available;
+            bool crossed = square.GetComponent<FieldSquare>().crossed;
+            int group = square.GetComponent<FieldSquare>().group;
+            if (color == "joker"){
+                if (available && !crossed && group >= number){
+                    availableFields.Add(square);
+                }
+            } else {
+                if (available && !crossed && group >= number && squareColor == color){
+                    availableFields.Add(square);
+                }
+            }
+        }
+        return availableFields;
+    }
+
+    public List<GameObject> CalculateNeighbours(List<GameObject> pickedFields){
+        List<GameObject> validNeighbors = new List<GameObject>();
+        foreach (GameObject field in pickedFields) {
+            List<GameObject> possibleNeighbors= GetNeighborsOfTheSameColor(field);
+            if (possibleNeighbors.Count != 0){
+                foreach(GameObject  neighbor in possibleNeighbors) {
+                    if (!pickedFields.Contains(neighbor)){
+                        validNeighbors.Add(neighbor);
+                        }
+                    }
+                }
+            }
+        return validNeighbors;
     }
 
 
@@ -146,14 +270,9 @@ public class GameField : MonoBehaviour
     }
 
     public void NewGame(){
-
-        AddRemainingStarFieldPoints();
-        AddJokerPoints();
-        Debug.Log(points);
-        Debug.Log(roundCount);
-        Debug.Log("Game Finished points("+ points+") per Turn("+roundCount+"):" + points / roundCount);
-        joker = 10;
-        points = 0;
+        Debug.Log("Game Finished. Points:"+points);
+        joker = 8;
+        points = -30;
         roundCount = 0;
         colorsFinished = 0;
         ResetSquares();
@@ -162,9 +281,7 @@ public class GameField : MonoBehaviour
     }
 
     private void ResetController(){
-        GameObject Controller = GameObject.FindWithTag("Controller");
-        Controller.GetComponent<Controller>().Reset();
-        Debug.Log("Resetting Controller");
+        ControllerScript.Reset();
     }
 
     private void ResetSquares(){
@@ -178,7 +295,6 @@ public class GameField : MonoBehaviour
     }
 
     private void ResetColorCount(){
-        Debug.Log("ResetColorCount");
         blueCount = 21;
         redCount = 21;
         greenCount = 21;
@@ -205,10 +321,7 @@ public class GameField : MonoBehaviour
         AddToPoints(stars*-2);
     }
 
-    public void ColorFinished(string color){
-        GameObject Controller = GameObject.FindWithTag("Controller");
-        int points = Controller.GetComponent<Controller>().GetColorPoints(color);
-        AddToPoints(points);
+    public void ColorFinished(){
         colorsFinished ++;
     }
 }

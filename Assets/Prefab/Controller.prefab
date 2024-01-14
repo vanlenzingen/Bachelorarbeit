@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: Controller
   m_TagString: Controller
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -49,6 +49,6 @@ MonoBehaviour:
   numberDice: []
   colorDice: []
   field: {fileID: 1723668205108455379, guid: de00c42cefaf6d243bd9a2597444daf6, type: 3}
-  playerNumber: 2
+  playerNumber: 1
   timeout: 1
   Agent: {fileID: 8917323269675721845, guid: 001519bfb779c67fc9310065d1e348ae, type: 3}
