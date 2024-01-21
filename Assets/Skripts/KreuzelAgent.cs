@@ -42,17 +42,35 @@ public class KreuzelAgent : Agent
         ControllerScript.RerollDices();
     }
 
+    public float GetJokersObservation(){
+        return Normalize(GameFieldSkript.joker, 0, 10);s
+    }
+
+    public float GetRoundCountObservation(){
+        return Normalie(GameFieldSkript.roundCount, 1 , 30);
+    }
+
+    public float GetNumberDiceObservation(GameObject child){
+        return Nomalize(child.GetComponent<NumberDice>().number, 1, 6);
+    }
+
+    public float Normalize(int current, int min, int max){
+        return ((current-min)/(max-min));
+    }
+
+
+
     public override void CollectObservations(VectorSensor sensor)    {
         // get Observation for amount of jokers 1
-        sensor.AddObservation(GameFieldSkript.joker);
+        sensor.AddObservation(GetJokersObservation());
 
         // get Observation for current Round 1
-        sensor.AddObservation(GameFieldSkript.roundCount);
+        sensor.AddObservation(GetRoundCountObservation);
 
         // get Observation for NumberDice 2x1
         foreach (Transform child in controller.transform) {
             if (child.CompareTag("NumberDice")) {
-                sensor.AddObservation(child.GetComponent<NumberDice>().number);
+                sensor.AddObservation(GetNumberDiceObservation(child));
             }
         }
 
