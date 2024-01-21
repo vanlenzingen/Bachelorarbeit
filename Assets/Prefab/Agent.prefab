@@ -57,7 +57,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 37d24064b7650e437a8eebd6caf1c106, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 698ea2a919a991e17864907f70b4b0c7, type: 3}
   m_InferenceDevice: 3
   m_BehaviorType: 0
   m_BehaviorName: KreuzelAgent

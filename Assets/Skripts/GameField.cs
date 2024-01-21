@@ -12,11 +12,11 @@ public class GameField : MonoBehaviour
     public int joker = 10;
     public int roundCount = 0;
 
-    private int blueCount = 21;
-    private int redCount = 21;
-    private int greenCount = 21;
-    private int orangeCount = 21;
-    private int yellowCount = 21;
+    public int blueCount;
+    public int redCount;
+    public int greenCount;
+    public int orangeCount;
+    public int yellowCount;
     public int points = -30;
     public int colorsFinished = 0;
     private Controller ControllerScript;
@@ -27,8 +27,34 @@ public class GameField : MonoBehaviour
         pushSquaresintoArray(); // delte this later
         Controller = transform.parent.gameObject;
         ControllerScript = Controller.GetComponent<Controller>();
+        ResetColorCount();
     }
 
+
+    private void ResetColorCount(){
+        List<GameObject> blueFields = new List<GameObject>();
+        List<GameObject> greenFields = new List<GameObject>();
+        List<GameObject> redFields = new List<GameObject>();
+        List<GameObject> orangeFields = new List<GameObject>();
+        List<GameObject> yellowFields = new List<GameObject>();
+
+        foreach(GameObject field in squares){
+            string color = field.GetComponent<FieldSquare>().color;
+            switch (color)    {
+        case "blue":        blueFields.Add(field);      break;
+        case "green":       greenFields.Add(field);     break;
+        case "yellow":      yellowFields.Add(field);    break;
+        case "orange":      orangeFields.Add(field);    break;
+        case "red":         redFields.Add(field);       break;
+            }
+        }
+        blueCount = blueFields.Count;
+        redCount = redFields.Count;
+        yellowCount = yellowFields.Count;
+        greenCount = greenFields.Count;
+        orangeCount = orangeFields.Count;
+
+    }
 
     public void setNeighborsAvailable(GameObject square) {
         FieldSquare squareScript = square.GetComponent<FieldSquare>();
@@ -147,7 +173,6 @@ private List<GameObject> GetGroup(List<GameObject> group){
 
 
     private void UpdateGroupCountOfEachElementInList(List<GameObject> group){
-
         foreach (GameObject field in group){
             field.GetComponent<FieldSquare>().SetGroup(group.Count);
             }
@@ -177,6 +202,7 @@ private List<GameObject> GetGroup(List<GameObject> group){
         }
         string refColor = field.GetComponent<FieldSquare>().color;
         Vector2 coords = field.GetComponent<FieldSquare>().GetCoords();
+        int group = field.GetComponent<FieldSquare>().group;
 
         int[] dx = { 0, 1, 0, -1 };
         int[] dy = { 1, 0, -1, 0 };
@@ -187,7 +213,7 @@ private List<GameObject> GetGroup(List<GameObject> group){
 
             if (newX >= 0 && newX < 15 && newY >= 0 && newY < 7){
                 GameObject neighbor = squares[newX, newY];
-                if (neighbor.GetComponent<FieldSquare>().color == refColor && !neighbor.GetComponent<FieldSquare>().crossed){
+                if (neighbor.GetComponent<FieldSquare>().color == refColor && !neighbor.GetComponent<FieldSquare>().crossed && neighbor.GetComponent<FieldSquare>().group == group){
                     neighbors.Add(neighbor);
                 }
             }
@@ -270,7 +296,6 @@ private List<GameObject> GetGroup(List<GameObject> group){
     }
 
     public void NewGame(){
-        Debug.Log("Game Finished. Points:"+points);
         joker = 8;
         points = -30;
         roundCount = 0;
@@ -294,13 +319,7 @@ private List<GameObject> GetGroup(List<GameObject> group){
         roundCount += 1;
     }
 
-    private void ResetColorCount(){
-        blueCount = 21;
-        redCount = 21;
-        greenCount = 21;
-        orangeCount = 21;
-        yellowCount = 21;
-    }
+
 
     public void AddToPoints(int number){
         points += number;

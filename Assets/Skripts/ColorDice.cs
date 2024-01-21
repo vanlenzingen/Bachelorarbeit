@@ -6,6 +6,7 @@ public class ColorDice : MonoBehaviour
 {
     public GameObject squarePrefab;
     public string color;
+    public string colorShift = "";
 
 
     void Start()
@@ -46,8 +47,13 @@ public class ColorDice : MonoBehaviour
     }
 
     public void Roll() {
-        string[] colors = { "red", "blue", "green", "yellow", "orange", "joker" };
-        int randomIndex = Random.Range(0, colors.Length);
+        List<string> colors = new List<string> {"red", "blue", "green", "yellow", "orange", "joker"};
+        if(colorShift != ""){
+            for (int i=0;i<10;i++){
+                colors.Add(colorShift);
+            }
+        }
+        int randomIndex = Random.Range(0, colors.Count);
         string colorResult = colors[randomIndex];
         this.color = colorResult;
         SetColor(color);

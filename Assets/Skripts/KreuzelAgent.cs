@@ -17,12 +17,14 @@ public class KreuzelAgent : Agent
     private GameField GameFieldSkript;
 
     private string logFilePath;
+    private string rewardLogPath;
+    private float rewardSum;
 
-    void LogData(string data){
-        File.AppendAllText(logFilePath, data + "\n");
+    void LogPoints(string data){
+        if (controller.name == "Controller" || controller.name == "Controller_1" || controller.name == "Controller_2"){
+            //File.AppendAllText(logFilePath, data + "\n");
+        }
     }
-
-
 
     public override void OnEpisodeBegin() {
         controller = transform.parent.gameObject;
@@ -70,12 +72,27 @@ public class KreuzelAgent : Agent
 
     public void Start(){
         new WaitForSeconds(3.0f);
-        logFilePath = Application.dataPath + "/log_kreuzel_points_3.txt";
+
+        logFilePath = Application.dataPath + "/LogPoints_red.txt";
+        rewardLogPath = Application.dataPath + "/LogRewards_red.txt";
     }
 
 
     //  choosenColor, choosenNumber, jokerNumber, field field field field field
     public override void OnActionReceived(ActionBuffers actionBuffers) {
+            if (GameFieldSkript.roundCount > 30){
+                GameFieldSkript.AddToPoints(GameFieldSkript.joker);
+                //Debug.Log("Added: Joker Points:" + GameFieldSkript.joker);
+                AddReward(GameFieldSkript.joker);
+                rewardSum += GameFieldSkript.joker;
+                LogPoints(GameFieldSkript.points.ToString());
+                Debug.Log(rewardSum-30);
+                rewardSum = 0;
+//                 LogRewards(rewardSum.ToString());
+                GameFieldSkript.NewGame();
+                }
+
+
             int colorDiceAction = actionBuffers.DiscreteActions[0];
             string choosenColor; // could be a joker
             choosenColor = GetColorOfChoosenDice(colorDiceAction);
@@ -91,18 +108,10 @@ public class KreuzelAgent : Agent
             GetColorJokerPen(choosenColor);
             GetNumberJokerPen(choosenNumber);
 
+
             List<GameObject> availableFields = GameFieldSkript.GetAvailableFieldsForGroupAndColor(choosenColor, choosenNumber);
 
             if (availableFields.Count ==  0 || choosenNumber == 0){
-                AddReward(-50.0f);
-                if (GameFieldSkript.roundCount == 30){
-                GameFieldSkript.AddToPoints(GameFieldSkript.joker);
-                //Debug.Log("Added: Joker Points:" + GameFieldSkript.joker);
-                AddReward(GameFieldSkript.joker);
-                LogData(GameFieldSkript.points.ToString());
-                GameFieldSkript.NewGame();
-
-                }
                 EndEpisode();
                 return;
             }
@@ -117,14 +126,6 @@ public class KreuzelAgent : Agent
             CrossOutFields(pickedFields);
             GameFieldSkript.UpdateGroups(pickedFields);
             CheckForRewards(pickedFields);
-            if (GameFieldSkript.roundCount == 30){
-                GameFieldSkript.AddToPoints(GameFieldSkript.joker);
-                AddReward(GameFieldSkript.joker);
-                LogData(GameFieldSkript.points.ToString());
-                GameFieldSkript.NewGame();
-
-
-            }
         EndEpisode();
     }
 
@@ -140,6 +141,7 @@ public class KreuzelAgent : Agent
         foreach(GameObject field in pickedFields){
             if(field.GetComponent<FieldSquare>().starField){
                 AddReward(2.0f);
+                rewardSum += 2.0f;
                 //Debug.Log("Added starField Points:" + 2);
                 GameFieldSkript.AddToPoints(2);
             }
@@ -155,6 +157,7 @@ public class KreuzelAgent : Agent
                GameFieldSkript.AddToPoints((int)points);
                //Debug.Log("Added: COlumn FInished Points:" + points);
                AddReward(points);
+               rewardSum += points;
             }
         }
     }
@@ -178,29 +181,19 @@ public class KreuzelAgent : Agent
             //Debug.Log("Added Color Points:" + points);
             GameFieldSkript.AddToPoints((int)points);
             AddReward(points);
+            rewardSum += points;
         }
     }
 
     private void CrossOutFields(List<GameObject> pickedFields){
-        int numberOfFields = pickedFields.Count;
-        float rewardMult = 0.02f;
-        GameObject field = pickedFields[0];
-        if (field.GetComponent<FieldSquare>().group == numberOfFields){
-            rewardMult = 0.04f;
-        }
-        AddReward(rewardMult*numberOfFields);
-       // Debug.Log("pickedFields" + pickedFields.Count);
         GameFieldSkript.CrossFields(pickedFields);
     }
 
 
     private GameObject PickField(float action, List<GameObject> AvailableFields) {
-        action = Mathf.Clamp(action, 0f, 1f);
+        action = Mathf.Clamp01(Mathf.Abs(action)*0.9999f);
 
-        // Subtract a small epsilon from 1.0 to avoid reaching the edge of the array
-        float adjustedAction = Mathf.Clamp01(action - 0.0001f);
-
-        int index = Mathf.FloorToInt(adjustedAction * AvailableFields.Count);
+        int index = Mathf.FloorToInt(action * AvailableFields.Count);
 
         // Ensure that the index is within a valid range
         index = Mathf.Clamp(index, 0, AvailableFields.Count - 1);
@@ -270,10 +263,10 @@ public class KreuzelAgent : Agent
 
 
         private void GetJokerPenalty() {
-        if (GameFieldSkript.joker > 1) {
+        if (GameFieldSkript.joker >= 1) {
             GameFieldSkript.ReduceJoker();
         } else {
-            AddReward(-50.0f);
+            EndEpisode();
         }
     }
 
