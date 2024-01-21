@@ -54,6 +54,16 @@ public class KreuzelAgent : Agent
         return Nomalize(child.GetComponent<NumberDice>().number, 1, 6);
     }
 
+    public float GetGroupObservation(GameObject squareField){
+        return Normalize(squareField.GetComponent<FieldSquare>().group, 1, 6);
+    }
+
+    public Vector2 GetCoordinateObservation(GameObject squareField){
+        x = Normalize(squareField.GetComponent<FieldSquare>().xPos, 0,14);
+        y = Normalize(squareField.GetComponent<FieldSquare>().yPos, 0,6);
+        return new Vector2(x,y); 
+    }
+
     public float Normalize(int current, int min, int max){
         return ((current-min)/(max-min));
     }
@@ -96,7 +106,7 @@ public class KreuzelAgent : Agent
     }
 
 
-    //  choosenColor, choosenNumber, jokerNumber, field field field field field
+    //  choosenColor, choosenNumber, jokerNumber, choosenFieldX, choosenFieldY, neighbor, neighbor, neighbor, neighbor
     public override void OnActionReceived(ActionBuffers actionBuffers) {
             if (GameFieldSkript.roundCount > 30){
                 GameFieldSkript.AddToPoints(GameFieldSkript.joker);
@@ -126,7 +136,10 @@ public class KreuzelAgent : Agent
             GetColorJokerPen(choosenColor);
             GetNumberJokerPen(choosenNumber);
 
-
+            // TODO gameField = actionBuffers.DiscreteActions[3], actionBuffers.DiscreteActions[4]
+            // if gameField in AvailableFields
+            // Do the neighbormagic
+            // else EndEpisode
             List<GameObject> availableFields = GameFieldSkript.GetAvailableFieldsForGroupAndColor(choosenColor, choosenNumber);
 
             if (availableFields.Count ==  0 || choosenNumber == 0){
@@ -226,6 +239,8 @@ public class KreuzelAgent : Agent
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().available);
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().starField);
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().crossed);
+        sensor.AddObservation(GetCoordinationObservation(squareField));
+        sensor.AddObservation(GetGroupObservation(squareField));
     }
 
 
