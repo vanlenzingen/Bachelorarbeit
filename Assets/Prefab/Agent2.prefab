@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1838781509681122694}
   - component: {fileID: 1059827314424489468}
-  - component: {fileID: 8148335944708230730}
+  - component: {fileID: 403970476798408310}
   - component: {fileID: 331014457985386863}
   - component: {fileID: 4417781271887255466}
   m_Layer: 0
-  m_Name: Agent
+  m_Name: Agent2
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -48,16 +48,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1276
+    VectorObservationSize: 961
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 4
-      BranchSizes: 0200000002000000050000000f00000007000000
+      m_NumContinuousActions: 5
+      BranchSizes: 020000000200000005000000
     VectorActionSize: 
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 698ea2a919a991e17864907f70b4b0c7, type: 3}
   m_InferenceDevice: 3
   m_BehaviorType: 0
   m_BehaviorName: KreuzelAgent
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
---- !u!114 &8148335944708230730
+--- !u!114 &403970476798408310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8917323269675721845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3a09070d12589829c9841096cbc06d, type: 3}
+  m_Script: {fileID: 11500000, guid: 38eff392c2b1d1e438705c3b616fcb93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:

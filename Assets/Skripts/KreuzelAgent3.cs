@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.IO;
 
-public class KreuzelAgent : Agent
+public class KreuzelAgent3 : Agent
 {
 
     GameObject GameField;
@@ -61,7 +61,7 @@ public class KreuzelAgent : Agent
     public Vector2 GetCoordinateObservation(GameObject squareField){
         float x = Normalize(squareField.GetComponent<FieldSquare>().xPos, 0, GameFieldSkript.Columns-1);
         float y = Normalize(squareField.GetComponent<FieldSquare>().yPos, 0, GameFieldSkript.Rows-1);
-        return new Vector2(x,y); 
+        return new Vector2(x,y);
     }
 
     public float Normalize(int current, int min, int max){
@@ -118,12 +118,13 @@ public class KreuzelAgent : Agent
 
     //  choosenColor, choosenNumber, jokerNumber, choosenFieldX, choosenFieldY, neighbor, neighbor, neighbor, neighbor
     public override void OnActionReceived(ActionBuffers actionBuffers) {
-            if (GameFieldSkript.roundCount > 600){
-                GameFieldSkript.AddToPoints(GameFieldSkript.joker);
+            if (GameFieldSkript.points >= 10){
+                //GameFieldSkript.AddToPoints(GameFieldSkript.joker);
                 //Debug.Log("Added: Joker Points:" + GameFieldSkript.joker);
                 //AddReward(GameFieldSkript.joker);
-                rewardSum += GameFieldSkript.joker;
-                LogPoints(GameFieldSkript.points.ToString());
+                //rewardSum += GameFieldSkript.joker;
+                Debug.Log(GameFieldSkript.roundCount);
+                //LogPoints(GameFieldSkript.roundCount.ToString());
                 //Debug.Log(rewardSum-30);
                 rewardSum = 0;
 //                 LogRewards(rewardSum.ToString());
@@ -148,23 +149,23 @@ public class KreuzelAgent : Agent
 
              Vector2 coordinates = new Vector2(actionBuffers.DiscreteActions[3], actionBuffers.DiscreteActions[4]);
              if (!GameFieldSkript.CoordinatesInBond(coordinates)) {
-                 Debug.Log("Out Of Bounds");
+//                  Debug.Log("Out Of Bounds");
                  EndEpisode();
                  return;
              }
              GameObject initialField = GameFieldSkript.GetSquareField(coordinates);
              if (initialField.GetComponent<FieldSquare>().crossed){
-                 Debug.Log("Field Already Crossed");
+//                  Debug.Log("Field Already Crossed");
                  //AddReward(-0.2f);
 
              }
             List<GameObject> availableFields = GameFieldSkript.GetAvailableFieldsForGroupAndColor(choosenColor, choosenNumber);
             if (!availableFields.Contains(initialField) || initialField.GetComponent<FieldSquare>().available == false){
-                Debug.Log("Not Available");
+//                 Debug.Log("Not Available");
                 AddReward(-0.3f);
                 EndEpisode();
             } else {
-                Debug.Log("Available");
+//                 Debug.Log("Available");
                 AddReward(0.1f);
             List<GameObject> pickedFields = new List<GameObject>();
             pickedFields.Add(initialField);
@@ -193,7 +194,7 @@ public class KreuzelAgent : Agent
     private void CheckForStarFields(List<GameObject> pickedFields){
         foreach(GameObject field in pickedFields){
             if(field.GetComponent<FieldSquare>().starField){
-              //AddReward(2.0f);
+                AddReward(2.0f);
                 //rewardSum += 2.0f;
                 //Debug.Log("Added starField Points:" + 2);
                 GameFieldSkript.AddToPoints(2);
@@ -208,7 +209,6 @@ public class KreuzelAgent : Agent
             if (remainingFields == 0){
                float points = ControllerScript.GetColumnPoints(column);
                GameFieldSkript.AddToPoints((int)points);
-               //Debug.Log("Added: COlumn FInished Points:" + points);
                AddReward(points*10);
                rewardSum += points;
             }

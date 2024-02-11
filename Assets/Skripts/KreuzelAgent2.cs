@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.IO;
 
-public class KreuzelAgent : Agent
+public class KreuzelAgent2 : Agent
 {
 
     GameObject GameField;
@@ -47,7 +47,7 @@ public class KreuzelAgent : Agent
     }
 
     public float GetRoundCountObservation(){
-        return Normalize(GameFieldSkript.roundCount, 1 , 600);
+        return Normalize(GameFieldSkript.roundCount, 1 , 30);
     }
 
     public float GetNumberDiceObservation(GameObject child){
@@ -61,7 +61,7 @@ public class KreuzelAgent : Agent
     public Vector2 GetCoordinateObservation(GameObject squareField){
         float x = Normalize(squareField.GetComponent<FieldSquare>().xPos, 0, GameFieldSkript.Columns-1);
         float y = Normalize(squareField.GetComponent<FieldSquare>().yPos, 0, GameFieldSkript.Rows-1);
-        return new Vector2(x,y); 
+        return new Vector2(x,y);
     }
 
     public float Normalize(int current, int min, int max){
@@ -116,15 +116,15 @@ public class KreuzelAgent : Agent
     }
 
 
-    //  choosenColor, choosenNumber, jokerNumber, choosenFieldX, choosenFieldY, neighbor, neighbor, neighbor, neighbor
+    //  choosenColor, choosenNumber, jokerNumber, field, field, field, field, field
     public override void OnActionReceived(ActionBuffers actionBuffers) {
-            if (GameFieldSkript.roundCount > 600){
+            if (GameFieldSkript.roundCount > 30){
                 GameFieldSkript.AddToPoints(GameFieldSkript.joker);
                 //Debug.Log("Added: Joker Points:" + GameFieldSkript.joker);
-                //AddReward(GameFieldSkript.joker);
+                AddReward(GameFieldSkript.joker);
                 rewardSum += GameFieldSkript.joker;
                 LogPoints(GameFieldSkript.points.ToString());
-                //Debug.Log(rewardSum-30);
+                Debug.Log(rewardSum-30);
                 rewardSum = 0;
 //                 LogRewards(rewardSum.ToString());
                 GameFieldSkript.NewGame();
@@ -143,36 +143,21 @@ public class KreuzelAgent : Agent
                 choosenNumber = actionBuffers.DiscreteActions[2] +1 ;
             }
 
-//             GetColorJokerPen(choosenColor);
-//             GetNumberJokerPen(choosenNumber);
+             GetColorJokerPen(choosenColor);
+             GetNumberJokerPen(choosenNumber);
 
-             Vector2 coordinates = new Vector2(actionBuffers.DiscreteActions[3], actionBuffers.DiscreteActions[4]);
-             if (!GameFieldSkript.CoordinatesInBond(coordinates)) {
-                 Debug.Log("Out Of Bounds");
-                 EndEpisode();
-                 return;
-             }
-             GameObject initialField = GameFieldSkript.GetSquareField(coordinates);
-             if (initialField.GetComponent<FieldSquare>().crossed){
-                 Debug.Log("Field Already Crossed");
-                 //AddReward(-0.2f);
 
-             }
             List<GameObject> availableFields = GameFieldSkript.GetAvailableFieldsForGroupAndColor(choosenColor, choosenNumber);
-            if (!availableFields.Contains(initialField) || initialField.GetComponent<FieldSquare>().available == false){
-                Debug.Log("Not Available");
-                AddReward(-0.3f);
+            if (availableFields.Count==0){
                 EndEpisode();
-            } else {
-                Debug.Log("Available");
-                AddReward(0.1f);
+                return;
+            }
             List<GameObject> pickedFields = new List<GameObject>();
-            pickedFields.Add(initialField);
-            for(int i=0;i<choosenNumber-1; i++){
-                availableFields = GameFieldSkript.CalculateNeighbours(pickedFields);
+            for(int i=0;i<choosenNumber; i++){
                 if (availableFields.Count != 0){
                 GameObject pickedField = PickField(actionBuffers.ContinuousActions[i], availableFields);
                 pickedFields.Add(pickedField);
+                availableFields = GameFieldSkript.CalculateNeighbours(pickedFields);
                 }
             }
         CrossOutFields(pickedFields);
@@ -180,7 +165,6 @@ public class KreuzelAgent : Agent
         CheckForRewards(pickedFields);
         EndEpisode();
         }
-     }
 
 
     private void CheckForRewards(List<GameObject> pickedFields){
@@ -193,8 +177,8 @@ public class KreuzelAgent : Agent
     private void CheckForStarFields(List<GameObject> pickedFields){
         foreach(GameObject field in pickedFields){
             if(field.GetComponent<FieldSquare>().starField){
-              //AddReward(2.0f);
-                //rewardSum += 2.0f;
+              AddReward(2.0f);
+                rewardSum += 2.0f;
                 //Debug.Log("Added starField Points:" + 2);
                 GameFieldSkript.AddToPoints(2);
             }
@@ -207,9 +191,9 @@ public class KreuzelAgent : Agent
             int remainingFields = GameFieldSkript.CheckNumberOfRemainingFields(column);
             if (remainingFields == 0){
                float points = ControllerScript.GetColumnPoints(column);
+//                Debug.Log("Column" + column +" = " + points);
                GameFieldSkript.AddToPoints((int)points);
-               //Debug.Log("Added: COlumn FInished Points:" + points);
-               AddReward(points*10);
+               AddReward(points);
                rewardSum += points;
             }
         }
@@ -233,7 +217,7 @@ public class KreuzelAgent : Agent
             float points = ControllerScript.GetColorPoints(refColor);
             //Debug.Log("Added Color Points:" + points);
             GameFieldSkript.AddToPoints((int)points);
-            AddReward(points*10);
+            AddReward(points);
             rewardSum += points;
         }
     }
@@ -259,8 +243,8 @@ public class KreuzelAgent : Agent
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().available);
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().starField);
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().crossed);
-        sensor.AddObservation(GetCoordinateObservation(squareField.gameObject));
-        sensor.AddObservation(GetGroupObservation(squareField.gameObject));
+//         sensor.AddObservation(GetCoordinateObservation(squareField.gameObject));
+//         sensor.AddObservation(GetGroupObservation(squareField.gameObject));
     }
 
     private void PushEmptyField(VectorSensor sensor){

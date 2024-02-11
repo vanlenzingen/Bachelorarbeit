@@ -25,9 +25,11 @@ public class Controller : MonoBehaviour
     }
 
     private void SetColumnsUncompleted(){
+        List<bool> newColumns = new List<bool>(new bool[15]);
         for (int i = 0; i<15; i++){
-            finishedColumns.Add(false);
+            newColumns.Add(false);
         }
+        finishedColumns = newColumns;
     }
 
     private void SetColorsUncompleted(){
@@ -82,21 +84,22 @@ public class Controller : MonoBehaviour
     }
 
     public float GetColumnPoints(int column){
-        if (finishedColumns[column] == false) {
-            finishedColumns[column] = true;
+//         if (finishedColumns[column] == false) {
+//             finishedColumns[column] = true;
             return GetMaximumColumnPoints(column);
-        } else {
-            return GetMinimumColumnPoints(column);
-            }
+//         } else {
+//             Debug.Log("Get Minimum Points");
+//             return GetMinimumColumnPoints(column);
+//             }
         }
 
     public float GetColorPoints(string color){
-        if (finishedColors[color] == false){
-            finishedColors[color] = true;
+//         if (Colors[color] == false){
+//             finishedColors[color] = true;
             return 5.0f;
-            } else {
-            return 3.0f;
-        }
+//             } else {
+//             return 3.0f;
+//         }
     }
 
 

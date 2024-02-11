@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: green
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 12
@@ -251,10 +251,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 14
@@ -403,10 +403,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 1
@@ -555,10 +555,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 8
@@ -707,10 +707,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 1
@@ -859,10 +859,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 9
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 2
@@ -1164,9 +1164,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
   color: blue
-  starField: 0
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 9
@@ -1315,10 +1315,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 0
@@ -1467,10 +1467,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 1
@@ -1619,10 +1619,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: orange
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 5
@@ -1771,10 +1771,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 0
@@ -1926,7 +1926,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 3
@@ -2075,10 +2075,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 5
@@ -2230,7 +2230,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 11
@@ -2379,10 +2379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 13
@@ -2534,7 +2534,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 13
@@ -2683,10 +2683,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 10
@@ -2835,7 +2835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
   available: 1
@@ -2987,10 +2987,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 8
@@ -3142,7 +3142,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 10
@@ -3203,7 +3203,7 @@ GameObject:
   - component: {fileID: 2237125760243009919}
   - component: {fileID: 2797890496131905353}
   m_Layer: 0
-  m_Name: BlueField
+  m_Name: GameFieldAllAvailable
   m_TagString: GameField
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3456,7 +3456,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 1
   groupsize: 0
   xPos: 14
@@ -3605,10 +3605,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 14
@@ -3757,10 +3757,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: orange
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 11
@@ -3909,10 +3909,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 13
@@ -4061,10 +4061,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 8
@@ -4213,10 +4213,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 4
@@ -4365,10 +4365,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: yellow
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 8
@@ -4517,10 +4517,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 9
@@ -4669,10 +4669,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 13
@@ -4821,7 +4821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
   available: 1
@@ -4973,10 +4973,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 3
@@ -5128,7 +5128,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 5
@@ -5277,10 +5277,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 4
@@ -5432,7 +5432,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 9
@@ -5584,7 +5584,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 8
@@ -5733,10 +5733,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: red
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 13
@@ -5885,10 +5885,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 0
@@ -6037,10 +6037,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 1
@@ -6189,10 +6189,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 12
@@ -6341,8 +6341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: green
+  starField: 1
   crossed: 0
   available: 1
   group: 1
@@ -6493,10 +6493,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 8
@@ -6645,7 +6645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
   available: 1
@@ -6797,10 +6797,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 2
@@ -6949,10 +6949,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 2
@@ -7101,10 +7101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 6
@@ -7253,10 +7253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 6
@@ -7405,10 +7405,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 2
@@ -7557,10 +7557,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 11
@@ -7712,7 +7712,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 6
@@ -7861,10 +7861,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 12
@@ -8013,10 +8013,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 1
@@ -8168,7 +8168,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 4
@@ -8317,10 +8317,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 9
@@ -8469,10 +8469,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 8
@@ -8773,10 +8773,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: orange
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 14
@@ -8925,10 +8925,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 3
@@ -9077,10 +9077,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 5
@@ -9381,10 +9381,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 14
@@ -9533,10 +9533,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 9
@@ -9685,10 +9685,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 5
@@ -9837,10 +9837,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: red
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 3
@@ -9992,7 +9992,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 2
@@ -10141,10 +10141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: yellow
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 4
@@ -10293,10 +10293,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 4
@@ -10445,10 +10445,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 0
@@ -10597,10 +10597,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 4
@@ -10749,10 +10749,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 14
@@ -10901,10 +10901,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 9
@@ -11053,10 +11053,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: yellow
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 1
   groupsize: 0
   xPos: 2
@@ -11205,10 +11205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: green
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 6
@@ -11357,10 +11357,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 11
@@ -11509,10 +11509,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 14
@@ -11661,10 +11661,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 10
@@ -11813,10 +11813,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 3
@@ -11965,10 +11965,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 4
@@ -12117,10 +12117,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 12
@@ -12269,10 +12269,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 5
@@ -12421,10 +12421,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 6
@@ -12573,10 +12573,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 3
@@ -12728,7 +12728,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 6
@@ -12880,7 +12880,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 12
@@ -13032,7 +13032,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 10
@@ -13181,10 +13181,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
-  starField: 0
+  color: red
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 1
   groupsize: 0
   xPos: 10
@@ -13333,10 +13333,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 11
@@ -13485,10 +13485,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 2
@@ -13637,10 +13637,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 12
@@ -13789,10 +13789,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 13
@@ -13941,10 +13941,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 1
   groupsize: 0
   xPos: 0
@@ -14093,10 +14093,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 13
@@ -14246,9 +14246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
   color: blue
-  starField: 0
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 0
@@ -14400,7 +14400,7 @@ MonoBehaviour:
   color: blue
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 2
   groupsize: 0
   xPos: 0
@@ -14549,10 +14549,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 1
@@ -14701,10 +14701,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 3
@@ -14853,10 +14853,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 11
@@ -15005,10 +15005,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 10
@@ -15157,10 +15157,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 4
   groupsize: 0
   xPos: 11
@@ -15309,10 +15309,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: orange
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 5
   groupsize: 0
   xPos: 12
@@ -15462,9 +15462,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
   color: blue
-  starField: 0
+  starField: 1
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 1
@@ -15613,10 +15613,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 5
@@ -15765,7 +15765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: yellow
   starField: 0
   crossed: 0
   available: 1
@@ -15917,10 +15917,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: green
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 3
   groupsize: 0
   xPos: 10
@@ -16069,10 +16069,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 6191358499429177618, guid: 2e900128b3ee02d41b6e95329bcad708, type: 3}
-  color: blue
+  color: red
   starField: 0
   crossed: 0
-  available: 0
+  available: 1
   group: 6
   groupsize: 0
   xPos: 6

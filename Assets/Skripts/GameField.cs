@@ -6,10 +6,10 @@ public class GameField : MonoBehaviour
 {
     public int PlayerIndex;
     public GameObject Square;
-    private int Rows = 7;
-    private int Columns = 15;
+    public int Rows;
+    public int Columns;
     public GameObject[,] squares = new GameObject[15, 7];
-    public int joker = 10;
+    public int joker = 8;
     public int roundCount = 0;
 
     public int blueCount;
@@ -24,14 +24,14 @@ public class GameField : MonoBehaviour
 
     public void Start() {
         this.name = "GameField " + PlayerIndex;
-        pushSquaresintoArray(); // delte this later
+        pushSquaresintoArray();
         Controller = transform.parent.gameObject;
         ControllerScript = Controller.GetComponent<Controller>();
         ResetColorCount();
     }
 
 
-    private void ResetColorCount(){
+    private void ResetColorCount() {
         List<GameObject> blueFields = new List<GameObject>();
         List<GameObject> greenFields = new List<GameObject>();
         List<GameObject> redFields = new List<GameObject>();
@@ -40,7 +40,7 @@ public class GameField : MonoBehaviour
 
         foreach(GameObject field in squares){
             string color = field.GetComponent<FieldSquare>().color;
-            switch (color)    {
+            switch (color) {
         case "blue":        blueFields.Add(field);      break;
         case "green":       greenFields.Add(field);     break;
         case "yellow":      yellowFields.Add(field);    break;
@@ -53,7 +53,6 @@ public class GameField : MonoBehaviour
         yellowCount = yellowFields.Count;
         greenCount = greenFields.Count;
         orangeCount = orangeFields.Count;
-
     }
 
     public void setNeighborsAvailable(GameObject square) {
@@ -68,7 +67,7 @@ public class GameField : MonoBehaviour
         coordinateList.Add(new Vector2(x, y+1));
 
         //remove Coords out of Bonds
-        coordinateList.RemoveAll(coord => coord.x < 0 || coord.x >= 15 || coord.y < 0 || coord.y >= 7);
+        coordinateList.RemoveAll(coord => coord.x < 0 || coord.x >= Columns || coord.y < 0 || coord.y >= Rows);
 
 
         foreach (var coord in coordinateList) {
@@ -134,7 +133,7 @@ public class GameField : MonoBehaviour
         }
     }
 
-    public void UpdateGroups(List<GameObject> fieldsToInspect){ //TODO Not working correctly -> proof it again
+    public void UpdateGroups(List<GameObject> fieldsToInspect){
         List<GameObject> groupUpdateList = GetGroupUpdateList(fieldsToInspect);
         foreach( GameObject field in groupUpdateList){
             List<GameObject> group = new List<GameObject>();
@@ -147,23 +146,18 @@ public class GameField : MonoBehaviour
 
 private List<GameObject> GetGroup(List<GameObject> group){
     int refSize;
-    do
-    {
+    do {
         refSize = group.Count;
         List<GameObject> newNeighbors = new List<GameObject>();
 
-        foreach (GameObject field in group)
-        {
+        foreach (GameObject field in group) {
             List<GameObject> neighbors = GetNeighborsOfTheSameColor(field);
-            foreach (GameObject neighbor in neighbors)
-            {
-                if (!group.Contains(neighbor) && !newNeighbors.Contains(neighbor))
-                {
+            foreach (GameObject neighbor in neighbors) {
+                if (!group.Contains(neighbor) && !newNeighbors.Contains(neighbor)) {
                     newNeighbors.Add(neighbor);
                 }
             }
         }
-
         group.AddRange(newNeighbors);
     }
     while (group.Count != refSize);
@@ -195,7 +189,7 @@ private List<GameObject> GetGroup(List<GameObject> group){
     }
 
 
-    private List<GameObject> GetNeighborsOfTheSameColor(GameObject field){ //TODO  nochmal überprüfen -> proof again
+    private List<GameObject> GetNeighborsOfTheSameColor(GameObject field){
        List<GameObject> neighbors = new List<GameObject>();
         if (!field){
             return neighbors;
@@ -211,7 +205,9 @@ private List<GameObject> GetGroup(List<GameObject> group){
             int newX = (int)coords.x + dx[i];
             int newY = (int)coords.y + dy[i];
 
-            if (newX >= 0 && newX < 15 && newY >= 0 && newY < 7){
+            Vector2 coordinates = new Vector2(newX, newY);
+
+            if (CoordinatesInBond(coordinates)){
                 GameObject neighbor = squares[newX, newY];
                 if (neighbor.GetComponent<FieldSquare>().color == refColor && !neighbor.GetComponent<FieldSquare>().crossed && neighbor.GetComponent<FieldSquare>().group == group){
                     neighbors.Add(neighbor);
@@ -225,6 +221,7 @@ private List<GameObject> GetGroup(List<GameObject> group){
     public List<GameObject> GetAvailableFieldsForGroupAndColor(string color, int number){
         List<GameObject> availableFields = new List<GameObject>();
         foreach(GameObject square in squares){
+            if (square){
             string squareColor = square.GetComponent<FieldSquare>().color;
             bool available = square.GetComponent<FieldSquare>().available;
             bool crossed = square.GetComponent<FieldSquare>().crossed;
@@ -238,6 +235,7 @@ private List<GameObject> GetGroup(List<GameObject> group){
                     availableFields.Add(square);
                 }
             }
+        }
         }
         return availableFields;
     }
@@ -258,12 +256,9 @@ private List<GameObject> GetGroup(List<GameObject> group){
     }
 
 
-    public List<GameObject> getSquaresColumn(int column)
-    {
+    public List<GameObject> getSquaresColumn(int column)    {
         List<GameObject> squaresOfColumn = new List<GameObject>();
-
-        if (column >= 0 && column < this.Columns)
-        {
+        if (column >= 0 && column < this.Columns)        {
             for (int j = 0; j < Rows; j++){
                 GameObject square = this.squares[column, j];
                 squaresOfColumn.Add(square);
@@ -275,6 +270,13 @@ private List<GameObject> GetGroup(List<GameObject> group){
 
     public GameObject GetSquareField(Vector2 coordinates){
         return squares[(int)coordinates.x,(int)coordinates.y];
+    }
+
+    public bool CoordinatesInBond(Vector2 coordinates){
+        int newX = (int)coordinates.x;
+        int newY = (int)coordinates.y;
+        bool inBounds = (newX >= 0 && newX < Columns) && (newY >= 0 && newY < Rows);
+        return inBounds;
     }
 
     public void ReduceJoker(){

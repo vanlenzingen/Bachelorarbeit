@@ -25,30 +25,15 @@ public class FieldSquare : MonoBehaviour
     private void SetInitialGroup(){
         initialGroup = group;
     }
-
-//TODO SomeTimes None Inside???
     private void SetColor(string color)    {
         SpriteRenderer squareRenderer = this.GetComponent<SpriteRenderer>();
-        switch (color)
-        {
-            case "":
-                squareRenderer.color = Color.white;
-                break;
-            case "red":
-                squareRenderer.color = Color.red;
-                break;
-            case "blue":
-                squareRenderer.color = Color.blue;
-                break;
-            case "green":
-                squareRenderer.color = Color.green;
-                break;
-            case "yellow":
-                squareRenderer.color = Color.yellow;
-                break;
-            case "orange":
-                squareRenderer.color = new Color(1.0f, 0.5f, 0.0f);
-                break;
+        switch (color) {
+            case "":        squareRenderer.color = Color.white;                     break;
+            case "red":     squareRenderer.color = Color.red;                       break;
+            case "blue":    squareRenderer.color = Color.blue;                      break;
+            case "green":   squareRenderer.color = Color.green;                     break;
+            case "yellow":  squareRenderer.color = Color.yellow;                    break;
+            case "orange":  squareRenderer.color = new Color(1.0f, 0.5f, 0.0f);     break;
         }
     }
 
@@ -56,10 +41,10 @@ public class FieldSquare : MonoBehaviour
         crossed = false;
         group = initialGroup;
         SetColor(this.color);
-        if (xPos != 7){
-            this.available = false;
-        }
-        if (starField)            {
+          if (xPos != 7){
+           this.available = false;
+         }
+        if (starField) {
                 Transform star = transform.GetChild(0);
                 SpriteRenderer starRenderer = star.GetComponent<SpriteRenderer>();
                 starRenderer.color = Color.white;
@@ -76,8 +61,7 @@ public class FieldSquare : MonoBehaviour
         }
     }
 
-    public void CrossField()
-    {
+    public void CrossField()  {
         if (!crossed) { 
             SpriteRenderer squareRenderer = this.GetComponent<SpriteRenderer>();
             squareRenderer.color = Color.grey;

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7314423496892994697
+--- !u!1 &2530695489457028984
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7965761032696542988}
-  - component: {fileID: 1916860859545433741}
+  - component: {fileID: 9020012806024248078}
+  - component: {fileID: 3564271943007719451}
   m_Layer: 0
-  m_Name: Controller
+  m_Name: ControllerAvailable
   m_TagString: Controller
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7965761032696542988
+--- !u!4 &9020012806024248078
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7314423496892994697}
+  m_GameObject: {fileID: 2530695489457028984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3087282, y: 1.2894459, z: 0.40605927}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1916860859545433741
+--- !u!114 &3564271943007719451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7314423496892994697}
+  m_GameObject: {fileID: 2530695489457028984}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d12dc115291940d48a406c7d3b3a0b4c, type: 3}
@@ -48,7 +48,7 @@ MonoBehaviour:
   ColorDicePrefab: {fileID: 9023913380923807266, guid: 6d0fcb0514fb706498b295eabb434279, type: 3}
   numberDice: []
   colorDice: []
-  field: {fileID: 1723668205108455379, guid: de00c42cefaf6d243bd9a2597444daf6, type: 3}
+  field: {fileID: 1723668205108455379, guid: b150da626b93150d4babc40354a2e116, type: 3}
   playerNumber: 1
   timeout: 1
-  Agent: {fileID: 8917323269675721845, guid: 2195ff64a71b8ef56ad61adedd221dce, type: 3}
+  Agent: {fileID: 8917323269675721845, guid: 001519bfb779c67fc9310065d1e348ae, type: 3}
