@@ -7,6 +7,11 @@
 \clearpage
 \chapter{Auswertung und Ausblick}
 
+
+\section{Bewertung der Ergebnisse}
+\section{Weitere Schritte zur Verbesserung des Agenten}
+\section{Diskussion}
+
 Dieser Abschnitt stellt den Schlusspunkt der Arbeit dar. In diesem Abschnitt (und im Diskussionteil) erwartet der Leser, 
 dass er Antworten auf die in der Einleitung formulierten Fragestellungen findet und sich vergewissert, 
 dass diese wirksam verteidigt wurden und mit der von Ihnen formulierten \enquote{These} übereinstimmen.
@@ -34,3 +39,37 @@ Inhalt des fünften Kapitels (im Allgemeinen):
     \item Was wurde durch die Ergebnisse gezeigt? Geben Sie eine bewertende (selbstkritische) Aussage ab zu Ihrem Schaffen
     \item Geben Sie einen Ausblick was nun folgen sollte/könnte.
 \end{itemize}
+
+
+
+\lstinputlisting[caption=C-Code Beispiel,label={lst:C-Code-Beispiel},language=C]{Programmcode/test.c}
+\lstinputlisting[caption=Python-Code Beispiel,label={lst:Python-Code-Beispiel},language=Python]{Programmcode/test.py}
+
+\textbf{Es ist dabei auch darauf zu achten, dass Quelltexte wenn möglich natürlich nicht über das Seitenende gehen sollten, wie z.B. beim Python-Code Bsp. Setzen Sie daher auch manuell
+Seitenumbrüche.} Quelltexte welche eine Seite übersteigen, sind ohnehin eher als Anhang zu betrachten $\rightarrow$ siehe dazu Beschreibung im Anhang.
+
+
+
+\lstinputlisting[caption=HTML-Code Beispiel,label={lst:HTML-Code-Beispiel},language=HTML]{Programmcode/test.html}
+
+Nachfolgend noch ein einfaches Beispiel ein Bild einzubinden. Da es sich um Bild\textit{unterschriften} handelt, gehört diese somit \underline{unter} die Abbildung, anders als bei Tabellen\textit{überschriften}.\\
+Im \LaTeX-Quelltext sieht man die Optionen für das Einbinden des Bildes. Neben \texttt{scale} wäre auch \texttt{width} möglich mit dem Parameter \texttt{linewidth} oder \texttt{textwidth}.\\
+Achten Sie vor allem auf die Lesbarkeit der auf dem Bild befindlichen Informationen, unter der stetigen Annahme, dass es sich um ein ausgedrucktes Dokument handelt. Dort gibt es keinen Zoom.
+
+Empfehlenswert wäre soweit möglich mit skalierbaren Vektorgrafiken zu arbeiten. Allerdings müssten Sie diese vor dem Aufruf von LaTeX in PDFs wandeln (inkscape IM-logo.svg -o IM-logo.pdf) oder Inkscape installieren und LaTeX mit --shell-escape aufrufen.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[scale=0.6]{Bilder/logos/IM-logo}
+    \caption{Das Logo von Informatik und Medien }
+\end{figure}
+
+\begin{figure}[!t]
+    \centering
+    \includesvg[width=0.6\columnwidth]{Bilder/logos/IM-logo.svg}
+    \caption{Das Logo von Informatik und Medien }
+\end{figure}
+
+Bedenken Sie bei allen Beschriftungen, egal ob Abbildungen, Tabellen oder Quelltexte, dass Sie, sofern diese nicht Ihrer eigenen Schaffenskraft entsprangen,
+diese referenzieren. Im Beispiel der Tabelle \ref{tab:Beispieltabelle} sieht man, dass sich der Beschreibungstext direkt an der Tabelle von dem im Tabellenverzeichnis unterscheidet,
+genau um den Punkt der Referenz.
