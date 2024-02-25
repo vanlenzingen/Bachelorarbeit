@@ -8,13 +8,7 @@
 \chapter{Implementation}
 
 \section{Umsetzung in Unity}
-Wie wurde Programmiert
-UML?
-Flussdiagramm?
-
-
-\subsection{Controller}
-Der Controller stellt alle Funktionalitäten bereit, welche gebraucht werden um die Lernumgebung zu initialisieren.
+Der \textbf{Controller} stellt alle Funktionalitäten bereit, welche gebraucht werden um die Lernumgebung zu initialisieren.
 Er besitzt Prefabs des Agents, des GameFields und der Würfel und initialisiert diese zum Start.
 Weiterhin implementiert der Controller die Funktionalität der Punktevergabe, welche für eine Mehrspielervariante genutzt werden kann.
 Der Controller ist das Parent aller anderen Elemente und so ist er das Zentrale Element der Steuerung. Auch das wiederholte rollen der Würfel wird im Controller angestoßen.
@@ -22,8 +16,7 @@ Der Controller war sehr hilfreich beim erstellen paralleler Trainings, da dieser
 
 <Code ausschnitt?>
 
-\subsection{NumberDice}
-Der NumberDice implementiert die Logic, welche für das Würfeln und Visualisieren der Zahlenwürfel benötigt wird.
+Der \textbf{NumberDice} implementiert die Logic, welche für das Würfeln und Visualisieren der Zahlenwürfel benötigt wird.
 Die Visualisierung funktioniert mit selbst angefertigten Sprites welche in einem Sortierten Array liegen und je nach gewürfelter Zahl initialisiert und gerendert werden.
 Beim wiederholten Würfeln, wird das initialisierte Sprite destroyed und ein neues erzeugt.
 Damit ist gewährleistet, dass immer das aktuelle Würfelergebnis angezeigt wird.
@@ -31,19 +24,15 @@ Die Zahl des Würfels wird als Integer wert gespeichert, wobei er die Zahlen 1-6
 Die Zahl sechs entspricht dem Zahlenjoker.
 
 <Code>
-<Bild der Sprites>
 
-\subsection{ColorDice}
-Wie der Zahlenwürfel implementiert der ColorDice die Funktionalität des Würfelns der Farben.
+Wie der Zahlenwürfel implementiert der \textbf{ColorDice} die Funktionalität des Würfelns der Farben.
 Diese werden als String dargestellt und kann folgende Werte annehmen: \{'blue', 'green','red', 'yellow', 'orange', 'joker'\}
 Zur Visualisierung wird ein Sprite erstellt, was in der gewürfelten Farbe eingefärbt wird.
 Ein schwarzes Feld entspricht dem gewürfelten Farbjoker.
 
 <Code>
 
-
-\subsection{GameField}
-Das GameField stellt das tatsächliche Spielfeld dar.
+Das \textbf{GameField} stellt das tatsächliche Spielfeld dar.
 Es implementiert die benötigten Methoden um die SquareFields zu verwalten und rückzusetzen.
 Außerdem wird die Anzahl der Joker in ihm gehalten.
 
@@ -60,20 +49,32 @@ Funktionalitäten:
     \item  Rücksetzen der Felder um ein neuest Spiel zu Starten
 \end{itemize}
 
-\subsection{FieldSquare}
-
-Die FieldSquares stellen die einzelnen Teilfelder des Spielfeldes dar.
+Die \textbf{FieldSquares} stellen die einzelnen Teilfelder des Spielfeldes dar.
 Gehaltene Informationen:
-\setlist{noitemsep}
-\begin{itemize}
-    \item Feld ist ein Sternfeld    -> bool
-    \item Farbe des Feldes          -> string
-    \item Feld ist ausgefüllt       -> bool
-    \item Feld ist verfügbar        -> bool
-    \item Clustergröße              -> int
-    \item X Koordinate des Feldes   -> int
-    \item Y Koordinate des Feldes   -> int
-\end{itemize}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Beschreibung} & \textbf{Typ} & \textbf{Wertebereich} \\
+    \hline
+    Feld ist ein Sternfeld & Boolean & True / False \\
+    \hline
+    Farbe des Feldes & String & - \\
+    \hline
+    Feld ist ausgefüllt & Boolean & True / False \\
+    \hline
+    Feld ist verfügbar & Boolean & True / False \\
+    \hline
+    Clustergröße & Integer & 1-6 \\
+    \hline
+    X-Koordinate des Feldes & Integer & 0-14 \\
+    \hline
+    Y-Koordinate des Feldes & Integer & 0-6 \\
+    \hline
+    \end{tabular}
+    \caption{Beschreibung, Typ und Wertebereich der Feldinformationen}
+    \label{tab:field_info}
+\end{table}
 
 \subsection{Visualisierung}
 Die Visualisierung des Spielfeldes erfolgt über ein angefertigtes Prefab. In diesem wurden die 105 Kästchen in einem Raster von 15x7 instanziiert und manuell mit den Informationen versehen. Dieses manuell angefertigte Spielfeld wurde als Prefab gespeichert und dient als Umgebung für den Agenten.
@@ -83,67 +84,105 @@ Zu Beginn des Spiels, werden die Felder in die Farben der hinterlegten Informati
 
 <Code einfärben der Felder>
 
-\subsection{Agent}
-
 \section{Implementierung des Agenten}
 Der Agent ist die Schnittstelle zwischen dem Environment und dem RL.
 Dem Agent werden alle nötigen Informationen des Spielfeldes übergeben. Diese werden in ein Neuronales Netz übertragen, welches wiederum die Ausgabewerte in einem Vektor zurück an den Agent leitet.
 Anschließend wird der Vektor verarbeitet und die gewählten Aktionen werden ausgeführt.
-Für gute Aktionen erhält der Agent positive Rewards, bei schlechten Aktionen wird der Zug übersprungen.
-
-\subsection{Observations}
-Zu Beginn jeder Episode (=SChritt) muss dem Agenten der aktuelle Zustand des Feldes übermittelt werden, aus welchem er die bestmögliche Option für einen Zug berechnet. In der ML Agents Bibliothek gibt es hierfür eine vorgefertigte Methode mit dem Namen CollectObservations.
-Die bearbeitet einen Observationsvektor zu welchem die Informationen hinzugefügt werden.
-Wärend des Trainings eines Neuronalen Netzes, muss die Anzahl der Observations gleich bleiben. Das bedeutet es ist nicht ohne weiteres möglich ein Model auf unterschiedlichen Spielfeldern zu trainieren, da sic hso die Anzahl der Observations unterscheiden würden.
+Für gute Aktionen erhält der Agent positive Rewards, bei schlechten Aktionen wird der Zug übersprungen. \\
+Zu Beginn jeder Episode, welche einem Spielzug entspricht, muss dem Agenten der aktuelle Zustand des Feldes übermittelt werden, aus welchem er die bestmögliche Option für einen Zug berechnet. In der ML Agents Bibliothek gibt es hierfür eine vorgefertigte Methode mit dem Namen CollectObservations. Die bearbeitet einen Observationsvektor zu welchem die Informationen hinzugefügt werden.
+Wärend des Trainings eines Neuronalen Netzes, muss die Anzahl der Observations gleich bleiben. Das bedeutet es ist nicht ohne weiteres möglich ein Model auf unterschiedlichen Spielfeldern zu trainieren, da sich so die Anzahl der Observations unterscheiden würden.
 
 
 Aufbau der Observations:
-\setlist{noitemsep}
-\begin{itemize}
-\item Anzahl der verbleibenden Joker: int[0-11]
-\item Anzahl der gespielten Runden: int[0-30]
-\item Ergebnis der Zahlenwürfel: int[0-5]
-\item Ergebnis der Farbwürfel: Vector6[0,1]
-\end{itemize}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Index} & \textbf{Beschreibung} & \textbf{Type} & \textbf{Wertebereich} \\
+    \hline
+    0 & Anzahl der verbleibenden Joker & Float & $[0 - 1]$ \\
+    \hline
+    1 & Anzahl der gespielten Runden & Float & $[0 - 1]$ \\
+    \hline
+    2 & Ergebnis des ersten Zahlenwürfels & Float & $[0 - 1]$ \\
+    \hline
+    3 & Ergebnis des zweiten Zahlenwürfels & Float & $[0 - 1]$ \\
+    \hline
+    4-9 & Ergebnis des ersten Farbwürfels & Vector6 (Binary) & $(0, 1)^6$ \\
+    \hline
+    10-15 & Ergebnis des zweiten Farbwürfels & Vector6 (Binary) & $(0, 1)^6$ \\
+    \hline
+    16-24 & Informationen für Feld 1 & - & - \\
+    \hline
+    25-33 & Informationen für Feld 2 & - & - \\
+    \hline
+    ... & ... & ... & ... \\
+    \hline
+    953-961 & Informationen für Feld 105 & - & - \\
+    \hline
+    \end{tabular}
+    \caption{Zusammenfassung der Observations und Feldinformationen}
+    \label{tab:combined_table}
+\end{table}
+    
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Stelle im Vektor} & \textbf{Beschreibung} & \textbf{Type} & \textbf{Wertebereich} \\
+    \hline
+    $k+16$ - $k+21$ & Farbe des Feldes $k$ & Vector6 (Binary) & $(0, 1)^6$ \\
+    \hline
+    $k+22$ & Ist Feld $k$ verfügbar & Boolean & True / False \\
+    \hline
+    $k+23$ & Ist Feld $k$ abgestrichen & Boolean & True / False \\
+    \hline
+    $k+24$ & Ist Feld $k$ ein Sternfeld & Boolean & True / False \\
+    \hline
+    \end{tabular}
+    \caption{Observation jedes einzelnen Feldes}
+    \label{tab:field_variables}
+\end{table}
 
-Für jedes Feld:
-\setlist{noitemsep}
-\begin{itemize}\subsection{Bewertungsmetriken für RL-Agenten}
-\item Farbe des Feldes: Onehot vector5[0,1]
-\item Ist das Feld verfügbar: bool
-\item Ist das Feld bereits abgestrichen: bool
-\item Ist das Feld ein Sternfeld:  bool
-% \item Clustergröße des Feldes: int {1-5}
-% \item Koordinate des Feldes: Vector2(int, int) 0-7 / 0-15
-\end{itemize}
-
-<skript Collect Observations>
-
-//TODO 2 verschiedene Varianten was mach ich damit?
-
-\subsection{Actions}
+<skript Collect Observations> \\
 Anhand der Observations berechnet das Neuronale Netz einen Ausgabevektor. Mit diesem führt der Agent nun bestimmte Aktionen aus und versucht sein Ergebnis (Rewards) zu maximieren.
 Anhand der gesammelten Rewards wird das Neuronale Netz nun angepasst um das bestmögliche Ergebnis zu erreichen.
 
 
 Aufbau Actionbuffer:
-\setlist{noitemsep}
-\begin{itemize}
-\item Index des gewählten ZahlenWürfels: int (0-1)
-\item Index des gewählten Farbwürfels: int(0-1)
-\item Jokerzahl int 0-4
-\item X Koordinate des gewählten Feldes: int (0-14)
-\item Y Koordinate des gewählten Feldes: int(0-7)
-\item 4 x Continous Action für die Auswahl der Nachbarn
-\end{itemize}
-
-what to do unterscheidliche actions
-
+\begin{table}[htbp]
+    \centering
+    \caption{Index und Beschreibung der Variablen}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Index} & \textbf{Beschreibung} & \textbf{Typ} & \textbf{Wertebereich} \\
+    \hline
+    \textbf{1} & Index des gewählten ZahlenWürfels & Integer & 0-1 \\
+    \hline
+    \textbf{2} & Index des gewählten Farbwürfels & Integer & 0-1 \\
+    \hline
+    \textbf{3} & Jokerzahl & Integer & 0-4 \\
+    \hline
+    \textbf{4} & X-Koordinate des gewählten Feldes & Integer & 0-14 \\
+    \hline
+    \textbf{5} & Y-Koordinate des gewählten Feldes & Integer & 0-7 \\
+    \hline
+    \textbf{6} &  Action 1 für die Auswahl der Nachbarn & Continuous & - \\
+    \hline
+    \textbf{7} &  Action 2 für die Auswahl der Nachbarn & Continuous & - \\
+    \hline
+    \textbf{8} &  Action 3 für die Auswahl der Nachbarn & Continuous & - \\
+    \hline
+    \textbf{9} &  Action 4 für die Auswahl der Nachbarn & Continuous & - \\
+    \hline
+    \end{tabular}
+    \label{tab:variables}
+\end{table}
 
 \newpage
-\subsection{Erklärung des Alghorhytmus mit dem Beispielhaften Ausgabevektor (1,1,0,3,4, 0.6, 0.5, 0.4, 0.8)}
+\subsection{Erklärung des Alghorithmus}
+Im folgenden wird der Ablauf zum Wählen der Felder erläutert. Im Beispiel wird der Ausgabevektor \textbf{(1 , 1 , 0 , 3 , 4 , 0.6 , 0.5 , 0.4 , 0.8)} verwendet. \\
 Die ersten beiden Stellen des Ausgabevektors entsprechen den gewählten Würfeln.
-
 Im ersten Schritt werden alle Feldes des Spielfedes untersucht, ob sie ein valides Ziel für das gewürfelte Ergebnis bilden.
 Die ergibt sich aus der Gruppe der Spielfelder, der Farbe und ob das Kästchen verfügbar ist.
 Valide Felder werden in eine Liste (availableFields) aus Verfügbaren Feldern geschrieben.
@@ -166,12 +205,22 @@ Sofern der Agent ein valides Feld gewählt hat, wird dieses in eine weitere List
 \end{figure}
 
 Im nächsten Schritt wird jedem der verfügbaren Nachbarn abhängig der Gesamtanzahl ein Wertebereich zwischen 0 und 1 zugewiesen. Anhand des discreten Wertes des Ausgabevektors wird das Zugehörige Feld in pickedFields geschrieben.
-\setlist{noitemsep}
-\begin{itemize}
-\item Feld(3,5) 0 bis 0.33
-\item Feld(4,4) 0.33 bis 0.66
-\item Feld(3,3) 0.66 bis 0.99
-\end{itemize}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{FeldKoordinaten} & \textbf{von} & \textbf{bis} \\
+    \hline
+    (3,5) & 0 & 0.33 \\
+    \hline
+    (4,4) & 0.33 & 0.66 \\
+    \hline
+    (3,3) & 0.66 & 0.99 \\
+    \hline
+    \end{tabular}
+    \caption{Bereiche für bestimmte Felder}
+    \label{tab:field_ranges}
+\end{table}
 
 \begin{figure}[!h]
 	\centering
@@ -211,8 +260,6 @@ Dies führte dazu, dass das Spiel nicht gespielt wurde.
 Dementsprechend war das Training auf diese Weise nicht erfolgreich und musste überarbeitet werden.
 
 
-
-
 \subsection{Training des Agenten mit Zusatz Belohnungen}
 In den Bereits erläuterten Trainingsversuchen, bekam der Agent für vermeintlich gute Züge eine Belohnung und für schlechte Züge eine Bestrafung.
 
@@ -241,88 +288,79 @@ Die Grafiken zeigen deutlich, dass je länger der Agent tranierte desto kleiner 
 Dies spricht dafür, dass es zum sogenannten 'reward hacking' gekommen ist. Dieses Phänomen tritt auf, wenn der Agent sein eigentliches Ziel nicht erreichen kann, da er eine andere (falsche) Strategie erlernt, welche nicht zum eigentlichen Ziel führt. Ursache hierfür ist, dass der Agent sein eigentliches Ziel (das ausfüllen von Spalten) nie erreicht und somit nicht erlernt.
 
 
+\section{Untersuchung des Trainingsfortschritts}
+In diesem Versuch wird Untersucht ob das Training des Agenten erfolgreich war. In jeder Messreihe wurden 1Mio. Lernschritte druchgeführt was ca 33k gespielten Spielen entspricht. Im Anschluss wurde aus den gespielten Spielen die durchschnittliche erreichte Punktzahl kalkuliert und in einem Graphen dargestellt.
 
-\subsection{Training des Agenten ohne Zusatz Belohnungen}
-Da auch der vorhergehende Versuch keinen klaren trend zu Verbesserung aufzeigte, entschied ich mich, einzig die Punktebewertung des Spiel als Rewards zu benutzen.
-Auf diese Weise bekommt der Agent nur Rewards für Punkte welche er auch für das spielen erhält. Auf diese Weise, kann er sich keine 'Falschen' Strategien erarbeiten, welche aus falsch festgelegten Rewards resultieren.
+\subsection{Trainiert vs Untrainiert}
+In diesem Experiment, werden die erreichten Punkte und Rewards eines untrainierten Agenten gegenüber den erziehlten Ergebnissen eines trainierten Agenten gegenübergestellt. Der trainierte Agent hat bereichts 25 Mio. Spielzüge absolviert, was ungefähr 830k gespielten Spielen entspricht.
+Der untrainierte Agent bekommt ein neu initialisiertes NN, welches zufällig gewählte Kantengewichte zwischen den Neuronen erhält.
+Wie an den Graphen zu erkennen ist, hat der trainierte Agent tatsächlich einen höheren Durchschnitt an erzielten Punkten pro Spiel. Auch die gesammlten Rewards sind bei dem trainierten Agenten höher.
+Dies liegt daran, dass die Rewards so festgelegt sind, dass der Agent sie nur erhält, wenn er auch im Spiel punktet.
+Schon während des Trainings war ein merklicher Unterschied festzustellen, deshalb war das Ergebnis dieses Experiments zu erwarten.
 
-Rewards gibt es nun für:
-Ausfüllen von 'Sternfeldern' -> 2.0f
-Auffüllen einer kompletten Spalte -> (je nach Spalte 5-1)
-Ausfüllen einer kompletten Farbe -> (5 Punkte)
-Übrig gebliebene Joker nach Ablauf der 30 Spielrudnen -> 1 Punkt pro Joker
 
-\subsection{Verbesserung des Trainings}
-Verlängerung der Spieldauer
+\begin{figure}[!t]
+    \centering
+    \includegraphics[scale=0.6]{Bilder/Points_trained_vs_untrained.png}
+    \caption{Durchschnitt der erreichten Punkte pro Spiel }
+\end{figure}
+\begin{figure}[!th]
+    \centering
+    \includegraphics[scale=0.3]{Bilder/vergleich_untrained_vs_trained.png}
+    \caption{Übersicht der gesammelten Belohnungen}
+\end{figure}
 
-Training mit Speziellen Feldern
 
-Verkleinerung des Feldes
+\subsection{Trainiert vs Training mit Sonderfeldern}
+In diesem Experiment wurden die erreichten Puntke und Rewards des normal trainierten Agenten gegenüber einem Agenten, welcher mit Sonderfeldern trainiert wurde gegenüber gestellt.
+Diese speziellen Felder waren einheitlich in die verschiedenen Farben eingefärbt bzw jedes Feld wurde mit Sternfeldern versehen. Dies sollte dazu führen, dass der Agent besser zuweisen kann welche Stellen im Observationsvektor für welche Information zuständig sind.
 
-Änderung der Policy
+Das Training mit speziellen Feldern führte zu einer Verschlechterung des Ergebnisses wie die zwei nachfolgenden Grafiken zeigen.
 
-\subsection{Training Auswahl Initiales Feld}
-Da der Agent keine großen Fortschritte erzielen konnte, entscheid ich den Agenten das erste Feld durch Koordinaten zu wählen.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[scale=0.6]{Bilder/special_trained_vs_trained.png}
+    \caption{Durchscnbitt der erreichten Punkte beides Agenten}
+\end{figure}
+
+
+\subsection{Trainiert vs Training mit mehr Spielzügen}
+
+In diesem Exderiment sollte der trainierte Agent das mit mehr zur Verfügung stehenden Spielzügen absolvieren. Dies hat zur Folge, dass während des Trainings häufiger zur Puntkewertung kommt und der Agent auf diese Ziele hin arbeiten kann.
+Wie die Grafiken zeigen, hatte das Experiment eine Verbesserung der Ergebnisse zur Folge.
+
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[scale=0.3]{Bilder/moreTurnsVsTrained.png}
+    \caption{Durchschnitt der gesammelten Punkte}
+\end{figure}
+
+
+\subsection{Überprüfung auf Overfitting}
+In diesem Experiment, sollte der Agent auf Overfitting überprüft werden. trainierte und untrainierter Agent spielten das Spiel nach normalen Spielregeln auf einem anderen Spielfeld.
+In den Grafiken ist erkennbar, dass beide Agenten ungefähr die selben Rewards gesammelten haben. Der untraineirte Agent konnte im Durchschnitt jedoch etwas mehr Punkte sammeln.
+Dies schließt darauf, dass der Agent tatsächlich nur auf dem im Training verwendeten Spielfeld gut performen kann und neue SPielfelder erst erlernen muss.
+
+Interessant ist weiterhin, dass der Durchschnitt aller Punkte etwa 2 Punkte über dem des anderen SPielfeldes liegt, was auf eine höhere Schwierigkeit des anderen SPielfeldes hinweist.
+
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[scale=0.6]{Bilder/orange_field_evaluation.png}
+    \caption{durchschnitt an gesammelten Punkten}
+\end{figure}
+\begin{figure}[!t]
+    \centering
+    \includegraphics[scale=0.3]{Bilder/orange_field_trained_vs_untrained.png}
+    \caption{gesammelte Rewards der beiden Agenten}
+\end{figure}
+
+\subsection{Training Auswahl KoordinatenPicker}
+Da der Agent keine großen Fortschritte erzielen konnte, entschied ich den Agenten das erste Feld durch Koordinaten zu wählen.
 Dies setzte Vorraus, dass die Koordinaten der einzelnen Felder in die Observations mit aufgenommen werdne musste und die Observations noch größer wurden.
 Damit der Agent lernen kann, welche Kooordinaten zu welchen Feldern gehören, entschied ic hmic hdazu ihn auf einem Spielfeld trainieren zu lassen, wo alle Teilfelder verfügbar sind.
 Rewards wurden vergeben für Valide ausgewählte Felder, in Abhängigkeit der gewürfelten Zahlen.
 
 Im nächsten Schritt wird dieses vortrainierte NN genutzt um das Spiel mit richtigen Regeln zu spielen.
-
-
-
-Zusammenhängende Ergebnisse werden vorteilhaft in Form von Tabellen (wie in \ref{TabLaufzeiten}) dargestellt.
-
-\begin{table}[h!]
-	\begin{center}
-        \caption{Laufzeiten in sec, gemessen mit einem Intel xy-8 Ghz Prozessor}\label{TabLaufzeiten}
-		\begin{tabular}{|c||c|c|c|}
-			\hline 
-			& Verfahren X & Verfahren Y & Verfahren Z \\ 
-			\hline 
-			\hline 
-			\hspace{.1cm}
-			Problem A & 300 & 340 & 210 \\ 
-			\hline 
-			\hspace{.1cm}
-			Problem B & 730 & 580 & 540 \\ 
-			\hline 
-			\hspace{.1cm}
-			Problem C & 610 & 420 & 440 \\ 
-			\hline 
-			\hspace{.1cm}
-			Problem D & 895 & 790 & 520 \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-\end{table}
-
-
-Funktionale Zusammenhänge hingegen lassen sich in Form von Diagrammen oder Grafiken (Siehe \ref{fig:Abbildung1}) darstellen.
-
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=1\textwidth]{Bilder/Abbildung1}
-	\caption{Statistical analysis of the received power}
-	\label{fig:Abbildung1}
-\end{figure}
-
-Ein guter Ergebnisteil erfordert Literaturzitate (vielleicht auch gar keine) und die Bekanntgabe des Ergebnisses sollte von einer Interpretation und Diskussion begleitet werden. 
-
-
-\newpage
-
-\underline{Aber \textbf{mindestens} folgende Punkte}\\
-Inhalt des vierten Kapitels (im Allgemeinen):
-\begin{itemize}
-    \item Setzen Sie nun den Plan aus dem dritten Kapitel wenigstens prototypisch um
-    \item Ziel ist es Ihre Überlegungen und Darlegungen zu beweisen
-    \item Diskutieren von Problemen
-    \item Zusätzlich zu der Umsetzung bedarf es (von Ihnen zu definierender) Tests, um die Funktionalität zu beweisen
-    \begin{itemize}
-        \item Laufzeittests, Lasttests, etc.
-        \item Produzieren Sie Ergebnisse um zu zeigen, dass Ihr Ansatz funktioniert und besser/schlechter ist
-        \item \glqq schlechter\grqq{} sein, bedeutet nicht, dass Ihre Arbeit schlecht ist! Am Ende zählt Ihr Ansatz und die Idee
-    \end{itemize}
-\end{itemize}

@@ -1,0 +1,44 @@
+\acswitchoff 
+\babel@toc {ngerman}{}\relax 
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Theoretische Grundlagen}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Neuronale Netze}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Reinforcement Learning}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Markov- Entscheidungsprozess}{6}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Das Würfelspiel: Noch Mal}{8}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Spielablauf Einspieler Variante}{9}{subsection.2.3.1}%
+\contentsline {chapter}{\numberline {3}Konzeption}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Anforderungsanalyse}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Auswahl Entwicklungsumgebung}{11}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Methodik}{11}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Implementierung des Spiels}{11}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Entwicklung des Reinforcement Learning-Agenten}{12}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Trainingsprozess und Anpassungen}{12}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Überwachung und Analyse}{12}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Iteration und Abschluss}{12}{subsection.3.3.5}%
+\contentsline {chapter}{\numberline {4}Implementation}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Umsetzung in Unity}{14}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Visualisierung}{16}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Implementierung des Agenten}{16}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Erklärung des Alghorithmus}{18}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Trainingsversuche}{20}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Trainingsversuche}{20}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Training des Agenten mit Zusatz Belohnungen}{20}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Untersuchung des Trainingsfortschritts}{22}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Trainiert vs Untrainiert}{22}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Trainiert vs Training mit Sonderfeldern}{23}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Trainiert vs Training mit mehr Spielzügen}{24}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Überprüfung auf Overfitting}{25}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Training Auswahl KoordinatenPicker}{26}{subsection.4.4.5}%
+\contentsline {chapter}{\numberline {5}Auswertung und Ausblick}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Bewertung der Ergebnisse}{27}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Schritte zur Verbesserung des Agenten}{27}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Diskussion}{27}{section.5.3}%
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{31}{chapter*.4}%
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{32}{chapter*.5}%
+\contentsline {chapter}{\nonumberline Quellcodeverzeichnis}{33}{chapter*.6}%
+\contentsline {chapter}{Abkürzungsverzeichnis}{I}{chapter*.7}%
+\contentsline {chapter}{\numberline {A}Anhang - Abbildungen}{II}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Anhang - Tabellen}{III}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Anhang - Quelltexte}{IV}{appendix.C}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -6,59 +6,34 @@
 \clearpage
 \chapter{Konzeption}
 
-\section{Das Würfelspiel: Noch Mal}
-Im modellierten Spiel 'Noch Mal!' geht es darum so viele Kästchen anzukreuzen und möglichst viele Spalten und gleichfarbige Kästchen auszufüllen.
-Farb und Zahlenwürfel müssen kombiniert werden um entsprechend zusammenhängende Felder der gewählten Farbe abzukreuzen.
+\section{Anforderungsanalyse}
+Einfache Implementierung
+Visualisierung um Agent besser überwachen zu können
+Frameworks für RL 
+Frameworks für Überwachung
 
-\subsection{Spielablauf Einspieler Variante}
-Der Spieler Würfelt alle 4 Würfel bestehend aus 2 Farb und 2 Zahlenwürfeln.
-Der Spieler hat 30 Züge dazu Zeit maximale Punkte zu erreichen.
-Anschließend wählt er ein paar aus Farb- und Zahlenwürfel aus und kreuzt entsprechend des gewürfelten Paares verfügbare Felder auf dem Spielfeld ab.
-Ein Spieler darf immer entscheiden ob er Würfelwürfe zum ankreuzen verwenden möchte oder nicht.
-Um Kästchen anzukreuzen, wählt der Spieler eine Kombination aus Zahlen bzw Farbwürfel aus. Wählt er Beispielsweise 'Grün' und '2' so müssen 2 zusammenhängende Grüne Felder angekreuzt werden.
+\section{Auswahl Entwicklungsumgebung}
+
+\section{Methodik}
+
+In diesem Abschnitt wird der methodische Ansatz zur Implementierung des Spiels und des Trainings des Reinforcement Learning-Agenten beschrieben.
 
 
-\newpage
-\subsection{Spielregeln}
-\setlist{noitemsep}
-\begin{enumerate}
-    \item Felder in der Spalte H sind von Beginn an verfügbar
-    \item Alle Kreuze müssen immer zusammenhängend in genau einem Farbblock der gewählten Farbe platziert werden
-    \item Kreuze müssen waagerecht oder senkrecht benachbart zu einem bereits abgekreuzten Feld oder Teil der Spalte H sein um verfügbar zu werden
-    \item Es müssen genau so viele Felder angekreuzt werden wie das Ergebnis des gewählten Zahlenwürfels
-    \item Es könnte nicht mehr als 5 Kästchen in einem Zug abgekreuzt werden
-    \item Wird ein Zahlenjoker gewählt, darf der Spieler eine Zahl von 1-5 bestimmen
-    \item Wird ein Farbjoker gewählt, darf der Spieler eine Farbe bestimmen
-\end{enumerate}
+\subsection{Implementierung des Spiels}
 
-\subsection{Optimale Spielstrategie}
-Um im Spiel 'Noch mal' eine möglichst hohe Anzahl an Punkten zu erhalten, ist es wichtig nach folgenden Strategien zu spielen:
-\setlist{noitemsep}
-\begin{enumerate}
-    \item \textbf{Priorisierung äußerer Spalten}: Äußere Spalten geben mehr Punkte, weshalb es wichtig ist diese komplett auszufüllen.
-    \item \textbf{Beenden von Farben}: Vollständig ausgefüllte Farben geben viele Extrapunkte. Im späten Spielverlauf kann es besser sein Farben komplett zu füllen anstatt Spalten zu werten.
-    \item \textbf{Priorisieren von Sternfeldern}: Jedes ausgefüllte Sternfeld gibt 2 Punkte, eine gute Spielweise ist es so viele Sternfelder wie möglich auszufüllen.
-    \item \textbf{Strategische Nutzung von Jokern}: Ungenutzte Joker geben zum Ende des Spiels Punkte. Es ist gut diese so wenig wie möglich zu nutzen um Extrapunkte zu bekommen. Jedoch können mit Hilfe von Jokern einfach bestimmte Felder gewählt werden, welche benötigt werden um eine Wertung zu erzielen.
-\end{enumerate}
+Das Spiel 'Noch mal' wurde mithilfe der Unity Engine implementiert, um eine interaktive und visuell ansprechende Umgebung zu schaffen. Die Programmierung der Spielregeln, die Benutzerinteraktion sowie die visuelle Darstellung des Spielzustands wurden dabei in Unity realisiert.
 
-\subsection{Punktevergabe}
-Gelingt es dem  Spieler eine Spalte komplett auszufüllen, erhält er je nach Spalte Punkte dafür. Äußere Spalten mehr Punkte vergeben werden als für die inneren Spalten.
-Für das komplette Ausfüllen einer Farbe erhält der Spieler fünf Punkte pro ausgefüllter Farbe.
-Jedes nicht angekreuzte Sternfeld gibt zum Spielende zwei Minuspunkte.
-Für jeden übrig gebliebenen Joker erhält der Spieler zum ende des Spiels einen Punkt.
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Bilder/Abbildung2.png}
-	\caption{Quelle: Aus Noch mal! von Schmidt Spiele, Grafik zur Erklärung der Punktevergabe}
-\end{figure}
+\subsection{Entwicklung des Reinforcement Learning-Agenten}
 
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Bilder/Punkte.jpeg}
-	\caption{Quelle: Aus Noch mal! von Schmidt Spiele, Grafik zur Bewertung der gesammelten Punkte der Einspieler Variante}
-\end{figure}
-\newpage
+Der Reinforcement Learning-Agent wurde mithilfe der Unity ML-Agents-Bibliothek entwickelt, um das Spiel 'Noch mal' zu erlernen und zu spielen. ML-Agents bietet eine umfassende Sammlung von Werkzeugen und Algorithmen für die Implementierung von RL-Agenten in Unity.
 
-\section{Vorgehensweise}
-Gehört das hier tatsächlich hin?
-Und wenn ja was soltle dewn nhjier bittte rein?
+\subsection{Trainingsprozess und Anpassungen}
+
+Der Agent wurde in der implementierten Unity-Umgebung trainiert, wobei mehrere Trainingsdurchläufe durchgeführt wurden. Während des Trainingsprozesses wurden kontinuierliche Anpassungen vorgenommen, einschließlich der Feinabstimmung der Hyperparameter, der Modifikation der Netzwerkarchitektur und der Einführung von Maßnahmen zur Förderung der Exploration. Diese Anpassungen wurden iterativ durchgeführt, um die Leistung und die Lernfähigkeit des Agenten zu verbessern und sicherzustellen, dass er die Spielumgebung optimal erfasst und Strategien entwickelt, um die gestellten Ziele zu erreichen.
+
+\subsection{Überwachung und Analyse}
+Der Fortschritt des Trainings wurde kontinuierlich überwacht und analysiert. Dies umfasste die Überprüfung von Trainingsmetriken wie der durchschnittlichen Belohnung, der Verfolgung der Lernkurven und der Analyse von Trainingsfehlern.
+
+\subsection{Iteration und Abschluss}
+Der Trainingsprozess wurde iterativ durchgeführt, wobei der Agent kontinuierlich verbessert wurde, bis eine zufriedenstellende Leistung erreicht wurde. Nach Abschluss des Trainings wurde der finale Agent auf seine Fähigkeit getestet, das Spiel 'Noch mal' zu spielen, und seine Leistung wurde bewertet.
+Dieser methodische Ansatz ermöglichte es, einen effektiven Reinforcement Learning-Agenten für das Spiel 'Noch mal' zu entwickeln und zu trainieren, der in der Lage ist, das Spiel auf einem angemessenen Niveau zu spielen.
