@@ -154,7 +154,7 @@ public class KreuzelAgent : Agent
              }
              GameObject initialField = GameFieldSkript.GetSquareField(coordinates);
              if (initialField.GetComponent<FieldSquare>().crossed){
-                 Debug.Log("Field Already Crossed");
+//                  Debug.Log("Field Already Crossed");
                  //AddReward(-0.2f);
 
              }

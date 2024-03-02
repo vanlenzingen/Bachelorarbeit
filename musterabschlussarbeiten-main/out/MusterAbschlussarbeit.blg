@@ -1,9 +1,9 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'out/MusterAbschlussarbeit.blg'
-[77] biber:340> INFO - === So Feb 25, 2024, 17:30:14
-[90] Biber.pm:418> INFO - Reading 'out/MusterAbschlussarbeit.bcf'
-[145] Biber.pm:972> INFO - Found 0 citekeys in bib section 0
-[157] bbl.pm:654> INFO - Writing 'out/MusterAbschlussarbeit.bbl' with encoding 'UTF-8'
-[157] bbl.pm:757> INFO - Output to out/MusterAbschlussarbeit.bbl
-[157] Biber.pm:130> WARN - The file 'out/MusterAbschlussarbeit.bcf' does not contain any citations!
-[157] Biber.pm:132> INFO - WARNINGS: 1
+[89] biber:340> INFO - === Fr Mär  1, 2024, 12:25:22
+[105] Biber.pm:418> INFO - Reading 'out/MusterAbschlussarbeit.bcf'
+[162] Biber.pm:972> INFO - Found 0 citekeys in bib section 0
+[174] bbl.pm:654> INFO - Writing 'out/MusterAbschlussarbeit.bbl' with encoding 'UTF-8'
+[174] bbl.pm:757> INFO - Output to out/MusterAbschlussarbeit.bbl
+[174] Biber.pm:130> WARN - The file 'out/MusterAbschlussarbeit.bcf' does not contain any citations!
+[174] Biber.pm:132> INFO - WARNINGS: 1

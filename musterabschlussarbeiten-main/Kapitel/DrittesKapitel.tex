@@ -7,33 +7,12 @@
 \chapter{Konzeption}
 
 \section{Anforderungsanalyse}
-Einfache Implementierung
-Visualisierung um Agent besser überwachen zu können
-Frameworks für RL 
-Frameworks für Überwachung
+In dieser Arbeit soll das Spiel 'Noch mal!' implementiert werden und von einem RL Agenten gespielt werden. Das Spiel muss nicht vom Nutzer selbst spielbar sein, sondern dem Agenten lediglich eine Lernumgebung bereitstellen in welcher er trainieren kann. Es müssen alle Funktionalitäten des Spiels abgedeckt werden. Weiterhin muss die Lernumgebung das Durchführen von illegalen Zügen unterbinden.
+Die Visualisierung des Spiels steht nicht im Vordergrund. Trotzdessen soll sie vorhanden sein, da sie ermöglicht Verhaltensweisen des Agenten besser Überwachen zu können. Um das Spiel zu programmieren, wird eine leistungsfähige Gameengine vorrausgesetzt, welche die Umsetzung vereinfacht. Da der Lernprozess des Agenten im Vordergrund steht, wird eine benutzerfreundliche Schnittstelle vorrausgesetzt, welche ein RL Framework bereit stellt und die Verwaltung von Modellen vereinfacht. Um das Training zu Überwachen und verschiedene Modelle miteinander zu vergleichen, wird ein Framework benötigt, welche den Trainingsprozess grafisch darstellt. Dieses soll ohne großen Mehraufwand nutzbar sein. Das Training von RL Modellen, benötigt viel Rechenzeit. Deshalb ist es nötig Traningsprozesse zu parallelisieren um die Dauer des Trainings zu minimieren. Die Parallelisierung sollte von der Entwicklungsumgebung bereitgestellt werden. Um verschiedene Trainingsszenarien zu erstellen und situativ einsetzen zu können, ist es notwendig mehrere Lernumgebungen konfigurieren und speichern zu können.  
 
-\section{Auswahl Entwicklungsumgebung}
-
-\section{Methodik}
-
-In diesem Abschnitt wird der methodische Ansatz zur Implementierung des Spiels und des Trainings des Reinforcement Learning-Agenten beschrieben.
-
-
-\subsection{Implementierung des Spiels}
-
-Das Spiel 'Noch mal' wurde mithilfe der Unity Engine implementiert, um eine interaktive und visuell ansprechende Umgebung zu schaffen. Die Programmierung der Spielregeln, die Benutzerinteraktion sowie die visuelle Darstellung des Spielzustands wurden dabei in Unity realisiert.
-
-\subsection{Entwicklung des Reinforcement Learning-Agenten}
-
-Der Reinforcement Learning-Agent wurde mithilfe der Unity ML-Agents-Bibliothek entwickelt, um das Spiel 'Noch mal' zu erlernen und zu spielen. ML-Agents bietet eine umfassende Sammlung von Werkzeugen und Algorithmen für die Implementierung von RL-Agenten in Unity.
-
-\subsection{Trainingsprozess und Anpassungen}
-
-Der Agent wurde in der implementierten Unity-Umgebung trainiert, wobei mehrere Trainingsdurchläufe durchgeführt wurden. Während des Trainingsprozesses wurden kontinuierliche Anpassungen vorgenommen, einschließlich der Feinabstimmung der Hyperparameter, der Modifikation der Netzwerkarchitektur und der Einführung von Maßnahmen zur Förderung der Exploration. Diese Anpassungen wurden iterativ durchgeführt, um die Leistung und die Lernfähigkeit des Agenten zu verbessern und sicherzustellen, dass er die Spielumgebung optimal erfasst und Strategien entwickelt, um die gestellten Ziele zu erreichen.
-
-\subsection{Überwachung und Analyse}
-Der Fortschritt des Trainings wurde kontinuierlich überwacht und analysiert. Dies umfasste die Überprüfung von Trainingsmetriken wie der durchschnittlichen Belohnung, der Verfolgung der Lernkurven und der Analyse von Trainingsfehlern.
-
-\subsection{Iteration und Abschluss}
-Der Trainingsprozess wurde iterativ durchgeführt, wobei der Agent kontinuierlich verbessert wurde, bis eine zufriedenstellende Leistung erreicht wurde. Nach Abschluss des Trainings wurde der finale Agent auf seine Fähigkeit getestet, das Spiel 'Noch mal' zu spielen, und seine Leistung wurde bewertet.
-Dieser methodische Ansatz ermöglichte es, einen effektiven Reinforcement Learning-Agenten für das Spiel 'Noch mal' zu entwickeln und zu trainieren, der in der Lage ist, das Spiel auf einem angemessenen Niveau zu spielen.
+\section{Auswahl der Verwendeten Technologien}
+Basierend auf der Anforderungsanalyse ergeben sich Anforderungen an die Technologien welche verwendet werden. 
+Um das Spiel 'Noch mal!' zu programmieren wurde Unity als bevorzugte Gameengine gewählt. Unity stellt eine Vielzahl von Bibliotheken zur Verfügung und ermöglicht die unkomplizierte Umsetzung der Visualisierung des Spiels. C\# ist die gängige Programmiersprache in Unity, deshalb wird das Projekt in C\# umgesetzt. \\
+Für die Erstellung des RL-Agenten wurde das ML-Agents Framework verwendet. Es bietet alle Funktionalitäten zum übergeben von Beobachtungen an den Agenten und Schnittstellen zum Ausführen von Aktionen im Lernumfeld. Weiterhn ist es möglich Aktionen mit Belohnungen zu Bewerten. Durch die Integration von ML Agents wird sichergestellt, dass der Agent den aktuellen Zustand des Spiels richtig übergeben bekommt und darauf reagieren kann. \\
+Zu grafischen Darstellung des Trainingsprozesses wurde Tensorboard genutzt. Die Integration erfolgt ohne großen Mehraufwand und bietet die automatisierte Erstellung von Grafiken des Trainingsprozesses. Dies erleichtert die Evaluierung von verschiedenen Modellen. \\ Zur Visualisierung der erreichten Punkte der Agenten, wurde Python mit Matplotlib verwendet. Mit Matplotlib ist es möglich grafische Darstellungen von Daten zu erstellen. Mithilfe dieser Grafiken ist es möglich Rückschlüsse auf das Verhalten der Agenten zu führen beziegungsweise deren Trainingsfortschritte zu bewerten. \\
+Mit der Verwendung jener genannten Technologien und Frameworks ist es möglich den Rahmen dieser Arbeit zu bearbeiten und zu bewerten.

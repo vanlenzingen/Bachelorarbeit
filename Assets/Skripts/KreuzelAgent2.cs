@@ -19,11 +19,10 @@ public class KreuzelAgent2 : Agent
     private string logFilePath;
     private string rewardLogPath;
     private float rewardSum;
+    public int rewards = 0;
 
     void LogPoints(string data){
-        if (controller.name == "Controller" || controller.name == "Controller_1" || controller.name == "Controller_2"){
-            //File.AppendAllText(logFilePath, data + "\n");
-        }
+            File.AppendAllText(logFilePath, data + "\n");
     }
 
     public override void OnEpisodeBegin() {
@@ -71,13 +70,9 @@ public class KreuzelAgent2 : Agent
 
 
     public override void CollectObservations(VectorSensor sensor)    {
-        // get Observation for amount of jokers 1
         sensor.AddObservation(GetJokersObservation());
-
-        // get Observation for current Round 1
         sensor.AddObservation(GetRoundCountObservation());
 
-        // get Observation for NumberDice 2x1
         foreach (Transform childTransform in controller.transform) {
             if (childTransform.CompareTag("NumberDice")) {
                 GameObject child = childTransform.gameObject;
@@ -85,13 +80,12 @@ public class KreuzelAgent2 : Agent
             }
         }
 
-        // get Observation for ColorDice 2x6
         foreach (Transform child in controller.transform) {
             if (child.CompareTag("ColorDice")) {
                 sensor.AddObservation(GetColorIndexOneHotFromColor(child.GetComponent<ColorDice>().color));
             }
         }
-        // get Observation for fields 105* (6+2+4)
+
         int counter = 0;
         foreach (Transform squareField in GameField.transform) {
             if (squareField.CompareTag("Square")) {
@@ -110,9 +104,7 @@ public class KreuzelAgent2 : Agent
 
     public void Start(){
         new WaitForSeconds(3.0f);
-
-        logFilePath = Application.dataPath + "/LogPoints_red.txt";
-        rewardLogPath = Application.dataPath + "/LogRewards_red.txt";
+        logFilePath = Application.dataPath + "/Points/punktwolke.txt";
     }
 
 
@@ -120,14 +112,15 @@ public class KreuzelAgent2 : Agent
     public override void OnActionReceived(ActionBuffers actionBuffers) {
             if (GameFieldSkript.roundCount > 30){
                 GameFieldSkript.AddToPoints(GameFieldSkript.joker);
-                //Debug.Log("Added: Joker Points:" + GameFieldSkript.joker);
                 AddReward(GameFieldSkript.joker);
-                rewardSum += GameFieldSkript.joker;
-                LogPoints(GameFieldSkript.points.ToString());
-                Debug.Log(rewardSum-30);
-                rewardSum = 0;
-//                 LogRewards(rewardSum.ToString());
+                rewards += GameFieldSkript.joker;
+
+                string logRewards = rewards.ToString() + " " + GameFieldSkript.points.ToString();
+                LogPoints(logRewards);
                 GameFieldSkript.NewGame();
+                logRewards = "";
+                rewards = 0;
+                EndEpisode();
                 }
 
 
@@ -148,6 +141,10 @@ public class KreuzelAgent2 : Agent
 
 
             List<GameObject> availableFields = GameFieldSkript.GetAvailableFieldsForGroupAndColor(choosenColor, choosenNumber);
+            if (choosenColor == "blue" && choosenNumber <= 4) {
+                Debug.Log(availableFields.Count);
+            }
+            Debug.Log(availableFields.Count);
             if (availableFields.Count==0){
                 EndEpisode();
                 return;
@@ -177,10 +174,9 @@ public class KreuzelAgent2 : Agent
     private void CheckForStarFields(List<GameObject> pickedFields){
         foreach(GameObject field in pickedFields){
             if(field.GetComponent<FieldSquare>().starField){
-              AddReward(2.0f);
-                rewardSum += 2.0f;
-                //Debug.Log("Added starField Points:" + 2);
                 GameFieldSkript.AddToPoints(2);
+                AddReward(2.0f);
+                rewards += 2;
             }
         }
     }
@@ -191,10 +187,9 @@ public class KreuzelAgent2 : Agent
             int remainingFields = GameFieldSkript.CheckNumberOfRemainingFields(column);
             if (remainingFields == 0){
                float points = ControllerScript.GetColumnPoints(column);
-//                Debug.Log("Column" + column +" = " + points);
                GameFieldSkript.AddToPoints((int)points);
                AddReward(points);
-               rewardSum += points;
+               rewards += (int)points;
             }
         }
     }
@@ -215,10 +210,10 @@ public class KreuzelAgent2 : Agent
         if (GameFieldSkript.GetColorCount(refColor) == 0){
             GameFieldSkript.ColorFinished();
             float points = ControllerScript.GetColorPoints(refColor);
-            //Debug.Log("Added Color Points:" + points);
             GameFieldSkript.AddToPoints((int)points);
             AddReward(points);
-            rewardSum += points;
+            rewards += (int)points;
+
         }
     }
 
@@ -243,16 +238,12 @@ public class KreuzelAgent2 : Agent
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().available);
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().starField);
         sensor.AddObservation(squareField.GetComponent<FieldSquare>().crossed);
-//         sensor.AddObservation(GetCoordinateObservation(squareField.gameObject));
-//         sensor.AddObservation(GetGroupObservation(squareField.gameObject));
     }
 
     private void PushEmptyField(VectorSensor sensor){
         sensor.AddObservation(GetColorIndexOneHotFromColor(""));
         sensor.AddObservation(0);
         sensor.AddObservation(0);
-        sensor.AddObservation(0);
-        sensor.AddObservation(new Vector2(0,0));
         sensor.AddObservation(0);
     }
 

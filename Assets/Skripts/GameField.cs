@@ -59,7 +59,6 @@ public class GameField : MonoBehaviour
         FieldSquare squareScript = square.GetComponent<FieldSquare>();
         int x = squareScript.getX();
         int y = squareScript.getY();
-
         List<Vector2> coordinateList = new List<Vector2>();
         coordinateList.Add(new Vector2(x-1, y));
         coordinateList.Add(new Vector2(x + 1, y));
@@ -104,11 +103,10 @@ public class GameField : MonoBehaviour
 
     public void pushSquaresintoArray() {
         FieldSquare[] childSquares = GetComponentsInChildren<FieldSquare>();
-
         foreach (var square in childSquares){
-            int x = square.getY();
-            int y = square.getX();
-            this.squares[y, x] = square.gameObject;
+            int x = square.getX();
+            int y = square.getY();
+            this.squares[x, y] = square.gameObject;
         }
     }
 
@@ -220,8 +218,10 @@ private List<GameObject> GetGroup(List<GameObject> group){
 
     public List<GameObject> GetAvailableFieldsForGroupAndColor(string color, int number){
         List<GameObject> availableFields = new List<GameObject>();
+        int counter = 0;
         foreach(GameObject square in squares){
-            if (square){
+            counter ++;
+//             Debug.Log(square.GetComponent<FieldSquare>().color + ":" + square.GetComponent<FieldSquare>().group);
             string squareColor = square.GetComponent<FieldSquare>().color;
             bool available = square.GetComponent<FieldSquare>().available;
             bool crossed = square.GetComponent<FieldSquare>().crossed;
@@ -235,7 +235,6 @@ private List<GameObject> GetGroup(List<GameObject> group){
                     availableFields.Add(square);
                 }
             }
-        }
         }
         return availableFields;
     }

@@ -22,7 +22,7 @@ public class KreuzelAgent3 : Agent
 
     void LogPoints(string data){
         if (controller.name == "Controller" || controller.name == "Controller_1" || controller.name == "Controller_2"){
-            //File.AppendAllText(logFilePath, data + "\n");
+            File.AppendAllText(logFilePath, data + "\n");
         }
     }
 
@@ -111,8 +111,8 @@ public class KreuzelAgent3 : Agent
     public void Start(){
         new WaitForSeconds(3.0f);
 
-        logFilePath = Application.dataPath + "/LogPoints_red.txt";
-        rewardLogPath = Application.dataPath + "/LogRewards_red.txt";
+        logFilePath = Application.dataPath + "/LogPoints_coordinate_picker.txt";
+
     }
 
 
@@ -123,7 +123,6 @@ public class KreuzelAgent3 : Agent
                 //Debug.Log("Added: Joker Points:" + GameFieldSkript.joker);
                 //AddReward(GameFieldSkript.joker);
                 //rewardSum += GameFieldSkript.joker;
-                Debug.Log(GameFieldSkript.roundCount);
                 //LogPoints(GameFieldSkript.roundCount.ToString());
                 //Debug.Log(rewardSum-30);
                 rewardSum = 0;
@@ -161,11 +160,11 @@ public class KreuzelAgent3 : Agent
              }
             List<GameObject> availableFields = GameFieldSkript.GetAvailableFieldsForGroupAndColor(choosenColor, choosenNumber);
             if (!availableFields.Contains(initialField) || initialField.GetComponent<FieldSquare>().available == false){
-//                 Debug.Log("Not Available");
+                 Debug.Log("Not Available");
                 AddReward(-0.3f);
                 EndEpisode();
             } else {
-//                 Debug.Log("Available");
+                 Debug.Log("Available");
                 AddReward(0.1f);
             List<GameObject> pickedFields = new List<GameObject>();
             pickedFields.Add(initialField);
