@@ -68,7 +68,6 @@ public class Controller : MonoBehaviour
             GameObject duplicatedField = Instantiate(GameFieldPrefab, transform.position, Quaternion.identity);
             duplicatedField.transform.position = new Vector3(0, (i + 1) * 15, 0);
             duplicatedField.GetComponent<GameField>().setPlayer(i + 1);
-
         }
     }
 
@@ -84,22 +83,11 @@ public class Controller : MonoBehaviour
     }
 
     public float GetColumnPoints(int column){
-//         if (finishedColumns[column] == false) {
-//             finishedColumns[column] = true;
             return GetMaximumColumnPoints(column);
-//         } else {
-//             Debug.Log("Get Minimum Points");
-//             return GetMinimumColumnPoints(column);
-//             }
         }
 
     public float GetColorPoints(string color){
-//         if (Colors[color] == false){
-//             finishedColors[color] = true;
             return 5.0f;
-//             } else {
-//             return 3.0f;
-//         }
     }
 
 
@@ -133,31 +121,4 @@ public class Controller : MonoBehaviour
             return 0.0f;
         }
     }
-
-    private float GetMinimumColumnPoints(int column) {
-        switch (column) {
-            case 0:
-            case 14:
-                return 3.0f;
-            case 1:
-            case 2:
-            case 3:
-            case 11:
-            case 12:
-            case 13:
-                return 2.0f;
-            case 4:
-            case 5:
-            case 6:
-            case 8:
-            case 9:
-            case 10:
-                return 1.0f;
-            case 7:
-                return 0.0f;
-            default:
-                return 0.0f;
-        }
-    }
-
 }

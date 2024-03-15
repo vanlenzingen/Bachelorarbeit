@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.1.18)  2 MAR 2024 12:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  15 MAR 2024 17:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -125,13 +125,13 @@ Class scrbook Info: Redefining `\numberline' on input line 7146.
 \bibindent=\dimen138
 )
 
-/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:33: LaTeX Error: Invalid UTF-8 byte sequence (�\fi).
+/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:34: LaTeX Error: Invalid UTF-8 byte sequence (�\fi).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33 ...command{\fakult채t}{Informatik und Medien}
+l.34 ...command{\fakult채t}{Informatik und Medien}
                                                   
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -140,13 +140,13 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:33: LaTeX Error: Invalid UTF-8 byte "A4.
+/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:34: LaTeX Error: Invalid UTF-8 byte "A4.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33 ...command{\fakult채t}{Informatik und Medien}
+l.34 ...command{\fakult채t}{Informatik und Medien}
                                                   
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -155,50 +155,50 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:33: LaTeX Error: Missing \begin{document}.
+/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:34: LaTeX Error: Missing \begin{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33 ...command{\fakult채t}{Informatik und Medien}
+l.34 ...command{\fakult채t}{Informatik und Medien}
                                                   
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:33: Missing number, treated as zero.
+/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:34: Missing number, treated as zero.
 <to be read again> 
                    \protect 
-l.33 ...command{\fakult채t}{Informatik und Medien}
+l.34 ...command{\fakult채t}{Informatik und Medien}
                                                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:33: You can't use `macro parameter character #' in horizontal mode.
+/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:34: You can't use `macro parameter character #' in horizontal mode.
 \@yargd@f #1#2->\def \reserved@a ##1#1##
                                         2##{\expandafter \def \expandafter #...
-l.33 ...command{\fakult채t}{Informatik und Medien}
+l.34 ...command{\fakult채t}{Informatik und Medien}
                                                   
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:33: You can't use `macro parameter character #' in horizontal mode.
+/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:34: You can't use `macro parameter character #' in horizontal mode.
 \@yargd@f #1#2->\def \reserved@a ##1#1##2##
                                            {\expandafter \def \expandafter #...
-l.33 ...command{\fakult채t}{Informatik und Medien}
+l.34 ...command{\fakult채t}{Informatik und Medien}
                                                   
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:33: You can't use a prefix with `begin-group character {'.
+/home/tony/Bachelorarbeit/musterabschlussarbeiten-main/MusterAbschlussarbeit.tex:34: You can't use a prefix with `begin-group character {'.
 <to be read again> 
                    {
-l.33 ...command{\fakult채t}{Informatik und Medien}
+l.34 ...command{\fakult채t}{Informatik und Medien}
                                                   
 I'll pretend you didn't say \long or \outer or \global or \protected.
 
@@ -217,9 +217,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language48). Reported on input line 105.
+(babel)             (\language19). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language48). Reported on input line 108.
+(babel)             (\language19). Reported on input line 108.
 )) (/usr/share/texlive/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthography)
  (/usr/share/texlive/texmf-dist/tex/generic/babel-german/ngermanb.ldf
@@ -692,7 +692,7 @@ l.45 \msg_fatal:nn {fontspec} {cannot-use-pdftex}
 Here is how much of TeX's memory you used:
  14059 strings out of 478287
  305393 string characters out of 5849289
- 898646 words of memory out of 5000000
+ 898660 words of memory out of 5000000
  32155 multiletter control sequences out of 15000+600000
  470321 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191

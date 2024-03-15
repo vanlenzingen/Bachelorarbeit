@@ -8,5 +8,5 @@
         int randomIndex = Random.Range(0, colors.Count);
         string colorResult = colors[randomIndex];
         this.color = colorResult;
-        //SetColor(color);  // show dice
+        SetColor(color);  // show dice
     }

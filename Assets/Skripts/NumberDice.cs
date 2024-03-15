@@ -30,11 +30,11 @@ public class NumberDice : MonoBehaviour
     public void Roll() {
         int numberResult = Random.Range(1, 7);
         this.number = numberResult;
-//         ShowNumber();
+        ShowNumber(); // display dice
     }
 
     public void Reroll() {
-//         Destroy(this.transform.GetChild(0).gameObject);
+        Destroy(this.transform.GetChild(0).gameObject); // display dice
         Roll();
     }
 }

@@ -65,9 +65,7 @@ public class GameField : MonoBehaviour
         coordinateList.Add(new Vector2(x, y-1));
         coordinateList.Add(new Vector2(x, y+1));
 
-        //remove Coords out of Bonds
         coordinateList.RemoveAll(coord => coord.x < 0 || coord.x >= Columns || coord.y < 0 || coord.y >= Rows);
-
 
         foreach (var coord in coordinateList) {
             GameObject neighborSquare = squares[(int)coord.x, (int)coord.y];
@@ -142,26 +140,26 @@ public class GameField : MonoBehaviour
     }
 
 
-private List<GameObject> GetGroup(List<GameObject> group){
-    int refSize;
-    do {
-        refSize = group.Count;
-        List<GameObject> newNeighbors = new List<GameObject>();
+    private List<GameObject> GetGroup(List<GameObject> group){
+        int refSize;
+        do {
+            refSize = group.Count;
+            List<GameObject> newNeighbors = new List<GameObject>();
 
-        foreach (GameObject field in group) {
-            List<GameObject> neighbors = GetNeighborsOfTheSameColor(field);
-            foreach (GameObject neighbor in neighbors) {
-                if (!group.Contains(neighbor) && !newNeighbors.Contains(neighbor)) {
-                    newNeighbors.Add(neighbor);
+            foreach (GameObject field in group) {
+                List<GameObject> neighbors = GetNeighborsOfTheSameColor(field);
+                foreach (GameObject neighbor in neighbors) {
+                    if (!group.Contains(neighbor) && !newNeighbors.Contains(neighbor)) {
+                        newNeighbors.Add(neighbor);
+                    }
                 }
             }
+            group.AddRange(newNeighbors);
         }
-        group.AddRange(newNeighbors);
-    }
-    while (group.Count != refSize);
+        while (group.Count != refSize);
 
-    return group;
-}
+        return group;
+    }
 
 
     private void UpdateGroupCountOfEachElementInList(List<GameObject> group){
@@ -221,7 +219,6 @@ private List<GameObject> GetGroup(List<GameObject> group){
         int counter = 0;
         foreach(GameObject square in squares){
             counter ++;
-//             Debug.Log(square.GetComponent<FieldSquare>().color + ":" + square.GetComponent<FieldSquare>().group);
             string squareColor = square.GetComponent<FieldSquare>().color;
             bool available = square.GetComponent<FieldSquare>().available;
             bool crossed = square.GetComponent<FieldSquare>().crossed;

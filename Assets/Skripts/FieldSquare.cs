@@ -15,7 +15,6 @@ public class FieldSquare : MonoBehaviour
     public int yPos;
     private int initialGroup;
 
-    // Start is called before the first frame update
     void Start() {
         SetInitialGroup();
         SetColor(this.color);
@@ -45,13 +44,11 @@ public class FieldSquare : MonoBehaviour
            this.available = false;
          }
         if (starField) {
-                Transform star = transform.GetChild(0);
-                SpriteRenderer starRenderer = star.GetComponent<SpriteRenderer>();
-                starRenderer.color = Color.white;
-            }
-
+            Transform star = transform.GetChild(0);
+            SpriteRenderer starRenderer = star.GetComponent<SpriteRenderer>();
+            starRenderer.color = Color.white;
+        }
     }
-
 
 
     public void SetStarfield() {
@@ -66,8 +63,7 @@ public class FieldSquare : MonoBehaviour
             SpriteRenderer squareRenderer = this.GetComponent<SpriteRenderer>();
             squareRenderer.color = Color.grey;
 
-            if (starField)
-            {
+            if (starField) {
                 Transform star = transform.GetChild(0);
                 SpriteRenderer starRenderer = star.GetComponent<SpriteRenderer>();
                 starRenderer.color = Color.black;

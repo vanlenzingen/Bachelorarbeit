@@ -16,5 +16,627 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{hui_alphago_2018}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6cfb5d2608616bce21708f853f01106e}{%
+           family={Hui},
+           familyi={H\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{6cfb5d2608616bce21708f853f01106e}
+      \strng{fullhash}{6cfb5d2608616bce21708f853f01106e}
+      \strng{bibnamehash}{6cfb5d2608616bce21708f853f01106e}
+      \strng{authorbibnamehash}{6cfb5d2608616bce21708f853f01106e}
+      \strng{authornamehash}{6cfb5d2608616bce21708f853f01106e}
+      \strng{authorfullhash}{6cfb5d2608616bce21708f853f01106e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{How does reinforcement learning join force with deep learning to beat the Go master? Since it sounds implausible, the technology behind it…}
+      \field{journaltitle}{Medium}
+      \field{month}{5}
+      \field{shorttitle}{{AlphaGo}}
+      \field{title}{{AlphaGo}: {How} it works technically?}
+      \field{urlday}{7}
+      \field{urlmonth}{2}
+      \field{urlyear}{2024}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/home/tony/Zotero/storage/HBW88KF8/alphago-how-it-works-technically-26ddcc085319.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://jonathan-hui.medium.com/alphago-how-it-works-technically-26ddcc085319
+      \endverb
+      \verb{url}
+      \verb https://jonathan-hui.medium.com/alphago-how-it-works-technically-26ddcc085319
+      \endverb
+      \keyw{AlphaGo}
+    \endentry
+    \entry{noauthor_alphago_2020}{misc}{}
+      \list{language}{1}{%
+        {en}%
+      }
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Novel AI system mastered the ancient game of Go, defeated a Go world champion, and inspired a new era of AI.}
+      \field{journaltitle}{Google DeepMind}
+      \field{month}{12}
+      \field{title}{{AlphaGo}}
+      \field{urlday}{4}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/home/tony/Zotero/storage/77AGAZ5X/alphago.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://deepmind.google/technologies/alphago/
+      \endverb
+      \verb{url}
+      \verb https://deepmind.google/technologies/alphago/
+      \endverb
+    \endentry
+    \entry{lorenz_reinforcement_2020}{book}{}
+      \name{author}{1}{}{%
+        {{hash=8a862104cedf12a3c82f476a82c0f5f5}{%
+           family={Lorenz},
+           familyi={L\bibinitperiod},
+           given={Uwe},
+           giveni={U\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {de}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{8a862104cedf12a3c82f476a82c0f5f5}
+      \strng{fullhash}{8a862104cedf12a3c82f476a82c0f5f5}
+      \strng{bibnamehash}{8a862104cedf12a3c82f476a82c0f5f5}
+      \strng{authorbibnamehash}{8a862104cedf12a3c82f476a82c0f5f5}
+      \strng{authornamehash}{8a862104cedf12a3c82f476a82c0f5f5}
+      \strng{authorfullhash}{8a862104cedf12a3c82f476a82c0f5f5}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-662-61650-5 978-3-662-61651-2}
+      \field{shorttitle}{Reinforcement {Learning}}
+      \field{title}{Reinforcement {Learning}: {Aktuelle} {Ansätze} verstehen - mit {Beispielen} in {Java} und {Greenfoot}}
+      \field{urlday}{8}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-3-662-61651-2
+      \endverb
+      \verb{file}
+      \verb Lorenz - 2020 - Reinforcement Learning Aktuelle Ansätze verstehen.pdf:/home/tony/Zotero/storage/IGE2YC7S/Lorenz - 2020 - Reinforcement Learning Aktuelle Ansätze verstehen.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/978-3-662-61651-2
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/978-3-662-61651-2
+      \endverb
+    \endentry
+    \entry{ertel_grundkurs_2021}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0ad7b7b50f220390cbf1c36575c6a49a}{%
+           family={Ertel},
+           familyi={E\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {de}%
+      }
+      \list{location}{1}{%
+        {Wiesbaden}%
+      }
+      \list{publisher}{1}{%
+        {Springer Fachmedien Wiesbaden}%
+      }
+      \strng{namehash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{fullhash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{bibnamehash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{authorbibnamehash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{authornamehash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \strng{authorfullhash}{0ad7b7b50f220390cbf1c36575c6a49a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-658-32074-4 978-3-658-32075-1}
+      \field{series}{Computational {Intelligence}}
+      \field{shorttitle}{Grundkurs {Künstliche} {Intelligenz}}
+      \field{title}{Grundkurs {Künstliche} {Intelligenz}: {Eine} praxisorientierte {Einführung}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-3-658-32075-1
+      \endverb
+      \verb{file}
+      \verb Ertel - 2021 - Grundkurs Künstliche Intelligenz Eine praxisorien.pdf:/home/tony/Zotero/storage/5DDBEV4I/Ertel - 2021 - Grundkurs Künstliche Intelligenz Eine praxisorien.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://link.springer.com/10.1007/978-3-658-32075-1
+      \endverb
+      \verb{url}
+      \verb https://link.springer.com/10.1007/978-3-658-32075-1
+      \endverb
+    \endentry
+    \entry{noauthor_kunstliche_nodate}{misc}{}
+      \list{language}{1}{%
+        {de-CH}%
+      }
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Informatik Gymnasium Kirchenfeld}
+      \field{title}{Künstliche {Neuronale} {Netze} {|} {EF} {Informatik} 2023}
+      \field{urlday}{6}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/home/tony/Zotero/storage/WW8E8BJX/08-knn.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://informatik.mygymer.ch/ef2023/07-ki/08-knn.html#kunstliches-neuron
+      \endverb
+      \verb{url}
+      \verb https://informatik.mygymer.ch/ef2023/07-ki/08-knn.html#kunstliches-neuron
+      \endverb
+    \endentry
+    \entry{zai_einstieg_2020}{book}{}
+      \name{author}{2}{}{%
+        {{hash=76ef884b8027b8e3fdc12924571ff47d}{%
+           family={Zai},
+           familyi={Z\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+        {{hash=68d993801b92db44cfb896bf4503c03f}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Brandon},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {München}%
+      }
+      \list{publisher}{1}{%
+        {Hanser}%
+      }
+      \strng{namehash}{108e0694257ede1a3b96e213513bb90b}
+      \strng{fullhash}{108e0694257ede1a3b96e213513bb90b}
+      \strng{bibnamehash}{108e0694257ede1a3b96e213513bb90b}
+      \strng{authorbibnamehash}{108e0694257ede1a3b96e213513bb90b}
+      \strng{authornamehash}{108e0694257ede1a3b96e213513bb90b}
+      \strng{authorfullhash}{108e0694257ede1a3b96e213513bb90b}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-446-45900-7}
+      \field{shorttitle}{Einstieg in {Deep} {Reinforcement} {Learning}}
+      \field{title}{Einstieg in {Deep} {Reinforcement} {Learning}: {KI}-{Agenten} mit {Python} und {PyTorch} programmieren}
+      \field{year}{2020}
+      \verb{file}
+      \verb Zai and Brown - 2020 - Einstieg in Deep Reinforcement Learning KI-Agente.pdf:/home/tony/Zotero/storage/HXZRLXVX/Zai and Brown - 2020 - Einstieg in Deep Reinforcement Learning KI-Agente.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{schmidt_spiele_gmbh_spielregeln_nodate}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=fa760eeedd155a2251e36e7066f0bd50}{%
+           family={GmbH},
+           familyi={G\bibinitperiod},
+           given={Schmidt\bibnamedelima Spiele},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Schmidt Spiele GmbH}%
+      }
+      \strng{namehash}{fa760eeedd155a2251e36e7066f0bd50}
+      \strng{fullhash}{fa760eeedd155a2251e36e7066f0bd50}
+      \strng{bibnamehash}{fa760eeedd155a2251e36e7066f0bd50}
+      \strng{authorbibnamehash}{fa760eeedd155a2251e36e7066f0bd50}
+      \strng{authornamehash}{fa760eeedd155a2251e36e7066f0bd50}
+      \strng{authorfullhash}{fa760eeedd155a2251e36e7066f0bd50}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{shorttitle}{Spielreglen '{Noch} mal!'}
+      \field{title}{Spielregeln '{Noch} mal!'}
+      \verb{file}
+      \verb 49327_Noch_Mal_DE.pdf:/home/tony/Zotero/storage/P4DDMST7/49327_Noch_Mal_DE.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.schmidtspiele.de/files/Produkte/4/49327%20-%20Noch%20mal!/49327_Noch_Mal_DE.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.schmidtspiele.de/files/Produkte/4/49327%20-%20Noch%20mal!/49327_Noch_Mal_DE.pdf
+      \endverb
+    \endentry
+    \entry{sutton_reinforcement_2014}{book}{}
+      \name{author}{2}{}{%
+        {{hash=eb920e5277d3d5fd0903f3cd41e11871}{%
+           family={Sutton},
+           familyi={S\bibinitperiod},
+           given={Richard\bibnamedelima S.},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=63f88d8d8cc347f8cc505512c809e269}{%
+           family={Barto},
+           familyi={B\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Cambridge, Massachusetts}%
+      }
+      \list{publisher}{1}{%
+        {The MIT Press}%
+      }
+      \strng{namehash}{3f6939b7bc162284c23cbb6fb6292c96}
+      \strng{fullhash}{3f6939b7bc162284c23cbb6fb6292c96}
+      \strng{bibnamehash}{3f6939b7bc162284c23cbb6fb6292c96}
+      \strng{authorbibnamehash}{3f6939b7bc162284c23cbb6fb6292c96}
+      \strng{authornamehash}{3f6939b7bc162284c23cbb6fb6292c96}
+      \strng{authorfullhash}{3f6939b7bc162284c23cbb6fb6292c96}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{edition}{Nachdruck}
+      \field{isbn}{978-0-262-19398-6}
+      \field{series}{Adaptive computation and machine learning}
+      \field{shorttitle}{Reinforcement learning}
+      \field{title}{Reinforcement learning: an introduction}
+      \field{year}{2014}
+      \true{nocite}
+      \verb{file}
+      \verb Sutton and Barto - 2014 - Reinforcement learning an introduction.pdf:/home/tony/Zotero/storage/I3L62CDK/Sutton and Barto - 2014 - Reinforcement learning an introduction.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{schulman_proximal_2017}{misc}{}
+      \name{author}{5}{}{%
+        {{hash=3e09bd2a25d237ebdaed560a07c0451e}{%
+           family={Schulman},
+           familyi={S\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=674ede0b9cd02a2bf5fc662972efb9f0}{%
+           family={Wolski},
+           familyi={W\bibinitperiod},
+           given={Filip},
+           giveni={F\bibinitperiod}}}%
+        {{hash=4164e43d8cf919f5e3f8d80f5ea23f36}{%
+           family={Dhariwal},
+           familyi={D\bibinitperiod},
+           given={Prafulla},
+           giveni={P\bibinitperiod}}}%
+        {{hash=a812c46caad94fc8701be37871f303ba}{%
+           family={Radford},
+           familyi={R\bibinitperiod},
+           given={Alec},
+           giveni={A\bibinitperiod}}}%
+        {{hash=be38507da6ab98e7ac01ac2c6b7e13eb}{%
+           family={Klimov},
+           familyi={K\bibinitperiod},
+           given={Oleg},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{8d6613ae59595910252a86a61babf6c8}
+      \strng{fullhash}{a6c6ed5a5aeb74e536f16291276ae392}
+      \strng{bibnamehash}{8d6613ae59595910252a86a61babf6c8}
+      \strng{authorbibnamehash}{8d6613ae59595910252a86a61babf6c8}
+      \strng{authornamehash}{8d6613ae59595910252a86a61babf6c8}
+      \strng{authorfullhash}{a6c6ed5a5aeb74e536f16291276ae392}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We propose a new family of policy gradient methods for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a “surrogate” objective function using stochastic gradient ascent. Whereas standard policy gradient methods perform one gradient update per data sample, we propose a novel objective function that enables multiple epochs of minibatch updates. The new methods, which we call proximal policy optimization (PPO), have some of the beneﬁts of trust region policy optimization (TRPO), but they are much simpler to implement, more general, and have better sample complexity (empirically). Our experiments test PPO on a collection of benchmark tasks, including simulated robotic locomotion and Atari game playing, and we show that PPO outperforms other online policy gradient methods, and overall strikes a favorable balance between sample complexity, simplicity, and wall-time.}
+      \field{month}{8}
+      \field{note}{arXiv:1707.06347 [cs]}
+      \field{title}{Proximal {Policy} {Optimization} {Algorithms}}
+      \field{urlday}{26}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{file}
+      \verb Schulman et al. - 2017 - Proximal Policy Optimization Algorithms.pdf:/home/tony/Zotero/storage/LVJJT6Q6/Schulman et al. - 2017 - Proximal Policy Optimization Algorithms.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1707.06347
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1707.06347
+      \endverb
+      \keyw{Computer Science - Machine Learning}
+    \endentry
+    \entry{broy_logische_2019}{book}{}
+      \name{author}{1}{}{%
+        {{hash=74476573aa159749eafc4a3c16c957b4}{%
+           family={Broy},
+           familyi={B\bibinitperiod},
+           given={Manfred},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {de}%
+      }
+      \list{location}{1}{%
+        {Wiesbaden}%
+      }
+      \list{publisher}{1}{%
+        {Springer Fachmedien Wiesbaden}%
+      }
+      \strng{namehash}{74476573aa159749eafc4a3c16c957b4}
+      \strng{fullhash}{74476573aa159749eafc4a3c16c957b4}
+      \strng{bibnamehash}{74476573aa159749eafc4a3c16c957b4}
+      \strng{authorbibnamehash}{74476573aa159749eafc4a3c16c957b4}
+      \strng{authornamehash}{74476573aa159749eafc4a3c16c957b4}
+      \strng{authorfullhash}{74476573aa159749eafc4a3c16c957b4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-658-26301-0 978-3-658-26302-7}
+      \field{shorttitle}{Logische und {Methodische} {Grundlagen} der {Programm}- und {Systementwicklung}}
+      \field{title}{Logische und {Methodische} {Grundlagen} der {Programm}- und {Systementwicklung}: {Datenstrukturen}, funktionale, sequenzielle und objektorientierte {Programmierung} - {Unter} {Mitarbeit} von {Alexander} {Malkis}}
+      \field{urlday}{8}
+      \field{urlmonth}{2}
+      \field{urlyear}{2024}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1007/978-3-658-26302-7
+      \endverb
+      \verb{file}
+      \verb Broy - 2019 - Logische und Methodische Grundlagen der Programm- .pdf:/home/tony/Zotero/storage/7SRLEAD6/Broy - 2019 - Logische und Methodische Grundlagen der Programm- .pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/978-3-658-26302-7
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/978-3-658-26302-7
+      \endverb
+    \endentry
+    \entry{kramer_computational_2009}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e3c484f4645ee26b259ed57397784c05}{%
+           family={Kramer},
+           familyi={K\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {de}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{e3c484f4645ee26b259ed57397784c05}
+      \strng{fullhash}{e3c484f4645ee26b259ed57397784c05}
+      \strng{bibnamehash}{e3c484f4645ee26b259ed57397784c05}
+      \strng{authorbibnamehash}{e3c484f4645ee26b259ed57397784c05}
+      \strng{authornamehash}{e3c484f4645ee26b259ed57397784c05}
+      \strng{authorfullhash}{e3c484f4645ee26b259ed57397784c05}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-540-79738-8 978-3-540-79739-5}
+      \field{series}{Informatik im {Fokus}}
+      \field{shorttitle}{Computational {Intelligence}}
+      \field{title}{Computational {Intelligence}: {Eine} {Einführung}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2024}
+      \field{year}{2009}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1007/978-3-540-79739-5
+      \endverb
+      \verb{file}
+      \verb Kramer - 2009 - Computational Intelligence Eine Einführung.pdf:/home/tony/Zotero/storage/8TZUQANE/Kramer - 2009 - Computational Intelligence Eine Einführung.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://link.springer.com/10.1007/978-3-540-79739-5
+      \endverb
+      \verb{url}
+      \verb https://link.springer.com/10.1007/978-3-540-79739-5
+      \endverb
+    \endentry
+    \entry{noauthor_using_nodate}{misc}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Using {TensorBoard} to {Observe} {Training} - {Unity} {ML}-{Agents} {Toolkit}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{file}
+      \verb Using TensorBoard to Observe Training - Unity ML-Agents Toolkit:/home/tony/Zotero/storage/PXY29SFN/Using-Tensorboard.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://unity-technologies.github.io/ml-agents/Using-Tensorboard/
+      \endverb
+      \verb{url}
+      \verb https://unity-technologies.github.io/ml-agents/Using-Tensorboard/
+      \endverb
+      \keyw{Metriken}
+    \endentry
+    \entry{yuan_novel_2019}{article}{}
+      \name{author}{5}{}{%
+        {{hash=2f705969e9d39d49e85a23f45b944de2}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Yinlong},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f0ab482fbbe4f827b992485eebee58b5}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Zhu\bibnamedelima Liang},
+           giveni={Z\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=521b1952a867768044e6ba2745963981}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Zhenghui},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=9c3a0fcfd5c04ff5608198335695f0a2}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Xiaoyan},
+           giveni={X\bibinitperiod}}}%
+        {{hash=70918c4b2ea84a37b192abc7fa298d38}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yuanqing},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{6b205b1fc7940dfcb83141236625595f}
+      \strng{fullhash}{b2c5490481f686df94b885dadf23f25f}
+      \strng{bibnamehash}{6b205b1fc7940dfcb83141236625595f}
+      \strng{authorbibnamehash}{6b205b1fc7940dfcb83141236625595f}
+      \strng{authornamehash}{6b205b1fc7940dfcb83141236625595f}
+      \strng{authorfullhash}{b2c5490481f686df94b885dadf23f25f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Reinforcement learning with appropriately designed reward signal could be used to solve many sequential learning problems. However, in practice, the reinforcement learning algorithms could be broken in unexpected, counterintuitive ways. One of the failure modes is reward hacking which usually happens when a reward function makes the agent obtain high return in an unexpected way. This unexpected way may subvert the designer’s intentions and lead to accidents during training. In this paper, a new multi-step state-action value algorithm is proposed to solve the problem of reward hacking. Unlike traditional algorithms, the proposed method uses a new return function, which alters the discount of future rewards and no longer stresses the immediate reward as the main influence when selecting the current state action. The performance of the proposed method is evaluated on two games, Mappy and Mountain Car. The empirical results demonstrate that the proposed method can alleviate the negative impact of reward hacking and greatly improve the performance of reinforcement learning algorithm. Moreover, the results illustrate that the proposed method could also be applied to the continuous state space problem successfully.}
+      \field{issn}{0924-669X, 1573-7497}
+      \field{journaltitle}{Applied Intelligence}
+      \field{month}{8}
+      \field{number}{8}
+      \field{title}{A novel multi-step reinforcement learning method for solving reward hacking}
+      \field{urlday}{11}
+      \field{urlmonth}{2}
+      \field{urlyear}{2024}
+      \field{volume}{49}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \field{pages}{2874\bibrangedash 2888}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1007/s10489-019-01417-4
+      \endverb
+      \verb{file}
+      \verb Yuan et al. - 2019 - A novel multi-step reinforcement learning method f.pdf:/home/tony/Zotero/storage/E3JYVIKZ/Yuan et al. - 2019 - A novel multi-step reinforcement learning method f.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/s10489-019-01417-4
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/s10489-019-01417-4
+      \endverb
+    \endentry
+    \entry{kaelbling_reinforcement_1996}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0bf25a24f49af5c83d08966e17941417}{%
+           family={Kaelbling},
+           familyi={K\bibinitperiod},
+           given={L.\bibnamedelimi P.},
+           giveni={L\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=352da7ce0de499b5d902333a3af53e06}{%
+           family={Littman},
+           familyi={L\bibinitperiod},
+           given={M.\bibnamedelimi L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=3a0e422c2af3516bd3a2f5a6f04fbb10}{%
+           family={Moore},
+           familyi={M\bibinitperiod},
+           given={A.\bibnamedelimi W.},
+           giveni={A\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{8bb1da5e8fe51882f3a1a7517caf35f4}
+      \strng{fullhash}{8bb1da5e8fe51882f3a1a7517caf35f4}
+      \strng{bibnamehash}{8bb1da5e8fe51882f3a1a7517caf35f4}
+      \strng{authorbibnamehash}{8bb1da5e8fe51882f3a1a7517caf35f4}
+      \strng{authornamehash}{8bb1da5e8fe51882f3a1a7517caf35f4}
+      \strng{authorfullhash}{8bb1da5e8fe51882f3a1a7517caf35f4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{This paper surveys the field of reinforcement learning from a computer-science perspective. It is written to be accessible to researchers familiar with machine learning. Both the historical basis of the field and a broad selection of current work are summarized. Reinforcement learning is the problem faced by an agent that learns behavior through trial-and-error interactions with a dynamic environment. The work described here has a resemblance to work in psychology, but differs considerably in the details and in the use of the word ``reinforcement.'' The paper discusses central issues of reinforcement learning, including trading off exploration and exploitation, establishing the foundations of the field via Markov decision theory, learning from delayed reinforcement, constructing empirical models to accelerate learning, making use of generalization and hierarchy, and coping with hidden state. It concludes with a survey of some implemented systems and an assessment of the practical utility of current methods for reinforcement learning.}
+      \field{issn}{1076-9757}
+      \field{journaltitle}{Journal of Artificial Intelligence Research}
+      \field{month}{5}
+      \field{shorttitle}{Reinforcement {Learning}}
+      \field{title}{Reinforcement {Learning}: {A} {Survey}}
+      \field{urlday}{14}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{4}
+      \field{year}{1996}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \field{pages}{237\bibrangedash 285}
+      \range{pages}{49}
+      \verb{doi}
+      \verb 10.1613/jair.301
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/home/tony/Zotero/storage/9L596ZMR/Kaelbling et al. - 1996 - Reinforcement Learning A Survey.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.jair.org/index.php/jair/article/view/10166
+      \endverb
+      \verb{url}
+      \verb https://www.jair.org/index.php/jair/article/view/10166
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

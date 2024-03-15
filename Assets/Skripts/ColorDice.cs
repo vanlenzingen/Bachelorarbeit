@@ -40,12 +40,12 @@ public class ColorDice : MonoBehaviour
         int randomIndex = Random.Range(0, colors.Count);
         string colorResult = colors[randomIndex];
         this.color = colorResult;
-        //SetColor(color);  // display dice
+        SetColor(color);  // display dice
     }
 
 
     public void Reroll() {
-//         Destroy(this.transform.GetChild(0).gameObject); // display dice
+        Destroy(this.transform.GetChild(0).gameObject); // display dice
         Roll();
     }
 

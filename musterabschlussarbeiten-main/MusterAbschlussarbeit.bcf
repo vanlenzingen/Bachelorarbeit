@@ -2344,6 +2344,30 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">MusterBachelorArbeitBib.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">hui_alphago_2018</bcf:citekey>
+    <bcf:citekey order="1">noauthor_alphago_2020</bcf:citekey>
+    <bcf:citekey order="2">lorenz_reinforcement_2020</bcf:citekey>
+    <bcf:citekey order="3">ertel_grundkurs_2021</bcf:citekey>
+    <bcf:citekey order="4">zai_einstieg_2020</bcf:citekey>
+    <bcf:citekey order="5">zai_einstieg_2020</bcf:citekey>
+    <bcf:citekey order="6">zai_einstieg_2020</bcf:citekey>
+    <bcf:citekey order="6">zai_einstieg_2020</bcf:citekey>
+    <bcf:citekey order="0" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="12">noauthor_kunstliche_nodate</bcf:citekey>
+    <bcf:citekey order="12">noauthor_kunstliche_nodate</bcf:citekey>
+    <bcf:citekey order="13">noauthor_kunstliche_nodate</bcf:citekey>
+    <bcf:citekey order="13">noauthor_kunstliche_nodate</bcf:citekey>
+    <bcf:citekey order="14">schmidt_spiele_gmbh_spielregeln_nodate</bcf:citekey>
+    <bcf:citekey order="14">schmidt_spiele_gmbh_spielregeln_nodate</bcf:citekey>
+    <bcf:citekey order="15">schmidt_spiele_gmbh_spielregeln_nodate</bcf:citekey>
+    <bcf:citekey order="15">schmidt_spiele_gmbh_spielregeln_nodate</bcf:citekey>
+    <bcf:citekey order="16">hui_alphago_2018</bcf:citekey>
+    <bcf:citekey order="17">noauthor_alphago_2020</bcf:citekey>
+    <bcf:citekey order="18">lorenz_reinforcement_2020</bcf:citekey>
+    <bcf:citekey order="19">ertel_grundkurs_2021</bcf:citekey>
+    <bcf:citekey order="20">zai_einstieg_2020</bcf:citekey>
+    <bcf:citekey order="21">noauthor_kunstliche_nodate</bcf:citekey>
+    <bcf:citekey order="22">schmidt_spiele_gmbh_spielregeln_nodate</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
