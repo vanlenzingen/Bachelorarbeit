@@ -11,7 +11,7 @@ Der \textbf{Controller} stellt alle Funktionalitäten bereit, welche gebraucht w
 Er besitzt Prefabs des Agents, des GameFields und der Würfel und initialisiert diese zum Start.
 Weiterhin implementiert der Controller die Funktionalität der Punktevergabe, welche für eine Mehrspielervariante genutzt werden kann.
 Der Controller ist das Parent aller anderen Elemente und so ist er das zentrale Element der Steuerung. Auch das wiederholte Rollen der Würfel wird im Controller angestoßen.
-Der Controller war hilfreich beim Erstellen paralleler Trainings, da dieser mehrfach in die Szene aufgenommen werden musste um mehrere Spielfelder, welche gleichzeitig bespielt werden zu initialisieren.
+Der Controller war hilfreich beim Erstellen paralleler Trainings, da dieser mehrfach in die Szene aufgenommen werden musste, um mehrere Spielfelder, welche gleichzeitig bespielt werden, zu initialisieren.
 
 Der \textbf{NumberDice} implementiert die Logik, welche für das Würfeln und Visualisieren der Zahlenwürfel benötigt wird.
 Die Visualisierung funktioniert mit selbst angefertigten Sprites, welche in einem sortierten Array liegen und je nach gewürfelter Zahl initialisiert und gerendert werden.
@@ -20,15 +20,15 @@ Damit ist gewährleistet, dass immer das aktuelle Würfelergebnis angezeigt wird
 Die Zahl des Würfels wird als Integer gespeichert, wobei er die Zahlen 1-6 annehmen kann.
 Die Zahl '6' entspricht dem Zahlenjoker. \ref{fig:NumberSprites} zeigt die verwendeten Sprites für den Zahlenwürfel. 
 
-
-Wie der Zahlenwürfel implementiert der \textbf{ColorDice} die Funktionalität des Würfelns der Farben.
-Diese werden als String dargestellt und können folgende Werte annehmen: \{'blue', 'green','red', 'yellow', 'orange', 'joker'\}.
-Zur Visualisierung wird ein Sprite erstellt, was in der gewürfelten Farbe eingefärbt wird. Ein schwarzes Feld entspricht dem gewürfelten Farbjoker.
-
+\newpage
+Wie der Zahlenwürfel, implementiert der \textbf{ColorDice} die Funktionalität des Würfelns der Farben.
+Diese werden als String dargestellt und können folgende Werte annehmen:\\ \{'blue', 'green','red', 'yellow', 'orange', 'joker'\}.\\
+Zur Visualisierung wird ein Sprite erstellt, welches in der gewürfelten Farbe eingefärbt wird. Ein schwarzes Feld entspricht dem gewürfelten Farbjoker.
+Das Einfärben der Sprites wird mittels des Switch-Case Statements in \ref{lst:SetColor} ermöglich. 
 
 Das \textbf{GameField} stellt das tatsächliche Spielfeld dar.
-Es implementiert die benötigten Methoden um die SquareFields zu verwalten und rückzusetzen.
-Außerdem wird die Anzahl der Joker in ihm gehalten. \ref{fig:Environment} zeigt neun dieser SPielfelder, welche nach Vorlage von \ref{fig:Vorlage} modelliert wurden.
+Es implementiert die benötigten Methoden, um die SquareFields zu verwalten und rückzusetzen.
+Außerdem wird die Anzahl der Joker in ihm gehalten. \ref{fig:Environment} zeigt neun dieser Spielfelder, welche nach Vorlage von \ref{fig:Vorlage} modelliert wurden.
 
 Funktionalitäten:
 \setlist{noitemsep}
@@ -38,9 +38,9 @@ Funktionalitäten:
     \item  Abkreuzen der Felder
     \item  Berechnen der validen Nachbarn der Felder
     \item  Berechnen der verbleibenden Felder einer bestimmten Farbe
-    \item  Rückgabe der validen Felder für die aktuell gewählten Würfel.
+    \item  Rückgabe der validen Felder für die aktuell gewählten Würfel
     \item  Reduzieren der verbleibenden Joker
-    \item  Rücksetzen der Felder um ein neuest Spiel zu Starten
+    \item  Rücksetzen der Felder, um ein neues Spiel zu starten
 \end{itemize}
 
 Die \textbf{FieldSquares} stellen die einzelnen Teilfelder des Spielfeldes dar. In Tabelle \ref{tab:Informationen in FieldSquares} wird dargestellt, welche Informationen gehalten werden.
@@ -71,7 +71,7 @@ Die \textbf{FieldSquares} stellen die einzelnen Teilfelder des Spielfeldes dar. 
 
 \section{Visualisierung}
 Die Visualisierung des Spielfeldes erfolgt über ein angefertigtes Prefab. In diesem wurden die 105 Kästchen in einem Raster von 15x7 instanziiert und manuell mit den Informationen versehen. Dieses manuell angefertigte Spielfeld wurde als Prefab gespeichert und dient als Umgebung für den Agenten.
-Zu Beginn des Spiels werden die Felder instanziiert in die Farben der hinterlegten Information in den richtigen Farben eingefärbt. Ausgefüllte Kästchen werden grau eingefärbt, diese Funktionalität wird im Fieldsquare Prefab ausgeführt. \ref{fig:Environment} zeigt den Aufbau der Trainingsumgebung. Jedes der Spielfelder besitzt einen eigenen Agenten und ist somit die Lernumgebung für genau einen Agenten. Alle Agenten trainieren gemeinsam ein Modell. Es können beliebig viele weitere Lernumgebungen hinzugefügt werden. Mehrere gleichzeitige Traingsvorgänge bedeuten jedoch wiederum einen höheren Rechenaufwand.
+Zu Beginn des Spiels werden die Felder instanziiert und in die Farben der hinterlegten Information eingefärbt. Ausgefüllte Kästchen werden grau eingefärbt, diese Funktionalität wird im Fieldsquare Prefab ausgeführt. \ref{fig:Environment} zeigt den Aufbau der Trainingsumgebung. Jedes der Spielfelder besitzt einen eigenen Agenten und ist somit die Lernumgebung für genau einen Agenten. Alle Agenten trainieren gemeinsam ein Modell. Es können beliebig viele weitere Lernumgebungen hinzugefügt werden. Mehrere gleichzeitige Traingsvorgänge bedeuten jedoch wiederum einen höheren Rechenaufwand.
 
 
 \section{Implementierung des Agenten}
@@ -79,9 +79,9 @@ Der Agent ist die Schnittstelle zwischen dem Environment und dem RL.
 Dem Agent werden alle nötigen Informationen des Spielfeldes übergeben. Diese werden in ein neuronales Netz übertragen, welches wiederum die Ausgabewerte in einem Vektor zurück an den Agenten leitet.
 Anschließend wird der Vektor verarbeitet und die gewählten Aktionen werden ausgeführt.
 Für gute Aktionen erhält der Agent positive Rewards, bei schlechten Aktionen wird der Zug übersprungen. \\
-Zu Beginn jeder Episode, welche einem Spielzug entspricht, muss dem Agenten der aktuelle Zustand des Feldes übermittelt werden, aus welchem er die bestmögliche Option für einen Zug berechnet. In der ML Agents Bibliothek gibt es hierfür eine vorgefertigte Methode mit dem Namen CollectObservations. Diese erzeugt einen Observationsvektor \ref{tab:Aufbau Beobachtungen}, zu welchem die Informationen der aktuellen Zustands hinzugefügt werden.
-Wärend des Trainings eines Neuronalen Netzes, muss die Größe des Vektors und die Art der Werte gleich bleiben. Deswegen ist nicht möglich ein Modell auf unterschiedlichen Spielfeldern zu trainieren, da sich so die Anzahl der Beobachtungen unterscheiden würden.
-\ref{lst:Code CollectObservations} erstellt anhand der Daten den Vektor aus beobachtungen und übergibt ihn an den Agenten.
+Zu Beginn jeder Episode, welche einem Spielzug entspricht, muss dem Agenten der aktuelle Zustand des Feldes übermittelt werden, aus welchem er die bestmögliche Option für einen Zug berechnet. In der ML-Agents Bibliothek gibt es hierfür eine vorgefertigte Methode mit dem Namen CollectObservations. Diese erzeugt einen Observationsvektor \ref{tab:Aufbau Beobachtungen}, zu welchem die Informationen der aktuellen Zustands hinzugefügt werden.
+Während des Trainings eines neuronalen Netzes, muss die Größe des Vektors und die Art der Werte gleich bleiben. Deswegen ist es nicht möglich ein Modell auf Spielfeldern mit unterschiedlichen Größen zu trainieren, da sich so die Anzahl der Beobachtungen unterscheiden würden.
+\ref{lst:CollectObservations} erstellt anhand der Daten den Vektor aus Beobachtungen und übergibt ihn an den Agenten.
 
 
 Aufbau der Beobachtungen:
@@ -136,11 +136,11 @@ Aufbau der Beobachtungen:
 \end{table}
 
 Anhand der Observations berechnet das neuronale Netz einen Ausgabevektor. Tabelle \ref{tab:Aktionbuffer} zeigt den Aufbau der hier verwendeten Beobachtungen. Mit diesem führt der Agent nun bestimmte Aktionen aus und versucht sein Ergebnis (Rewards) zu maximieren.
-Anhand der gesammelten Rewards wird das neuronale Netz nun angepasst, um das bestmögliche Ergebnis zu erreichen.
+Anhand der gesammelten Rewards werden die Kantengewichte des Netzes angepasst, um das bestmögliche Ergebnis zu erreichen.
 
 \begin{table}[!h]
     \centering
-    \caption{Index und Beschreibung der Variablen}
+   
     \begin{tabular}{|c|c|c|c|}
     \hline
     \textbf{Index} & \textbf{Beschreibung} & \textbf{Typ} & \textbf{Wertebereich} \\
@@ -164,12 +164,13 @@ Anhand der gesammelten Rewards wird das neuronale Netz nun angepasst, um das bes
     \textbf{9} &  Action 4 für die Auswahl der Nachbarn & Continuous & - \\
     \hline
     \end{tabular}
+    \caption{Index und Beschreibung der Variablen}
     \label{tab:Aktionbuffer}
 \end{table}
 
-Das Vergeben von Rewards lehnt sich an die Punktevergabe im Spiel wie nach Vorlage \ref{fig:Vorlage} an. Der Agent erhält Belohnungen, wenn er auch Punkte im gespielten Spiel erlangen würde. In \ref{tab:rewards} ist eine Übersicht der Belohnungen. Aus dieser lässt sich ablesen, welche Aktion welchen Reward auslöst.
+Das Vergeben von Rewards lehnt sich an die Punktevergabe im Spiel, wie nach Vorlage \ref{fig:Vorlage}, an. Der Agent erhält Belohnungen, wenn er auch Punkte im gespielten Spiel erlangen würde. In \ref{tab:rewards} ist eine Übersicht der Belohnungen. Aus dieser lässt sich ablesen, welche Aktion welchen Reward auslöst.
 
-\begin{table}[htbp]
+\begin{table}[!h]
     \centering
     \begin{tabular}{|c|c|}
     \hline
@@ -187,17 +188,19 @@ Das Vergeben von Rewards lehnt sich an die Punktevergabe im Spiel wie nach Vorla
 
 
 
-\newpage
+\clearpage
 \section{Spezifikation des Alghorithmus}
-Im folgenden wird der Ablauf zum Wählen der Felder erläutert. Im Beispiel wird der Ausgabevektor \textbf{(1 , 1 , 0 , 3 , 4 , 0.6 , 0.5 , 0.4 , 0.8)} verwendet. \\
+Im Folgenden wird der Ablauf zum Wählen der Felder erläutert. Im Beispiel wird der Ausgabevektor \textbf{(1 , 1 , 0 , 3 , 4 , 0.6 , 0.5 , 0.4 , 0.8)} verwendet. \\
 Die ersten beiden Stellen des Ausgabevektors entsprechen den gewählten Würfeln.
-Im ersten Schritt werden alle Felder des Spielfelds untersucht, ob sie ein valides Ziel für das gewürfelte Ergebnis bilden. Dies ergibt sich aus der Gruppe der Spielfelder, der Farbe und ob das Kästchen verfügbar ist.
+Im ersten Schritt werden alle Felder des Spielfelds untersucht, ob sie ein valides Ziel für das gewürfelte Ergebnis bilden. Dies ergibt sich aus der Gruppe der Spielfelder, der Farbe und ob das Kästchen verfügbar ist. \ref{lst:GetAvailableFields}
 Valide Felder werden in eine Liste (availableFields) aus Verfügbaren Feldern geschrieben. Abb. \ref{fig:alg1} zeigt den beschriebenen Zustand des Feldes.\\
+
 Abb. \ref{fig:alg2} bildet den nächsten Schritt im Algorhitmus ab.
-Es wird geprüft, ob die gewählten Koordinaten in availableFields vorhanden sind.
+Es wird geprüft, ob verfügbare Felder vorhanden sind.
 Wenn kein Feld verfügbar ist, wird die Episode abgebrochen und der Agent überspringt seinen Zug.
-Sofern der Agent ein valides Feld gewählt hat, wird dieses in eine weitere Liste (pickedFields) geschrieben und benachbarte Felder der selben Gruppe werden zurückgegeben. \\
-Im nächsten Schritt wird jedem der verfügbaren Nachbarn abhängig der Gesamtanzahl ein Wertebereich zwischen 0 und 1 zugewiesen, dies wird in \ref{fig:alg3} und \ref{tab:field_ranges} verdeutlicht. Anhand des diskreten Wertes des Ausgabevektors wird das zugehörige Feld in eine Liste aus den gewählten Feldern geschrieben.
+Sofern der Agent ein valides Feld gewählt hat, wird dieses in eine weitere Liste (pickedFields) geschrieben und benachbarte Felder der selben Gruppe werden zurückgegeben. \ref{lst:CalculateNeighbors} \\
+
+Im nächsten Schritt wird jedem der verfügbaren Nachbarn, abhängig der Gesamtanzahl, ein Wertebereich zwischen 0 und 1 zugewiesen, dies wird in \ref{fig:alg3} und \ref{tab:field_ranges} verdeutlicht. Anhand des diskreten Wertes des Ausgabevektors, wird das zugehörige Feld in eine Liste aus den gewählten Feldern geschrieben. \ref{lst:PickField}
 \begin{table}[!h]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -216,7 +219,7 @@ Im nächsten Schritt wird jedem der verfügbaren Nachbarn abhängig der Gesamtan
 \end{table}
 
 Für alle gewählten Felder werden die benachbarten Felder zurückgegeben und der vorherige Schritt wiederholt.
-Wenn so viele Felder gewählt, wie erwürfelt wurden, werden die Felder anschließend ausgefüllt und auf Rewards überprüft.Die wird in Abbildung \ref{fig:alg4} dargestellt.
+Wenn so viele Felder gewählt, wie erwürfelt wurden, werden die Felder anschließend ausgefüllt und auf Rewards überprüft. Dies wird in Abbildung \ref{fig:alg4} dargestellt.
 
 \begin{figure}[!h]
 	\centering
@@ -262,9 +265,9 @@ In \ref{fig:punktWolke} lässt sich ableiten, dass Belohnungen nur dann verteilt
 \end{figure}
 
 
-Die Logdateien wurden anschließend mit Python ausgewertet. In \ref{lst:ImportLogfiles} werden die angegebenen Punkteaufzeichnugnen importiert und jedem Datensatz einen Titel zur Beschriftung der Graphen hinzugefügt. Im Anschluss wird hier der gleitende Durchschnitt abhängig der gewählten Anzahl an Spielen berechnet. 
+Die Logdateien wurden anschließend mit Python ausgewertet. In \ref{lst:ImportLogfiles} werden die angegebenen Punkteaufzeichnugnen importiert und jedem Datensatz ein Titel zur Beschriftung der Graphen hinzugefügt. Im Anschluss wird der gleitende Durchschnitt,abhängig der gewählten Anzahl an Spielen berechnet. 
 
-Dabei werden erst alle Werte addiert und der Mittelwert gebildet.Danach wird der herrausrotierende Wert abgezogen und um den Neuen ergänzt. Auf diese Weise muss jeder Wert lediglich 2 mal gelesen werden. \\ In der Methode \ref{lst:DisplayGraph} können nun variabel Graphen gewählt und anschließend gerendert werden. Vor Methodenaufruf, muss die Liste an anzuzeigenden Graphen bearbeitet werden und in den Methodenaufruf übergeben werden. 
+Dabei werden erst alle Werte addiert und der Mittelwert gebildet. Danach wird der herrausrotierende Wert abgezogen und um den Neuen ergänzt. Auf diese Weise muss jeder Wert lediglich 2 mal gelesen werden. \\ In der Methode \ref{lst:DisplayGraph} können nun variabel Graphen gewählt und anschließend gerendert werden. Vor Methodenaufruf, muss die Liste an anzuzeigenden Graphen bearbeitet werden und in den Methodenaufruf übergeben werden. 
 
 
 

@@ -6,8 +6,8 @@
 \clearpage
 \chapter{Konzeption}
 \section{Anforderungsanalyse}
-In dieser Arbeit soll das Spiel 'Noch mal!' implementiert werden und von einem RL Agenten gespielt werden. Das Spiel muss nicht vom Nutzer selbst spielbar sein, sondern dem Agenten lediglich eine Lernumgebung bereitstellen, in welcher er trainieren kann. Es müssen alle Funktionalitäten des Spiels abgedeckt werden. Weiterhin muss die Lernumgebung das Durchführen von illegalen Zügen unterbinden. Spielparameter müssen konfigurierbar sein, die Flexibilität des Trainings zu erhöhen.\\
-Die Visualisierung des Spiels steht nicht im Vordergrund. Trotzdessen soll sie vorhanden sein, da sie ermöglicht Verhaltensweisen des Agenten besser überwachen zu können. Um das Spiel zu programmieren, wird eine leistungsfähige Gameengine vorrausgesetzt, welche die Umsetzung vereinfacht. Da der Lernprozess des Agenten im Vordergrund steht, wird eine benutzerfreundliche Schnittstelle vorrausgesetzt, welche ein RL Framework bereit stellt und die Verwaltung von Modellen vereinfacht. Um das Training zu überwachen und verschiedene Modelle miteinander zu vergleichen, wird ein Framework benötigt, welche den Trainingsprozess grafisch darstellt. Dieses soll ohne großen Mehraufwand nutzbar sein. Das Training von RL Modellen, benötigt viel Rechenzeit. Deshalb ist es nötig Traningsprozesse zu parallelisieren um die Dauer des Trainings zu minimieren. Die Parallelisierung sollte von der Entwicklungsumgebung bereitgestellt werden. Um verschiedene Trainingsszenarien zu erstellen und situativ einsetzen zu können, ist es notwendig mehrere Lernumgebungen konfigurieren und speichern zu können. 
+In dieser Arbeit soll das Spiel 'Noch mal!' implementiert und von einem RL Agenten gespielt werden. Das Spiel muss nicht vom Nutzer selbst spielbar sein, sondern dem Agenten lediglich eine Lernumgebung bereitstellen, in welcher er trainieren kann. Es müssen alle Funktionalitäten des Spiels abgedeckt werden. Weiterhin muss die Lernumgebung das Durchführen von illegalen Zügen unterbinden. Spielparameter müssen konfigurierbar sein, um die Flexibilität des Trainings zu erhöhen.\\
+Die Visualisierung des Spiels steht nicht im Vordergrund. Trotzdessen soll sie vorhanden sein, da sie ermöglicht, Verhaltensweisen des Agenten besser überwachen zu können. Um das Spiel zu programmieren, wird eine leistungsfähige Gameengine vorrausgesetzt, welche die Umsetzung vereinfacht. Da der Lernprozess des Agenten im Vordergrund steht, wird eine benutzerfreundliche Schnittstelle vorrausgesetzt, welche ein RL Framework bereit stellt und die Verwaltung von Modellen vereinfacht. Um das Training zu überwachen und verschiedene Modelle miteinander zu vergleichen, wird ein Framework benötigt, welches den Trainingsprozess grafisch darstellt. Dieses soll ohne großen Mehraufwand nutzbar sein. Das Training von RL Modellen benötigt viel Rechenzeit. Deshalb ist es nötig Traningsprozesse zu parallelisieren, um die Dauer des Trainings zu minimieren. Die Parallelisierung sollte von der Entwicklungsumgebung bereitgestellt werden. Um verschiedene Trainingsszenarien zu erstellen und situativ einsetzen zu können, ist es notwendig mehrere Lernumgebungen konfigurieren und speichern zu können. 
 In \ref{tab:requirements} werden die Anforderungen zusammengefasst und in funktionale und nicht funktionale Anforderungen kategorisiert.
 
     \begin{table}[h]
@@ -28,23 +28,22 @@ In \ref{tab:requirements} werden die Anforderungen zusammengefasst und in funkti
         \hline
         Schnittstelle für RL-Framework & Verwendung einer leistungsfähigen Gameengine \\
         \hline
-        & Benutzerfreundliche Entwicklungsumgebung \\
+        RL-FrameWork& Benutzerfreundliche Entwicklungsumgebung \\
         \hline
         & Konfigurierbare Spielparameter \\
         \hline
         \end{tabular}
-        \caption{Anforderungen an die Implementierung des Spiels 'Noch mal!' für einen RL-Agenten}
+        \caption{Anforderungen an die verwendeten Technologien für die Nutzung von RL-Agenten}
     \end{table}
 
-\section{Auswahl der Verwendeten Technologien}
+\section{Auswahl der verwendeten Technologien}
 Basierend auf der Anforderungsanalyse ergeben sich Anforderungen an die Technologien, welche verwendet werden. 
-Um das Spiel 'Noch mal!' zu programmieren, wurde Unity als bevorzugte Gameengine gewählt. Unity stellt eine Vielzahl von Bibliotheken zur Verfügung und ermöglicht die unkomplizierte Umsetzung der Visualisierung des Spiels. C\# ist die gängige Programmiersprache in Unity, deshalb wird das Projekt in C\# umgesetzt. Mit der Auswahl von Unity als Gameengine ist bereits die Mehrheit der funktionalen Anforderungen aus \ref{tab:requirements} teilwesie erfüllt, müssen jedoch programmiertechnisch umgesetzt werden. \\
-Für die Erstellung des RL-Agenten wurde das ML-Agents Framework verwendet. Es bietet alle Funktionalitäten zum Übergeben von Beobachtungen an den Agenten und Schnittstellen zum Ausführen von Aktionen im Lernumfeld. Weiterhin ist es möglich Aktionen mit Belohnungen zu bewerten. Durch die Integration von ML Agents wird sichergestellt, dass der Agent den aktuellen Zustand des Spiels richtig übergeben bekommt und darauf reagieren kann. Durch die Nutzung des Frameworks, ist auch die Schnittstelle für RL geschaffen.\\
-Zu grafischen Darstellung des Trainingsprozesses wurde Tensorboard genutzt. Die Integration erfolgt ohne großen Mehraufwand und bietet die automatisierte Erstellung von Grafiken des Trainingsprozesses. Dies erleichtert die Evaluierung von verschiedenen Modellen. \\ 
-Zur Visualisierung der erreichten Punkte der Agenten, wurde Python mit Matplotlib verwendet. Mit Matplotlib ist es möglich grafische Darstellungen von Daten zu erstellen. Mithilfe dieser Grafiken ist es möglich Rückschlüsse auf das Verhalten der Agenten zu führen, beziehungsweise deren Trainingsfortschritte zu bewerten. \\
+Um das Spiel 'Noch mal!' zu programmieren, wurde \textbf{Unity} als bevorzugte Gameengine gewählt. Unity stellt eine Vielzahl von Bibliotheken zur Verfügung und ermöglicht die unkomplizierte Umsetzung der Visualisierung des Spiels. C\# ist die gängige Programmiersprache in Unity, deshalb wird das Projekt in C\# umgesetzt. Mit der Auswahl von Unity als Gameengine ist bereits die Mehrheit der funktionalen Anforderungen aus \ref{tab:requirements} teilweise erfüllt, müssen jedoch programmiertechnisch umgesetzt werden. \\
+Für die Erstellung des RL-Agenten wurde das \textbf{ML-Agents} Framework verwendet. Es bietet alle Funktionalitäten zum Übergeben von Beobachtungen an den Agenten und Schnittstellen zum Ausführen von Aktionen im Lernumfeld. Weiterhin ist es möglich Aktionen mit Belohnungen zu bewerten. Durch die Integration von ML Agents wird sichergestellt, dass der Agent den aktuellen Zustand des Spiels richtig übergeben bekommt und darauf reagieren kann. Durch die Nutzung des Frameworks, ist die Schnittstelle für die Nutzung von \textbf{Pytorch} geschaffen. Pytorch wird als RL-Framework eingesetzt und passt während des Trainings die Kantengewichte der NN an.\\
+Zur grafischen Darstellung des Trainingsprozesses wurde \textbf{Tensorboard} genutzt. Die Integration erfolgt ohne großen Mehraufwand und bietet die automatisierte Erstellung von Grafiken des Trainingsprozesses. Dies erleichtert die Evaluierung von verschiedenen Modellen. \\ 
+Zur Visualisierung der erreichten Punkte der Agenten, wurde Python mit \textbf{Matplotlib} verwendet. Mit Matplotlib ist es möglich grafische Darstellungen von Daten zu erstellen. Mithilfe dieser Grafiken ist es möglich Rückschlüsse auf das Verhalten der Agenten zu führen, beziehungsweise deren Trainingsfortschritte zu bewerten. \\
 Mit der Verwendung jener genannten Technologien und Frameworks ist es möglich den Rahmen dieser Arbeit zu bearbeiten und zu bewerten.
-In \ref{tab:solveRequirements} wird ersichtlich welche Anforderung über welche Technologie erfüllt wird. \\
-
+In \ref{tab:solveRequirements} wird ersichtlich, welche Anforderung über welche Technologie erfüllt wird. \\
 
 
 \begin{table}[!h]
@@ -56,7 +55,7 @@ In \ref{tab:solveRequirements} wird ersichtlich welche Anforderung über welche 
     \hline
     Implementierung des Spiels & Unity \\
     \hline
-    Bereitstellen der Lernumgebung & ML-Agents \\
+    Bereitstellen der Lernumgebung & Unity \\
     \hline
     Abdecken der Spielfunktionalitäten & Unity \\
     \hline
@@ -75,6 +74,8 @@ In \ref{tab:solveRequirements} wird ersichtlich welche Anforderung über welche 
     Benutzerfreundliche Entwicklungsumgebung & Unity \\
     \hline
     Konfigurierbare Spielparameter & Unity \\
+    \hline
+    RL-Framework & Pytorch \\
     \hline
     \end{tabular}
     \caption{Anforderungen an die Implementierung des Spiels 'Noch mal!' für einen RL-Agenten und die entsprechenden Technologien}

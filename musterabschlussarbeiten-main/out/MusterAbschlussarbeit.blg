@@ -1,0 +1,18 @@
+[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:310> INFO - Logfile is 'out/MusterAbschlussarbeit.blg'
+[76] biber:340> INFO - === Sa Mär 23, 2024, 15:16:26
+[88] Biber.pm:418> INFO - Reading 'out/MusterAbschlussarbeit.bcf'
+[147] Biber.pm:972> INFO - Found 11 citekeys in bib section 0
+[159] Biber.pm:4383> INFO - Processing section 0
+[167] Biber.pm:4574> INFO - Looking for bibtex file 'MusterBachelorArbeitBib.bib' for section 0
+[168] bibtex.pm:1713> INFO - LaTeX decoding ...
+[187] bibtex.pm:1518> INFO - Found BibTeX data source 'MusterBachelorArbeitBib.bib'
+[260] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[260] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[260] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'de-DE'
+[260] Biber.pm:4209> INFO - No sort tailoring available for locale 'de-DE'
+[268] bbl.pm:654> INFO - Writing 'out/MusterAbschlussarbeit.bbl' with encoding 'UTF-8'
+[272] bbl.pm:757> INFO - Output to out/MusterAbschlussarbeit.bbl
+[272] Biber.pm:130> WARN - ISBN '978-3-662-61650-5 978-3-662-61651-2' in entry 'lorenz_reinforcement_2020' is invalid - run biber with '--validate_datamodel' for details.
+[272] Biber.pm:130> WARN - ISBN '978-3-658-32074-4 978-3-658-32075-1' in entry 'ertel_grundkurs_2021' is invalid - run biber with '--validate_datamodel' for details.
+[272] Biber.pm:132> INFO - WARNINGS: 2
